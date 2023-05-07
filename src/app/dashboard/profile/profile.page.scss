@@ -1,0 +1,16 @@
+ion-toolbar {
+    --background: #428cff;
+    --color: #fff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.322);
+}
+
+.logo {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.no-shadow {
+    box-shadow: none !important;
+}

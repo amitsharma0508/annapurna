@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <div *ngFor="let policy of policys"> -->
+    <div>
+    <ion-card class="no-shadow">
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Name :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.CUSTNAME}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-align">Amit Sharma</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Address :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.CURRADDRESS}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-align">Thimphu</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Policy Number :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.POLNO}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-align">P-76543</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>CID Number :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.CID}}</ion-label> -->
+            <ion-label class="ion-text-wrap"class="text-align">11202005475</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Sum Assured :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.SUMASSR}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-align">Nu.8765432</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap"  slot="start"><strong>Policy Date :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.POLDATE}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-align">05.06.2023</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap"  slot="start"><strong>Amount :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">Nu.{{policy.PREAMT}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-align">Nu.987654</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -1,0 +1,259 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div style="display: flex; align-items: center;justify-content: center;">
+    <img class="logo" src="../../assets/images/logo.png"/>
+  </div>
+
+  <div class="form-header" [hidden]="!policyTitle"><strong><ion-label>Choose your policy</ion-label></strong></div>
+  <div class="form-header" [hidden]="!creditTitle"><strong><ion-label>Choose your loan account</ion-label></strong></div>
+  <div class="form-header" [hidden]="!payothersTitle"><strong><ion-label>Pay for others</ion-label></strong></div>
+  <div class="form-header" [hidden]="!reportTitle"><strong><ion-label>Choose report</ion-label></strong></div>
+  <div class="form-header" [hidden]="!tClaimsTitle"><strong><ion-label>Choose Claims Type</ion-label></strong></div>
+
+  <ion-list *ngIf="creditFlag">
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(policyNumber.AGNO, 'credit')">
+        <span> {{policyNumber.AGNO}} </span> -->
+      <ion-item color="primary" (click)="policyDetails(param, 'credit')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary" (click)="policyDetails(param, 'credit')">
+        <ion-icon name="airplane-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="lifeFlag">
+    <div text-left>
+      <ion-item color="primary" (click)="policyDetails(param, 'life')">
+        <ion-icon name="accessibility-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary" (click)="policyDetails(param, 'life')">
+        <ion-icon name="accessibility-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="generalFlag">
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(policyNumber.POL_NO, 'general')">
+        <span> {{policyNumber.POL_NO}} </span> -->
+      <ion-item color="primary" (click)="policyDetails(param, 'general')">
+        <ion-icon name="file-tray-full-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary" (click)="policyDetails(param, 'general')">
+        <ion-icon name="file-tray-full-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="generalclaimFlag">
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(policyNumber.POL_NO, 'gclaim')">
+        <span> {{policyNumber.POL_NO + ' (' + policyNumber.REG_NO + ')'}} </span> -->
+      <ion-item color="primary" (click)="policyDetails(param, 'gclaim')">
+        <ion-icon name="reload-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="motorTpFlag">
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(policyNumber.POL_NO, 'motortprenew')">
+        <span> {{policyNumber.POL_NO + ' (' + policyNumber.REG_NO + ')'}} </span> -->
+      <ion-item color="primary" (click)="policyDetails(param, 'motortprenew')">
+        <ion-icon name="reload-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary" (click)="policyDetails(param, 'motortprenew')">
+        <ion-icon name="reload-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="mcpFlag">
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(policyNumber.POL_NO, 'mcp')">
+        <span> {{policyNumber.POL_NO + ' (' + policyNumber.REG_NO + ')'}} </span> -->
+      <ion-item color="primary" (click)="policyDetails(param, 'mcp')">
+        <ion-icon name="reload-circle-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary" (click)="policyDetails(param, 'mcp')">
+        <ion-icon name="reload-circle-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="fireFlag">
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(policyNumber.POL_NO, 'fire')">
+        <span> {{policyNumber.POL_NO }} </span> -->
+      <!-- <ion-item color="secondary" *ngFor="let policyNumber of policyNumbers" (click)="policyDetails(param, 'fire')"> -->
+      <ion-item color="primary" (click)="policyDetails(param, 'fire')">
+        <ion-icon name="receipt-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary" (click)="policyDetails(param, 'fire')">
+        <ion-icon name="receipt-outline" slot="start"></ion-icon>
+        <span> {{param}} </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="deferredFlag">
+    <div text-left>
+      <ion-item color="primary" (click)="policyDetails('', 'immediate')">
+        <ion-icon name="business-outline" slot="start"></ion-icon>
+        <span> Immediate Annuity Scheme </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'deferred')">
+        <ion-icon name="basket-outline" slot="start"></ion-icon>
+        <span> Deferred Annuity Scheme </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+  <div *ngIf="othersFlag">
+    <!-- <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div> -->
+    <ion-list>
+      <ion-list-header style="font-size: 20px; font-weight: bold;">
+        <ion-label color="dark">Payable Accounts</ion-label>
+      </ion-list-header>
+      <ion-item color="primary" (click)="policyDetails('', 'creditOthers')">
+        <ion-icon name="wallet-outline" slot="start"></ion-icon>
+        <span> Loan Repayments </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'lifeOthers')">
+        <ion-icon name="man-outline" slot="start"></ion-icon>
+        <span> Life Insurance Deposit </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'deferredOthers')">
+        <ion-icon name="mail-open-outline" slot="start"></ion-icon>
+        <span> Deferred Annuity Deposit </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'ruralLifeOthers')">
+        <ion-icon name="storefront-outline" slot="start"></ion-icon>
+        <span> Rural Life Insurance Deposit </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'generalOthers')">
+        <ion-icon name="newspaper-outline" slot="start"></ion-icon>
+        <span> General Insurance Deposit </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="reportFlag">
+    <!-- <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div> -->
+    <ion-list>
+      <ion-item color="primary" (click)="policyDetails('', 'loanReport')">
+        <ion-icon name="document-text-outline" slot="start"></ion-icon>
+        <span> Loan Statement </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'ppfReport')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <span> Private Provident Fund </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'gisReport')">
+        <ion-icon name="layers-outline" slot="start"></ion-icon>
+        <span> Group Insurance Scheme </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'giReport')">
+        <ion-icon name="document-attach-outline" slot="start"></ion-icon>
+        <span> General Insurance Document </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="tClaimsFlag">
+    <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div>
+    <ion-list>
+      <ion-item color="primary" (click)="policyDetails('', 'tClaims')">
+        <span> General Insurance Claim </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('', 'lifeclaim')">
+        <span> Life Insurance Claim </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-list *ngIf="pdfViewFlag">
+    <iframe [src]="pdfSrc" scrolling="yes" style="width:100%; height: 800px;" type="application/pdf" ></iframe>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,69 @@
+.form-header {
+  text-align: center;
+  background-color: #38c7ff;
+  padding: 10px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+ion-list {
+  padding: 10px;
+}
+
+.is-empty-state-content {
+  width: 100%;
+  text-align:center;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 12vh;
+  height: 100%;
+
+  img {
+    width: 55%;
+    max-width: 300px;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+  	margin-bottom: 30px;
+  }
+}
+
+.theme-light {
+  background: #f0f4f4;
+}
+
+ion-content div.scroll{
+  height: 100%;
+}
+
+.webPage{
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding: 1rem;
+}
+.loanFlag{
+  --background: #3880ff;
+  --color:white;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 40px;
+  font-size: 15px;
+
+  ion-icon{
+    color: #fff;
+  }
+}
+.loanFlag{
+  --background: #3880ff;
+  --color:white;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 40px;
+  font-size: 15px;
+
+  ion-icon{
+    color: #fff;
+  }
+}

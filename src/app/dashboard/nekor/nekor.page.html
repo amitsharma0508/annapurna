@@ -1,0 +1,217 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <header style="padding: 2rem 1.5rem 3rem 1.5rem;">
+    <nav>
+        <div class="info">
+            <h2 style="color: white;margin-top: 0%; margin-bottom: 14px;">
+              <strong>Nekor!! <br> Lets Keep Ourself Safe</strong>
+            </h2>
+        </div>
+        <div class="img" style="background-image: url(img/user.jpg)"></div>
+    </nav>
+    <form #f="ngForm" (ngSubmit)="searchTourOperator()">
+    <label class="px-2" style="color: white;">Tour Operator License No :</label>
+    <div id="search-wrapper">
+      <i class="search-icon fas fa-search"></i>
+    <input style="background-color: white; color: black;" type="text" ngModel name="tourOperatorLicenseNo" id="search" placeholder="Enter Tour Operator License no.">
+    <button id="search-button"><ion-icon name="search-outline"></ion-icon></button>
+    </div>
+    </form>
+
+</header>
+
+<main *ngIf="tourOperatorRegistered">
+  <ion-card style="border-radius: 30px;" class="tour-card">
+    <ion-card-header>
+      <h2>Tour Operator Details</h2>
+    </ion-card-header>
+    <ion-card-content >
+      <!-- style="background: rgb(195,133,251); -->
+    <!-- background: linear-gradient(270deg, rgba(195,133,251,1) 0%, rgba(183,147,246,1) 39%, rgba(148,187,233,1) 100%);" -->
+      <div class="operator">
+        <ion-icon style="font-size: 40px;
+        color: #3880ff;" name="person-circle-outline"></ion-icon>
+        <div class="details">
+          <h3>Tour Operator:</h3>
+          <h4>Amit Sharma</h4>
+        </div>
+      </div>
+      <div class="address">
+        <ion-icon style="font-size: 40px;
+        color: #3880ff;" name="location-outline"></ion-icon>
+        <div class="details">
+          <h3>Address:</h3>
+          <h4>Thimphu, Bhutan</h4>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+    <ion-card no-padding style="border-radius: 30px;">
+      <form class="form ">
+        <h3 class="title">&nbsp; Register</h3>
+        <label ><span>Place Of Visit : <small style="color: red; font-size: 21px;">&#42;</small></span></label>
+        <label class="mb-3">
+          <ion-select (ionChange)="onPlaceOfVisitChange($event)" style=" width: 100%;
+          padding: 19px 10px 17px 10px;
+          outline: 0;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+          background-color: #ffffff;"  label="Outline select" label-placement="floating" fill="outline">
+            <ion-select-option value="Bhutan">Bhutan</ion-select-option>
+            <ion-select-option value="Others">Others</ion-select-option>
+          </ion-select>
+        </label>
+        <label *ngIf="ifPlaceOfVisitIsOthers">
+          <span class="label">Destination: <small style="color: red; font-size: 21px;">&#42;</small></span>
+        </label>
+        <label *ngIf="ifPlaceOfVisitIsOthers" class="mb-3">
+          <input required="" placeholder="" type="text" class="input">
+        </label>
+        <div *ngIf="ifPlaceOfVisitIsBhutan">
+          <div class="row mb-3">
+            <h5 class="mt-2" style="color: rgb(0, 102, 255); text-align: center;"><strong>Destination</strong></h5>
+            <div class="col-6">
+              <label class="px-3"><span class="label">Dzongkhag:<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+              <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;"  label="Outline select" label-placement="floating" placeholder="--Select--" fill="outline">
+                <ion-select-option value="Thimphu">Thimphu</ion-select-option>
+                <ion-select-option value="Phuentsholing">Phuentsholing</ion-select-option>
+                <ion-select-option value="Samtse">Samtse</ion-select-option>
+                <ion-select-option value="Paro">Paro</ion-select-option>
+                <ion-select-option value="Punakha">Punakha</ion-select-option>
+                <ion-select-option value="Wangdue">Wangdue</ion-select-option>
+                <ion-select-option value="Bumthang">Bumthang</ion-select-option>
+                <ion-select-option value="Gelephu">Gelephu</ion-select-option>
+              </ion-select>
+            </div>
+            <div class="col-6">
+              <label class="px-3"><span class="label">Gewog:<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+              <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;"  label="Outline select" label-placement="floating" placeholder="--Select--" fill="outline">
+                <ion-select-option value="Mewang Gewog">Mewang Gewog</ion-select-option>
+                <ion-select-option value="Kawang Gewog">Kawang Gewog</ion-select-option>
+                <ion-select-option value="Genekha Gewog">Genekha Gewog</ion-select-option>
+                <ion-select-option value="Dagala Gewog">Dagala Gewog</ion-select-option>
+                <ion-select-option value="Soe Gewog">Soe Gewog</ion-select-option>
+                <ion-select-option value="Naro Gewog">Naro Gewog</ion-select-option>
+                <ion-select-option value="Lingzhi Gewog">Lingzhi Gewog</ion-select-option>
+                <ion-select-option value="Chang Gewog">Chang Gewog</ion-select-option>
+              </ion-select>
+            </div>
+          </div>
+        </div>
+
+        <label>
+          <span class="label">Place of boarding: <small style="color: red; font-size: 21px;">&#42;</small></span>
+        </label>
+        <label class="mb-3">
+          <input required="" placeholder="" type="text" class="input">
+        </label>
+        <label><span class="label">Start Date and Time : <small style="color: red; font-size: 21px;">&#42;</small></span></label>
+        <label  class="mb-3">
+            <input required="" placeholder="" type="datetime-local" class="input">
+        </label>
+        <label><span class="label">End of Journey : <small style="color: red; font-size: 21px;">&#42;</small></span></label>
+        <label class="mb-3">
+          <input required="" placeholder="" type="date" class="input">
+        </label>
+        <label><span class="label">Place of Visit : <small style="color: red; font-size: 21px;">&#42;</small></span></label>
+        <label class="mb-3">
+          <form style="display: flex; justify-content: space-between;"  #PlaceForm="ngForm" (ngSubmit)="addPlaceToVisit()">
+            <ion-grid style="margin: unset; padding: unset;">
+              <ion-row>
+                <ion-col size="9">  <input required="" placeholder="" type="text"  ngModel name="placeName"
+                  style="width: 100%;
+                  padding: 11px 10px 10px 11px;
+                  outline: 0;
+                  border: 1px solid rgba(105, 105, 105, 0.397);
+                  border-radius: 10px;
+                  background-color: #ffffff;
+                  max-width: 100%;"></ion-col>
+                <ion-col><ion-button color="success" style="height: 38px; margin: 0px 0px;" type="submit" style="align-items:flex-end!important; height: 30px;margin: 0px 0px;">
+                  <!-- <img style="height: 30px; width: 30px;" src="/assets/add-location.png"> -->
+                  <!-- <ion-icon name="add"></ion-icon> -->
+                  Add
+                </ion-button></ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+          </form>
+
+        </label>
+        <div *ngIf="IfPlaceIsAdded" style="padding-right: 30px; font-size: 10px; margin-bottom: 4%">
+          <ion-list *ngFor="let placeAddedList of placeAddedList;let i = index">
+              <ion-item style="font-size: small;">
+                <ion-label>{{i+1}}.&nbsp;{{ placeAddedList}}</ion-label>
+                <ion-icon color="danger" (click)="removePlace(placeAddedList)" slot="end" name="trash-outline"></ion-icon>
+              </ion-item>
+          </ion-list>
+        </div>
+        <label ><span>Mode Of Transport : <small style="color: red; font-size: 21px;">&#42;</small></span></label>
+        <label class="mb-3">
+          <ion-select style=" width: 100%;
+          padding: 19px 10px 17px 10px;
+          outline: 0;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+          background-color: #ffffff;"  label="Outline select" label-placement="floating" fill="outline">
+            <ion-select-option value="Air">Air</ion-select-option>
+            <ion-select-option value="Vehicle">Vehicle</ion-select-option>
+            <ion-select-option value="Train">Train</ion-select-option>
+          </ion-select>
+        </label>
+
+        <button class="submit" (click)="openModal()" >Add Passenger</button>
+
+    </form>
+    </ion-card>
+
+    <ion-card style="border-radius:30px" *ngIf="addPassengerToggle">
+      <div >
+        <div class="doctor-card"  *ngFor="let passengerList of passengerList; let i = index">
+          <div class="actions">
+            <div class="ratings" style="background-color: #3880ff;">
+              <span class="rating-count">Passenger {{i+1}}</span>
+            </div>
+            <div class="comments">
+              <span class="comment-count"><strong>Name</strong> {{passengerList.fullName}}</span>
+            </div>
+            <div class="consultation">
+              <span class="fee"><strong>CID</strong>{{passengerList.cid}}</span>
+            </div>
+            <div class="consultation">
+              <span class="fee"><strong>Phone</strong> {{passengerList.phone}}</span>
+            </div>
+            <div class="consultation">
+              <span class="fee"><strong>Gender</strong> Male</span>
+            </div>
+            <div class="appo">
+              <a  class="btn" (click)="removePassenger(i)">Remove</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+
+    <ion-button size="large" expand="block">
+      <ion-icon name="cash-outline"></ion-icon>
+      <div>&nbsp;Pay Now</div>
+    </ion-button>
+
+</main>
+
+</ion-content>

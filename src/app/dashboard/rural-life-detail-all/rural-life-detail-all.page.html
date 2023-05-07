@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div *ngFor="let policy of policys"> -->
+    <div>
+    <ion-card class="no-shadow">
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Dzongkhag :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.DZONG_NAME}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Thimphu</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Gewog :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.GEWOG_NAME}}</ion-label> -->
+            <ion-label class="ion-text-wrap"  class="text-right">Thimphu</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Village :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.VILLAGE}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Thimphu</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>House No :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.PERMANENT_HOUSE_NO}}</ion-label> -->
+            <ion-label class="ion-text-wrap"  class="text-right">Thimphu</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Total Members :</strong></ion-label>
+            <ion-label class="ion-text-wrap"  class="text-right">
+              <!-- <ion-button size="medium" color="secondary" (click)="openModal(policy.HOH_CID)">
+                {{policy.TOTALMEMBERS}} -->
+
+                <ion-chip color="secondary" (click)="openModal('')"> <ion-icon name="eye-outline"></ion-icon> <p>view</p></ion-chip>
+              <!-- </ion-button> -->
+
+            </ion-label>
+
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap"  slot="start"><strong>Head of Household:</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.HOH}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Amit Sharma</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>CID No :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.HOH_CID}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">11202005475</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Total Premium :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap"  slot="end">Nu.{{policy.TOTALPREMIUM}}</ion-label> -->
+            <ion-label class="ion-text-wrap"  class="text-right">Nu.3456789</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-button size="large" expand="block" (click)="checkpaidstatus()">
+            <ion-icon name="cash-outline"></ion-icon>
+            <div>&nbsp;Pay Now</div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+</ion-content>

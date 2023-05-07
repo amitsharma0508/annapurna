@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content *ngIf="!emptyFlag"> -->
+  <ion-content>
+
+  <!-- <div *ngFor="let policy of policys"> -->
+    <div>
+    <ion-card class="no-shadow">
+      <ion-list>
+        <ion-item lines="none" class="ion-text-center">
+          <ion-label style="color:green">
+          <ion-chip color="success">
+            <ion-avatar item-start><img  src="../../../assets/images/active.png" alt=""></ion-avatar>
+            <ion-label>Active</ion-label>
+          </ion-chip>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <!-- <ion-item>
+         <ion-avatar item-start>
+          <img *ngIf="policy.POLSTATUS === 'ACTIVE'" src="../../../assets/images/active.png" alt="">
+          <img *ngIf="policy.POLSTATUS !== 'ACTIVE'" src="../../../assets/images/inactive.jpg" alt="">
+        </ion-avatar>
+        <p><strong> {{policy.POLSTATUS | uppercase}} </strong></p>
+      </ion-item> -->
+
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label class="ion-text-wrap"  slot="start"><strong>Policy Holder :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.POLICY_HOLDER}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Amit Sharma</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Policy No :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.POLICY_NO}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">123456789</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Inception Date :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.INCEPTION_DATE}}</ion-label> -->
+            <ion-label class="ion-text-wrap"class="text-right">05.08.2002</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Maturity Date :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.MATURITY_DATE}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">05.08.2023</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Sum Assured :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">Nu.{{policy.SUM_ASSURED}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Nu.30,000</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Premium :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">Nu.{{policy.PREMIUM}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Nu.45,000</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Mode of Payment :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.P_MODE}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Online</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Last Paid Date :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.LAST_PAID_DATE | date}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">01.04.2023</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Next Repayment :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.NEXT_REPAY}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">01.05.2023</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Term (Years) :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.TERM}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">4 years</ion-label>
+          </ion-item>
+
+          <!-- <ion-item *ngIf="policy.P_MODE === 'MONTHLY' && policyStatus"> -->
+            <ion-item>
+            <ion-label class="ion-text-wrap" ><strong>You want to pay for :</strong></ion-label>
+            <ion-select class="text-right" id="rounded" [(ngModel)]="installment" #C (ionChange)="calculateInstallment(C.value)">
+              <ion-select-option value="1">1 month</ion-select-option>
+              <ion-select-option value="2">2 months</ion-select-option>
+              <ion-select-option value="3">3 months</ion-select-option>
+              <ion-select-option value="4">4 months</ion-select-option>
+              <ion-select-option value="5">5 months</ion-select-option>
+              <ion-select-option value="6">6 months</ion-select-option>
+              <ion-select-option value="7">7 months</ion-select-option>
+              <ion-select-option value="8">8 months</ion-select-option>
+              <ion-select-option value="9">9 months</ion-select-option>
+              <ion-select-option value="10">10 months</ion-select-option>
+              <ion-select-option value="11">11 months</ion-select-option>
+              <ion-select-option value="12">12 months</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!-- <ion-item *ngIf="policy.P_MODE === 'QUARTERLY' && policyStatus">
+            <ion-label class="ion-text-wrap">You want to pay for</ion-label>
+            <ion-select id="rounded" slot="end" [(ngModel)]="installment" #C (ionChange)="calculateInstallment(C.value)">
+              <ion-select-option value="1" selected>1 Quarter</ion-select-option>
+              <ion-select-option value="2">2 Quarter</ion-select-option>
+              <ion-select-option value="3">3 Quarter</ion-select-option>
+              <ion-select-option value="4">4 Quarter</ion-select-option>
+            </ion-select>
+          </ion-item> -->
+
+          <!-- <ion-item *ngIf="policy.P_MODE === 'HALF YEARLY' && policyStatus">
+            <ion-label class="ion-text-wrap">You want to pay for</ion-label>
+            <ion-select id="rounded" slot="end" [(ngModel)]="installment" #C (ionChange)="calculateInstallment(C.value)">
+              <ion-select-option value="1" selected>1st Half</ion-select-option>
+              <ion-select-option value="2">2nd Half</ion-select-option>
+            </ion-select>
+          </ion-item> -->
+
+          <!-- <ion-item *ngIf="policy.P_MODE === 'YEARLY' && policyStatus">
+            <ion-label class="ion-text-wrap">You want to pay for</ion-label>
+            <ion-select id="rounded" slot="end" [(ngModel)]="installment" #C (ionChange)="calculateInstallment(C.value)">
+              <ion-select-option value="1" selected>1</ion-select-option>
+            </ion-select>
+          </ion-item> -->
+
+          <!-- <ion-item *ngIf="policyStatus"> -->
+            <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Amount to Pay :</strong></ion-label>
+            <!-- <ion-label slot="end">Nu. {{ amountToPay | number:0 }}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Nu. 20,000</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <!-- <ion-row *ngIf="policyStatus"> -->
+        <ion-row>
+        <ion-col>
+          <ion-button size="large" expand="block" (click)="confirmPayment()">
+            <ion-icon name="cash-outline"></ion-icon>
+            <div>&nbsp;Pay Now</div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row *ngIf="!policyStatus">
+        <ion-col>
+          <ion-label class="ion-text-wrap" color='danger'><strong> Your policy has lapsed, Visit RICB office to revive your policy.</strong></ion-label>
+        </ion-col>
+      </ion-row> -->
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="emptyFlag">
+  <div class="is-empty-state-content theme-light">
+    <h3>No Data Available</h3>
+    <img src="../../../assets/empty.png"/>
+  </div>
+</ion-content>

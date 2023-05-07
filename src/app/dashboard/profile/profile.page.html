@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div style="display: flex; align-items: center;justify-content: center;">
+    <img class="logo" src="../../assets/images/logo.png" />
+  </div>
+  <!-- <ion-card class="no-shadow" *ngFor="let user of users"> -->
+    <ion-card class="no-shadow">
+    <ion-card-header>
+      <!-- <ion-card-title style="text-align:center;">{{user.name}}</ion-card-title> -->
+      <ion-card-title style="text-align:center;">Amit Sharma</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-icon name="phone-portrait-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h3>Mobile Number</h3>
+            <!-- <p>{{user.mobile}}</p> -->
+            <p>+975-17811482</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h3>Email</h3>
+            <!-- <p>{{user.email}}</p> -->
+            <p>ABC@gmail.com</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="id-card-outline" slot="start"></ion-icon>
+          <ion-label>
+            <h3>Citizen/Passport Number</h3>
+            <!-- <p>{{cidNo}}</p> -->
+            <p>11202005475</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

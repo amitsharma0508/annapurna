@@ -1,0 +1,37 @@
+.ion-text-bold {
+  font-weight: bold;
+}
+ion-grid{
+ overflow-x: scroll;
+}
+
+.form-header {
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 1px;
+  font-size: larger;
+}
+.header {
+  background-color: #3880ff;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+.body {
+  background-color: #eceff3;
+  color: black;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+ion-col {
+  border: 1px solid grey;
+  // text-align: center;
+}
+p {
+  color: #3880ff    ;
+  letter-spacing: 1px;
+  // font-weight: bold;
+  font-size: 12px;
+}

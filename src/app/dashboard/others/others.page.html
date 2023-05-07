@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-header" [hidden]="!lifeTitle"><strong><ion-label>Life Insurance</ion-label></strong></div>
+  <div class="form-header" [hidden]="!creditTitle"><strong><ion-label>Credit Investment</ion-label></strong></div>
+  <div class="form-header" [hidden]="!deferredTitle"><strong><ion-label>Deferred Annuity</ion-label></strong></div>
+  <div class="form-header" [hidden]="!rurallifeTitle"><strong><ion-label>Rural Life Insurance</ion-label></strong></div>
+  <div class="form-header" [hidden]="!generalTitle"><strong><ion-label>General Insurance</ion-label></strong></div>
+
+  <div [hidden]="!creditFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="accountNo" placeholder="Enter Account No" round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+      <ion-button (click)="policyDetails('credit')" expand="block" color="primary" type="submit">
+        VIEW
+      </ion-button>
+  </div>
+
+  <div [hidden]="!lifeFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="accountNo"  placeholder="Enter Policy No" round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('life')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+
+  <div [hidden]="!deferredFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="accountNo"  placeholder="Enter Policy No" round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('deferred')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+  <div [hidden]="!ruralLifeFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="cidNo"  placeholder="Enter CID No" round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('ruralLife')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+
+  <div [hidden]="!generalFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="mCID"  placeholder="Enter Registered Owner's CID / Identity No." round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('general')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+
+  <div [hidden]="!otipFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="proCID" placeholder="Enter Proposer's CID / Identity No." round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+      <ion-button (click)="policyDetails('otip')" expand="block" color="primary" type="submit">
+        VIEW
+      </ion-button>
+  </div>
+
+  <div [hidden]="!mcpFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="cCID"  placeholder="Enter Registered Owner's CID / Identity No." round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('mcp')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+
+  <div [hidden]="!fireFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="fCID"  placeholder="Enter Proposer's CID / Identity No." round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('fire')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+
+  <div [hidden]="!othersReportFlag">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="othersCID"  placeholder="Enter Proposer's CID / Identity No." round text-center autocapitalize="characters"></ion-input>
+        <p></p>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="policyDetails('othersReport')" expand="block" color="primary" type="submit">
+      VIEW
+    </ion-button>
+  </div>
+
+
+</ion-content>

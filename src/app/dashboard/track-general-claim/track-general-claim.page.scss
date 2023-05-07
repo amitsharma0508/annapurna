@@ -1,0 +1,12 @@
+ion-item{
+  --background: #3880ff;
+  --color:white;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 40px;
+  font-size: 15px;
+
+  ion-icon{
+    color: #fff;
+  }
+}

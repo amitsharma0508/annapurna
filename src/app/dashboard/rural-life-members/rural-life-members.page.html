@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-header"><strong><ion-label>Member List</ion-label></strong></div>
+    <ion-card class="no-shadow">
+      <ion-card-content>
+        <!-- <p>If there are changes in total members, call 1818 or 17710245 before paying premium.</p> -->
+            <ion-grid>
+              <ion-row class="header">
+                <ion-col class="ion-text-bold" size="2">#</ion-col>
+                <ion-col class="ion-text-bold">Name</ion-col>
+                <ion-col class="ion-text-bold">CID</ion-col>
+              </ion-row>
+              <!-- <ion-row *ngFor="let member of members; let i=index" class="body"> -->
+                <ion-row  class="body">
+                <!-- <ion-col size="2"> {{i + 1}} </ion-col> -->
+                <ion-col size="2"> 1 </ion-col>
+                <!-- <ion-col> {{member.MEMBER_NAME}} </ion-col> -->
+                <ion-col> Amit Sharma </ion-col>
+                <!-- <ion-col> {{member.CITIZEN_ID}} </ion-col> -->
+                <ion-col> 11202005475 </ion-col>
+              </ion-row>
+            </ion-grid>
+            <p>If there are changes in total members, call 1818 or 17710245 before paying premium.</p>
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

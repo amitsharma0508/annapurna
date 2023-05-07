@@ -1,0 +1,390 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  <form class="form" #f="ngForm" (ngSubmit)="SearchRuralHousingCIDRegistered()">
+    <div class="container my-1">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <h1 class="mb-3" class="text-center" style="color: rgb(0, 119, 199);"><u>Rural Housing Insurance</u></h1>
+          <ion-card class="no-shadow">
+            <div class="row g-3" class="text-center">
+              <div class="col-md-6">
+                <label for="your-name" class="form-label" style="color:black"><strong>Enter Your CID No.</strong></label>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" ngModel name="tourOperatorLicenseNo" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-outline-primary" type="button" id="button-addon2" type="submit" color="primary" [disabled]="!f.valid">
+                    <ion-icon name="search-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ion-card>
+
+          <div *ngIf="ruralHousingCIDRegistered">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title color="primary">Customer Details</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item>
+                    <ion-label slot="start">
+                      <strong>CID :</strong>
+                    </ion-label>
+                    <ion-label>11202005475</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label slot="start">
+                      <strong>Name :</strong>
+                    </ion-label>
+                    <ion-label>Amit Sharma</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label slot="start">
+                     <strong>Phone :</strong>
+                    </ion-label>
+                    <ion-label>17811482</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+              <ion-card-header>
+                <ion-card-title color="primary">Annual Premium & Subsidy Structure</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list lines="none">
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>House No :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">DA-123</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Dzongkhag :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Samtse</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Gewog :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Samtse</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Category :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Category-I</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Sum Insured :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Nu.23,000</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Insured's Share :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Nu.13,000.00</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Govt.Subsidy :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Nu.13,000.00</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label class="ion-text-wrap" slot="start"><strong>Total :</strong></ion-label>
+                    <ion-label class="ion-text-wrap" class="text-right">Nu.13,000.00</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+            <ion-button size="large" expand="block">
+              <ion-icon name="cash-outline"></ion-icon>
+              <div>&nbsp;Pay Now</div>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</ion-content> -->
+
+
+<ion-content>
+  <header style="padding: 2rem 1.5rem 3rem 1.5rem;">
+    <nav>
+      <div class="info">
+        <h2 style="color: rgb(255, 255, 255);margin-top: 0%; margin-bottom: 14px;">
+          <strong>Rural <br>  Housing Insurance.</strong>
+        </h2>
+      </div>
+        <div class="img" style="background-image: url(img/user.jpg)"></div>
+    </nav>
+    <form  #f="ngForm" (ngSubmit)="SearchRuralHousingCIDRegistered()">
+      <label class="px-2" style="color: white;">Enter Your CID :</label>
+      <div id="search-wrapper">
+        <i class="search-icon fas fa-search"></i>
+      <input style="background-color: white; color: black;" type="text" ngModel name="tourOperatorLicenseNo" id="search" placeholder="Enter Your CID">
+      <button id="search-button"><ion-icon name="search-outline"></ion-icon></button>
+      </div>
+      <!-- <div class="search-box">
+
+        <input type="text" ngModel name="tourOperatorLicenseNo" class="search__input" placeholder="Enter Tour Operator License No.">
+        <button class="search__button" type="submit">
+            <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
+                <g>
+                    <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                </g>
+            </svg>
+        </button>
+    </div> -->
+    </form>
+
+</header>
+
+<main *ngIf="ruralHousingCIDRegistered">
+  <ion-card style="border-radius: 30px;">
+    <div class="categories " >
+      <div class="package-name"></div>
+        <div class=" text-center">
+
+            <ion-card-header color="primary">
+              <ion-card-title>Personal Details</ion-card-title>
+
+            </ion-card-header>
+        </div>
+        <article>
+          <dl>
+            <div style="display: block;">
+              <dt>CID : <span>11202005475</span></dt>
+            </div>
+            <div>
+              <dt>Name : <span>Amit Sharma</span></dt>
+
+            </div>
+            <div>
+              <dt>Phone : <span>+975-17811482</span></dt>
+            </div>
+          </dl>
+        </article>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header">
+          <ion-label><strong>House No :</strong>  DA-123</ion-label>
+        </ion-item>
+        <div slot="content">
+
+          <form class="form ">
+            <!-- <h3 class="title">&nbsp; Register</h3> -->
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Dzongkhag :</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Samtse</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+            </label>
+
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Gewog :</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Samtse</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </label>
+
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Category :</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Category-I</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </label>
+
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Sum Insured:</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Nu.30,000.00</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </label>
+
+            <!-- <button class="submit" (click)="openModal()" >Add Passenger</button> -->
+          </form>
+
+        </div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header">
+          <ion-label><strong>House No :</strong>  DA-124</ion-label>
+        </ion-item>
+        <div slot="content">
+
+          <form class="form ">
+            <!-- <h3 class="title">&nbsp; Register</h3> -->
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Dzongkhag :</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Samtse</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+            </label>
+
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Gewog :</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Samtse</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </label>
+
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Category :</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Category-I</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </label>
+
+            <label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <span><strong>Sum Insured:</strong></span>
+                  </ion-col>
+                  <ion-col>
+                    <span  class="text-center">Nu.30,000.00</span>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </label>
+
+            <!-- <button class="submit" (click)="openModal()" >Add Passenger</button> -->
+          </form>
+
+      </div>
+      </ion-accordion>
+
+    </ion-accordion-group>
+  </ion-card>
+  <ion-card class="no-shadow">
+    <ion-card-content>
+      <!-- <p>If there are changes in total members, call 1818 or 17710245 before paying premium.</p> -->
+          <ion-grid>
+            <ion-row class="header">
+              <ion-col class="ion-text-bold col">House No.</ion-col>
+              <ion-col class="ion-text-bold col">Category</ion-col>
+              <ion-col class="ion-text-bold col">Govt. Subsidy (NU.)</ion-col>
+              <ion-col class="ion-text-bold col">Insured's Share (NU.)</ion-col>
+            </ion-row>
+            <!-- <ion-row *ngFor="let member of members; let i=index" class="body"> -->
+              <ion-row  class="body">
+              <!-- <ion-col size="2"> {{i + 1}} </ion-col> -->
+              <ion-col class="col">DA-123 </ion-col>
+              <ion-col class="col">Category-I </ion-col>
+              <!-- <ion-col> {{member.MEMBER_NAME}} </ion-col> -->
+              <ion-col class="col">250.00 </ion-col>
+              <!-- <ion-col> {{member.CITIZEN_ID}} </ion-col> -->
+              <ion-col class="col">999.00 </ion-col>
+
+            </ion-row>
+            <!-- <ion-row *ngFor="let member of members; let i=index" class="body"> -->
+              <ion-row  class="body">
+                <!-- <ion-col size="2"> {{i + 1}} </ion-col> -->
+                <ion-col class="col">DA-124 </ion-col>
+                <ion-col class="col">Category-I</ion-col>
+                <!-- <ion-col> {{member.MEMBER_NAME}} </ion-col> -->
+                <ion-col class="col">350.00 </ion-col>
+                <!-- <ion-col> {{member.CITIZEN_ID}} </ion-col> -->
+                <ion-col class="col">999.00 </ion-col>
+
+              </ion-row>
+              <ion-row  class="body">
+                <!-- <ion-col size="2"> {{i + 1}} </ion-col> -->
+                <ion-col  size="9" class="ion-text-left col">Total</ion-col>
+                <!-- <ion-col> {{member.MEMBER_NAME}} </ion-col> -->
+                <ion-col class="col">Nu.2998.00 </ion-col>
+                <!-- <ion-col> {{member.CITIZEN_ID}} </ion-col> -->
+              </ion-row>
+          </ion-grid>
+          <!-- <p>If there are changes in total members, call 1818 or 17710245 before paying premium.</p> -->
+    </ion-card-content>
+  </ion-card>
+
+
+    <!-- <div *ngIf="addPassengerToggle">
+      <div class="doctor-card mb-3"  *ngFor="let passengerList of passengerList; let i = index">
+        <div class="actions">
+          <div class="ratings">
+            <span class="rating-count"><strong>Passenger {{i+1}}</strong></span>
+          </div>
+          <div class="comments">
+            <span class="comment-count"><strong>Name</strong> {{passengerList.fullName}}</span>
+          </div>
+          <div class="consultation">
+            <span class="fee"><strong>CID</strong>{{passengerList.cid}}</span>
+          </div>
+          <div class="consultation">
+            <span class="fee"><strong>Phone</strong> {{passengerList.phone}}</span>
+          </div>
+          <div class="consultation">
+            <span class="fee"><strong>Gender</strong> Male</span>
+          </div>
+          <div class="appo">
+            <a  class="btn" (click)="removePassenger(i)">Remove</a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <ion-button size="large" expand="block">
+      <ion-icon name="cash-outline"></ion-icon>
+      <div>&nbsp;Pay Now</div>
+    </ion-button>
+
+</main>
+
+</ion-content>
+

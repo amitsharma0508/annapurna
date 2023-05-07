@@ -1,0 +1,40 @@
+#rounded {
+  width: 100%;
+  height: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 10px;
+  background-color: rgb(240, 236, 236);
+}
+
+.no-shadow {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.is-empty-state-content {
+  width: 100%;
+  text-align:center;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 12vh;
+  height: 100%;
+
+  img {
+    width: 5%;
+    max-width: 30px;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+  	margin-bottom: 30px;
+  }
+}
+
+.theme-light {
+  background: #f0f4f4;
+}
+
+
+.badge ion-icon{
+ font-size: 30px;
+}

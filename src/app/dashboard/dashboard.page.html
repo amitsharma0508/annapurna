@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My RICB</ion-title>
+    <ion-buttons  slot="end">
+      <ion-button  (click)="openPopover($event)"><ion-icon
+          name="ellipsis-vertical-outline" style="color: #ffffff !important;"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <div style="display: flex; align-items: center;justify-content: center;">
+    <img class="logo" src="../../assets/images/logo.png" />
+  </div> -->
+  <ion-item  class="info-header">
+    <ion-avatar slot="start">
+      <img alt="Silhouette of a person's head" src="/assets/images/logo3.png" />
+    </ion-avatar>
+    <ion-text>CHOOSE YOUR RELATIONSHIP WITH RICB</ion-text>
+  </ion-item>
+
+  <ion-row class="image-row">
+    <ion-col col-4 (click)="getCreditInvestment()">
+      <img class="pdmsicon" src="assets/images/creditinvestment.PNG" />
+      <p>LOAN REPAYMENT</p>
+    </ion-col>
+    <ion-col col-4 (click)="getLifeInsurance()">
+      <img class="pdmsicon" src="assets/images/lifeinsurance.PNG" />
+      <p>LIFE INSURANCE</p>
+    </ion-col>
+    <ion-col col-4 (click)="getGeneralInsurance()">
+      <img class="pdmsicon" src="assets/images/generalinsurance.PNG" />
+      <p>GENERAL INSURANCE</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="image-row">
+    <ion-col col-4 (click)="getAnnuityScheme()">
+      <img class="pdmsicon" src="assets/images/fssd.PNG" />
+      <p>ANNUITY SCHEME</p>
+    </ion-col>
+    <ion-col col-4 (click)="payForOthers()">
+      <img class="pdmsicon" src="assets/images/payothers.PNG" />
+      <p>PAY FOR OTHERS</p>
+    </ion-col>
+    <ion-col col-4 (click)="getRuralLife()">
+      <img class="pdmsicon" src="assets/images/rli.png" />
+      <p>RURAL LIFE INSURANCE</p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="image-row">
+    <ion-col col-4 (click)="claimtype()">
+      <img class="pdmsicon" src="assets/images/claim.png" />
+      <p>MOTOR CLAIM</p>
+    </ion-col>
+    <ion-col col-4 (click)="trackClaim()">
+      <img class="pdmsicon" src="assets/images/track.png" />
+      <p>TRACK MOTOR CLAIM</p>
+    </ion-col>
+    <ion-col col-4 (click)="getReports()">
+      <img class="pdmsicon" src="assets/images/report.PNG" />
+      <p>REPORT</p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="image-row">
+    <ion-col col-4 (click)="claimtype()">
+      <img class="pdmsicon" src="/assets/images/fire.png" />
+      <p>Fire</p>
+    </ion-col>
+    <ion-col col-4 (click)="trackClaim()">
+      <img class="pdmsicon" src="https://cdn-icons-png.flaticon.com/512/2237/2237750.png" />
+      <p>Motor</p>
+    </ion-col>
+    <ion-col col-4 (click)="getReports()">
+      <img class="pdmsicon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK4r2W9JbkFEvTs2uk_9F_pWrYmqD6FZjlrQ&usqp=CAU" />
+      <p>Rural Housing</p>
+    </ion-col>
+  </ion-row>
+  <br><br><br><br>
+</ion-content>
+
+<ion-footer>
+  <ion-tabs>
+
+    <ion-fab vertical="bottom" horizontal="center" >
+      <ion-fab-button>
+        <ion-icon name="home-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-tab-bar slot="bottom">
+
+      <!-- <ion-tab-button></ion-tab-button> -->
+
+      <ion-tab-button>
+        <ion-icon style="height: 65%; width: 65%;" name="help-circle-sharp"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button class="comments">
+        <ion-icon style="height: 50%; width: 50%;" name="calendar-number-sharp"></ion-icon>
+      </ion-tab-button>
+
+      <svg height="50" viewBox="0 0 100 50" width="50">
+        <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd">
+        </path>
+      </svg>
+
+      <ion-tab-button class="notifs">
+        <ion-icon style="height: 50%; width: 50%;" name="notifications"></ion-icon>
+        <ion-badge style="background: #dd3333; color: #fff;"></ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button>
+        <ion-icon style="height: 50%; width: 50%;" name="person"></ion-icon>
+      </ion-tab-button>
+
+      <!-- <ion-tab-button></ion-tab-button> -->
+
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>

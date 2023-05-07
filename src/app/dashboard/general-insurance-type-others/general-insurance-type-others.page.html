@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div>
+    <ion-list>
+      <ion-list-header style="font-size: 20px; font-weight: bold;">
+        Choose General Insurance Service
+      </ion-list-header>
+      <ion-item color="primary" (click)="policyDetails('mtpOthers')">
+        <ion-icon name="car-sport-outline" slot="start"></ion-icon>
+        <span> Motor Third Party Renewal</span>
+        <ion-icon name="arrow-forward" slot="end" ></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('otipOthers')">
+        <ion-icon name="train-outline" slot="start"></ion-icon>
+        <span> Overseas Travel Insurance </span>
+        <ion-icon name="arrow-forward" slot="end" ></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('mcpOthers')">
+        <ion-icon name="bus-outline" slot="start"></ion-icon>
+        <span> Motor Comprehensive Renewal </span>
+        <ion-icon name="arrow-forward" slot="end" ></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('fireOthers')">
+        <ion-icon name="flame-outline" slot="start"></ion-icon>
+        <span> Stardard Fire Renewal </span>
+        <ion-icon name="arrow-forward" slot="end" ></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

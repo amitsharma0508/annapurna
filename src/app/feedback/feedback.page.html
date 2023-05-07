@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Feedback</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="call()" color="light"><ion-icon name="call-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="feedbackForm">
+    <ion-card class="no-shadow">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row color="primary">
+            <ion-col>
+              <div>
+                <ion-item>
+                  <ion-label position="floating">Subject</ion-label>
+                  <ion-input formControlName="subject" type="text"></ion-input>
+                </ion-item>
+                <span *ngIf="!f['subject'].valid && (f['subject']?.dirty || f['subject']?.touched)">
+                  <div class="error" *ngIf="f['subject'].errors!['required']">
+                    Please enter a subject
+                  </div>
+                </span>
+                <ion-item>
+                  <ion-label position="floating">Message</ion-label>
+                  <ion-textarea formControlName="message" placeholder="Enter your feedback here..."></ion-textarea>
+                </ion-item>
+                <span *ngIf="!f['message'].valid && (f['message']?.dirty || f['message']?.touched)">
+                  <div class="error" *ngIf="f['message'].errors!['required']">
+                    Please enter your message
+                  </div>
+                </span>
+              </div>
+              <div>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-button class="submit-button" size="medium" type="button" expand="block"
+                        [disabled]="feedbackForm.invalid" (click)="onSubmit()">
+                        <ion-icon name="save-outline"></ion-icon>&nbsp;Submit
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

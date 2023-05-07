@@ -1,0 +1,242 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="otipForm" (ngSubmit)="getPlan()" novalidate>
+  <!-- <div *ngFor="let policy of policyNumbers"> -->
+    <div>
+    <ion-card class="no-shadow">
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Name :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.CUSTOMER_NAME}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Amit Sharma</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>CID No :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.CITIZEN_ID}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">11202005475</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>DOB :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.DOB}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">05.08.2002</ion-label>
+          </ion-item>
+          <ion-item lines="dash">
+            <ion-label class="ion-text-wrap"  position="floating"><strong>Passport No :</strong></ion-label>
+            <ion-input [(ngModel)]="passport" formControlName="passport" name="passport" type="text" required></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passport.errors?.required">
+            Passport No. is required.
+          </span> -->
+          <ion-item lines="dash">
+            <ion-label class="ion-text-wrap"><strong>Expiry Date :</strong></ion-label>
+            <ion-input type="date" [min]="today" [(ngModel)]="expiry_dt" formControlName="expiry_dt" name="expiry_dt" align="right" displayFormat="MM/DD/YYYY"  placeholder="Month/Date/Year"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.expiry_dt.errors?.required">
+            Passport expiry date is required.
+          </span> -->
+          <ion-item lines="dash">
+            <ion-label class="ion-text-wrap" slot="start"><strong>Origin Country :</strong></ion-label>
+            <ion-label class="ion-text-wrap" class="text-right">Bhutan</ion-label>
+          </ion-item>
+          <ion-item lines="dash">
+            <ion-label class="ion-text-wrap"><strong>Destination Country :</strong></ion-label>
+            <ion-select [(ngModel)]="country" formControlName="country">
+              <!-- <ion-select-option *ngFor="let country of countries" value="{{ country.country_code}}">
+                {{ country.country_name }}
+              </ion-select-option> -->
+              <ion-select-option>
+                --select--
+              </ion-select-option>
+              <ion-select-option>
+                Bhutan
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.country.errors?.required">
+            Country is required.
+          </span> -->
+          <ion-item lines="dash">
+            <ion-label position="floating" class="ion-text-wrap"><strong>Place of Visit :</strong></ion-label>
+            <ion-input [(ngModel)]="place" formControlName="place" name="place" type="text" required></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.place.errors?.required">
+            Place of visit is required.
+          </span> -->
+          <ion-item lines="dash">
+            <ion-label position="floating" class="ion-text-wrap"><strong>Purpose of Visit :</strong></ion-label>
+            <ion-select [(ngModel)]="purpose" formControlName="purpose" (ionChange)="purposeEvent()">
+              <ion-select-option value="Business">Business</ion-select-option>
+              <ion-select-option value="Holiday">Holiday</ion-select-option>
+              <ion-select-option value="Official">Official </ion-select-option>
+              <ion-select-option value="Studies">Studies </ion-select-option>
+              <ion-select-option value="Others">Others</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.purpose.errors?.required">
+            Purpose of visit is required.
+          </span> -->
+          <ion-item *ngIf="othersFlag">
+            <ion-label class="ion-text-wrap"><strong>Please Specify :</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="remarks" formControlName="remarks" name="remarks" align="right" placeholder="Purpose"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" ><strong>Travel Date :</strong></ion-label>
+            <ion-input type="date" [min]="today" [(ngModel)]="traveldate" formControlName="traveldate" name="traveldate" align="right" displayFormat="MM/DD/YYYY"  placeholder="Month/Date/Year"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.traveldate.errors?.required">
+            Travel Date is required.
+          </span> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap"><strong>Return Date</strong></ion-label>
+            <ion-input type="date" [min]="today" [(ngModel)]="returndate" formControlName="returndate" name="returndate"  align="right" displayFormat="MM/DD/YYYY"  placeholder="Month/Date/Year" (ionChange)="daysDiff()"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.returndate.errors?.required">
+            Return date is required.
+          </span> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap"><strong>No. Of Days :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{noOfDays}}</ion-label> -->
+            <ion-label class="ion-text-wrap" slot="end">10 days</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" class="ion-text-wrap"><strong>Medical History :</strong></ion-label>
+            <ion-textarea  class="ion-text-wrap" [(ngModel)]="medical" formControlName="medical" name="medical" placeholder="Declaration of pre-existing disease is mandatory, if any "></ion-textarea>
+            <!-- <ion-textarea [(ngModel)]="medical" formControlName="medical" name="medical" placeholder="Declaration of pre-existing disease is mandatory, if any " (ionChange)="medicalCheck()"></ion-textarea> -->
+          </ion-item>
+          </ion-list>
+
+          <ion-list>
+          <ion-list-header lines="None">
+            <ion-label><strong>Nominee Details:</strong></ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap"><strong>Nominee</strong></ion-label>
+            <ion-input [(ngModel)]="nominee" formControlName="nominee" name="nominee" type="text" required></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nominee.errors?.required">
+            Nominee name is required.
+          </span> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap"><strong>Gender</strong></ion-label>
+            <ion-select [(ngModel)]="gender" formControlName="gender">
+              <ion-select-option  value="M">Male</ion-select-option>
+              <ion-select-option  value="F">Female</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.gender.errors?.required">
+            Gender is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap"><strong>CID No.</strong></ion-label>
+            <ion-input [(ngModel)]="nomineecid" formControlName="nomineecid" name="nomineecid" type="number"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nomineecid.errors?.required">
+            Nominee CID is required.
+          </span> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap"><strong>DOB</strong></ion-label>
+            <ion-input type="date" [(ngModel)]="ndob" formControlName="ndob" name="ndob" align="right" displayFormat="MM/DD/YYYY"  placeholder="Month/Date/Year"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.ndob.errors?.required">
+            DOB of Nominee is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap"><strong>Contact No.</strong></ion-label>
+            <ion-input [(ngModel)]="contact" formControlName="contact" name="contact" type="number"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.contact.errors?.required">
+            Contact No. of Nominee is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap"><strong>Address</strong></ion-label>
+            <ion-input [(ngModel)]="address" formControlName="address" name="address" type="text"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.contact.errors?.required">
+            Address of Nominee is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap"><strong>Relation</strong></ion-label>
+            <ion-input [(ngModel)]="relation" formControlName="relation" name="relation" type="text" required></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.relation.errors?.required">
+            Relation is required.
+          </span> -->
+          <ion-item no-lines  no-padding class="custom-checkbox">
+            <ion-label class="ion-text-wrap"><strong>I here by declare that</strong></ion-label>
+            <ion-checkbox slot="start" name="declaration" [(ngModel)]="declaration" formControlName="declaration" checked="true" required></ion-checkbox>
+          </ion-item>
+          <span>
+            <ol>
+              <li>I will not be traveling against the advice of a physician.</li>
+              <li>I am not on the waiting list of any medical treatment.</li>
+              <li>I will not be traveling for the purpose of obtaining medical treatment.</li>
+              <li>I have not received a terminal prognosis for a medical condition before this day.</li>
+              <!-- <li>I do not have any pre-existing diseases.</li> -->
+            </ol>
+          </span>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.declaration.errors?.required">
+            Required
+          </span> -->
+          <ion-item no-lines  no-padding class="custom-checkbox">
+            <ion-label class="ion-text-wrap"><strong>I agree <a (click)="openTerms()">Terms and Conditions</a></strong></ion-label>
+            <ion-checkbox slot="start" name="agree" [(ngModel)]="agree" formControlName="agree" checked="true" required></ion-checkbox>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.agree.errors?.required">
+            Required
+          </span> -->
+
+        </ion-list>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <!-- <ion-button size="large" expand="block" (click)="getPlan()"> -->
+          <ion-button size="large" type="submit"  expand="block">
+            <ion-icon name="cash-outline"></ion-icon>
+            <div>&nbsp;Check plans</div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-grid *ngIf="pdfViewFlag">
+        <ion-grid>
+        <ion-row style="border-bottom: groove;">
+          <ion-col>Sl.No</ion-col>
+          <ion-col style="display: none;">code</ion-col>
+          <ion-col>Plan</ion-col>
+          <ion-col>Premium</ion-col>
+          <ion-col>SI(USD $)</ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-row *ngFor="let plan of plans; index as i" (click)="chooseePlan()">
+        <ion-row *ngFor="let plan of plans" style="border-bottom: groove;">
+          <ion-col>{{ i + 1 }}</ion-col>
+          <ion-col style="display: none;">{{ plan.CODE }}</ion-col>
+          <ion-col>{{ plan.CODE_DESC }}</ion-col>
+          <ion-col>{{ plan.PREMIUM }}</ion-col>
+          <ion-col>{{ plan.SUMINSURED }}</ion-col>
+          <ion-col>
+            <ion-button size="small" type="button" (click)="choosePlan(plan.CODE,plan.CODE_DESC,plan.PREMIUM,plan.SUMINSURED,plan.CODE)" >
+             select
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+    </ion-card>
+  </div>
+  </form>
+</ion-content>

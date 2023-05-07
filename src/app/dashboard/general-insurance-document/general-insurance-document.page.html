@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div>
+    <div class="form-header"><strong><ion-label>Motor Third Party/Overseas Travel Insurance</ion-label></strong></div>
+    <ion-list>
+      <ion-item color="primary" (click)="policyDetails('self')">
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        <span> For Self </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="policyDetails('others')">
+        <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+        <span> For Others </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

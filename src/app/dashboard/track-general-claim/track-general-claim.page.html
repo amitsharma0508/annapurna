@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content  *ngIf="!emptyFlag" [fullscreen]="true"> -->
+  <ion-content [fullscreen]="true">
+  <div class="form-header" [hidden]="!policyTitle">Choose your policy</div>
+  <!-- <div class="form-header" [hidden]="!creditTitle">Choose your loan account</div> -->
+
+  <ion-list>
+    <div text-left>
+      <!-- <ion-item color="secondary" *ngFor="let pol of policy_no" (click)="claimDetails(pol.POLICY_NO, 'gclaim')"> -->
+        <ion-item color="primary">
+        <!-- <span> {{pol.POLICY_NO}} </span> -->
+        <span> P-345678 </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+
+      <!-- test -->
+      <ion-item color="primary">
+        <!-- <span> {{pol.POLICY_NO}} </span> -->
+        <span> P-345678 </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <!-- test -->
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="pdfViewFlag">
+    <iframe [src]="pdfSrc" scrolling="yes" style="width:100%; height: 280px;" type="application/pdf"></iframe>
+    <ion-button size="medium" type="button" expand="block" (click)="close()" >
+      CLOSE
+      </ion-button>
+  </ion-list>
+
+</ion-content>
+<ion-content *ngIf="emptyFlag">
+  <div class="is-empty-state-content theme-light">
+    <h3>No Data Available</h3>
+    <img src="../../../assets/empty.png"/>
+  </div>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Business</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="call()"><ion-icon name="call-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- <div *ngFor="let businessDataDTO of businessData" class="" text-left> -->
+      <div class="" text-left>
+      <!-- <ion-item color="secondary" (click)="getBusinessDetailById(businessDataDTO.business_id, businessDataDTO.business_name)"> -->
+      <ion-item color="primary" (click)="getBusinessDetailById('','')">
+        <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+        <!-- <span> {{businessDataDTO.business_name}}  </span> -->
+        <span> General Insurance  </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="getBusinessDetailById('','')">
+        <ion-icon name="accessibility-outline" slot="start"></ion-icon>
+        <!-- <span> {{businessDataDTO.business_name}}  </span> -->
+        <span> Life Insurance </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="primary" (click)="getBusinessDetailById('','')">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        <!-- <span> {{businessDataDTO.business_name}}  </span> -->
+        <span> Financial Security and Service  </span>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

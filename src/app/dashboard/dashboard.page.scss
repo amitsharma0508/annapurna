@@ -1,0 +1,140 @@
+.info-header{
+  --background:#3c7cfc;
+  color: #fff;
+}
+ion-toolbar {
+    --background: #428cff;
+    color: #fff;
+
+}
+
+.logo {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.text {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pics {
+    float: left;
+    font-size: 8px;
+    padding: 5px;
+    width: 90px;
+    text-align: center;
+}
+
+.buttoncolor {
+    background-color: #fff;
+    color: #ffffff;
+}
+
+.alignRight {
+    font-size: 11px;
+    float: right;
+}
+
+.button {
+    float: left;
+}
+
+.error {
+    background-color: red;
+}
+
+.pdmsicon {
+    margin: 0 10px;
+}
+
+.image-row p {
+    text-align: center;
+    font-size: 11px;
+    padding-top: 10px;
+    font-weight: bold;
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+ion-tabs {
+    ion-fab {
+        margin-bottom: env(safe-area-inset-bottom);
+
+        /* fix notch ios*/
+        ion-fab-button {
+            --box-shadow: none;
+            --background: #428cff;
+            --color: #fff;
+        }
+    }
+
+    ion-tab-bar {
+        --border: 0;
+        // --background: transparent;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:after {
+            content: " ";
+            width: 100%;
+            bottom: 0;
+            background: var(--ion-color-light);
+            height: env(safe-area-inset-bottom);
+            position: absolute;
+        }
+
+        ion-tab-button {
+            --background: #428cff;
+            color: #fff;
+            max-width: 100%;
+        }
+
+        ion-tab-button.comments {
+            margin-right: 0px;
+            border-top-right-radius: 18px;
+        }
+
+        ion-tab-button.notifs {
+            margin-left: 0px;
+            border-top-left-radius: 18px;
+        }
+
+        svg {
+            width: 72px;
+            margin-top: 18px;
+
+            path {
+                fill: #428cff;
+            }
+        }
+    }
+}
+
+ion-col img {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 40%;
+    color: #fff;
+    height: 60%;
+    // background: radial-gradient(#ff000000, #dd333369, #ff0000);
+}
+
+.my-custom-class {
+    --background: #000;
+}
+ion-text{
+  font-size: small;
+}
+ion-avatar{
+  height: 100px;
+  width: 100px;
+}

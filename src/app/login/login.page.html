@@ -1,0 +1,204 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: #fff;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="call()"><ion-icon style="color: #fff;" name="call-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  <form [formGroup]="loginForm">
+    <ion-card class="no-shadow">
+      <div style="display: flex; align-items: center;justify-content: center;">
+        <img class="logo" src="../../assets/images/logo.png" />
+      </div>
+      <ion-card-content style="width: 100%;">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center>
+              <div>
+                <ion-item>
+                  <ion-label position="floating" style="text-align: center;">CID/Passport Number</ion-label>
+                  <ion-input style="text-align: center;" formControlName="cidNo" name="username" type="Number"
+                    required></ion-input>
+                </ion-item>
+                <span *ngIf="!f.cidNo && (f.cidNo?.dirty || f.cidNo?.touched)">
+                  <div class="error" *ngIf="f.cidNo.errors.required">
+                    Please enter your cid/passport number
+                  </div>
+                </span>
+
+                <ion-item>
+                  <ion-label position="floating" style="text-align: center;">Password</ion-label>
+                  <ion-input style="text-align: center;" formControlName="password" name="password"
+                    type="password"></ion-input>
+                </ion-item>
+                <span *ngIf="!f.password && (f.password?.dirty || f.password?.touched)">
+                  <div class="error" *ngIf="f.password.errors.required">
+                    Please enter your password
+                  </div>
+                </span>
+              </div>
+              <div align="center">
+                <ion-button class="login-button" type="button" expand="block" (click)="login()"
+                  [disabled]="loginForm.invalid">
+                  <ion-icon name="lock-open-outline"></ion-icon> Login
+                </ion-button>
+                <ion-grid>
+                  <ion-row style="width: 100%;">
+                    <ion-col align="start">
+                      <a [routerLink]="['/registration']" class="link-font">New User? Sign Up</a>
+                    </ion-col>
+                    <ion-col align="end">
+                      <a [routerLink]="['/forgotpassword']" class="link-font">Forgot Password?</a>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+
+        <ion-slides *ngIf="advertisementImages && advertisementImages.length" class="ion-slide" autoplay="5000" loop="true" speed="500" pager="true">
+        <ion-slides *ngIf="advertisementImages && advertisementImages.length"
+          [options]="{ slidesPerView:1, autoplay: {delay: 5000} }">
+          <ion-slide *ngFor="let adImageDTO of advertisementImages">
+            <img class="img-slide" src="https://apps.ricb.bt/san/add/{{adImageDTO.image}}" />
+          </ion-slide>
+        </ion-slides>
+         <ion-slides class="ion-slide" autoplay="5000" loop="true" speed="500" pager="true">
+          <ion-slide>
+            <img class="img-slide" src="https://apps.ricb.bt/san/add/4.jpg" />
+          </ion-slide>
+        </ion-slides>
+
+
+
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content> -->
+
+
+
+
+
+
+
+<ion-content [fullscreen]="true">
+  <!-- <div class="circleBase type2 circle1"></div>
+  <div class="circleBase type1"></div>
+  <div class="circleBase type2 circle2"></div> -->
+  <!-- <div style="display: flex; align-items: center;justify-content: center;">
+    <img class="logo" src="../../assets/images/logo.png" />
+  </div> -->
+  <!-- <ion-label class="welcomeMessage">
+    <ion-text color="light"><p style="color: #ffffff;">RICB APP,</p></ion-text>
+    <ion-text>
+      <p style="color: #fff;">{{ isLogin ? 'Login': 'Signup'}}</p>
+    </ion-text>
+  </ion-label> -->
+  <div style="display: flex; align-items: center;justify-content: center; margin-top: 5%;">
+    <img class="logo" src="../../assets/images/logo3.png"/>
+  </div>
+
+
+  <form style="margin-top: -20%;" id="form" [formGroup]="loginForm" autocomplete="off">
+    <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+      <ion-item class="ion-margin-vertical">
+        <ion-icon
+          name="person-outline" slot="end" color="medium">
+        </ion-icon>
+        <ion-input
+          placeholder="CID or Passport Number"
+          formControlName="cidNo" name="username" type="text"
+          required
+          autocorrect="on"
+          clearInput="true"
+          mode="ios">
+        </ion-input>
+      </ion-item>
+      <span *ngIf="!f.cidNo && (f.cidNo?.dirty || f.cidNo?.touched)">
+        <div class="error" *ngIf="f.cidNo.errors.required">
+          Please enter your cid or passport number
+        </div>
+      </span>
+
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon
+          [name]="isTypePassword ? 'lock-closed-outline' : 'lock-open-outline'"
+          slot="end"
+          [color]="isTypePassword ? 'medium' : 'primary'">
+        </ion-icon>
+        <ion-input
+
+          placeholder="Enter Password"
+          name="password"
+          id="passwordField"
+          formControlName="password" name="password"
+          type="password"
+          clearInput="true"
+          min="8">
+        </ion-input>
+      </ion-item>
+      <span *ngIf="!f.password && (f.password?.dirty || f.password?.touched)">
+        <div class="error" *ngIf="f.password.errors.required">
+          Please enter your password
+        </div>
+      </span>
+
+
+      <!-- <ion-row class="ion-margin-vertical">
+        <ion-col size="12" class="alignItems">
+          <div align=left>
+            <ion-checkbox></ion-checkbox>
+            <ion-note>I accept the policy and terms</ion-note>
+          </div>
+        </ion-col>
+      </ion-row> -->
+
+      <ion-grid>
+        <ion-row class="ion-no-padding">
+          <ion-col>
+            <ion-button style="--background: #322c7c; " shape="round" (click)="login()"
+           >{{ isLogin ? 'Login' : 'Signup'}}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-margin" style="margin-top: -10%;">
+          <ion-col>
+            <ion-button style="--background: black" shape="round" (click)="onSwitchAuthMode()">
+              Switch to {{isLogin ? 'Signup' : 'Login'}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+      <!-- <ion-button
+      type="'button"
+      color="primary"
+      fill="clear">
+      </ion-button>
+      <ion-fab>
+        <ion-button
+        color="primary"
+        type="submit"
+        fill="outline"
+        color="primary"
+
+        (click)="onSubmit()"
+        ion-fab mini><ion-icon name="log-in-outline"></ion-icon>
+        &nbsp;{{ isLogin ? 'Login' : 'Signup'}}
+        </ion-button>
+      </ion-fab> -->
+    </ion-list>
+  </form>
+</ion-content>

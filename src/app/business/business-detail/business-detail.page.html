@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Business</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="call()"><ion-icon name="call-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-header">{{title}}</div>
+
+  <ion-list>
+    <div *ngFor="let businessDataDTO of businessData" class="" text-left>
+      <!-- <ion-item>
+        <span> {{businessDataDTO.contents}}  </span>
+      </ion-item> -->
+    </div>
+  </ion-list>
+
+</ion-content>

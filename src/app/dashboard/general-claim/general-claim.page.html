@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="regClaimsForm" (ngSubmit)="claim()" novalidate>
+  <!-- <div *ngFor="let policy of policys"> -->
+    <div>
+    <ion-card class="no-shadow">
+      <ion-list>
+        <ion-item lines="none" class="ion-text-center">
+          <ion-label style="color:green">
+          <ion-chip color="success">
+            <ion-avatar item-start><img  src="../../../assets/images/active.png" alt=""></ion-avatar>
+            <ion-label>Active</ion-label>
+          </ion-chip>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <!-- <ion-item>
+        <ion-avatar item-start>
+            <img *ngIf="policy.STATUS === 'Active'" src="../../../assets/images/active.png" alt="">
+            <img *ngIf="policy.STATUS !== 'Active'" src="../../../assets/images/inactive.jpg" alt="">
+        </ion-avatar>
+        <p><strong> {{policy.STATUS | uppercase}} </strong></p>
+      </ion-item> -->
+      <ion-card-content>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label  class="ion-text-wrap" slot="start"><strong>Policy Holder</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.CUSTOMER_NAME}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Amit Sharma </ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label  class="ion-text-wrap"  slot="start"><strong>Registration No.</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.REGISTRATION_NO}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">P-76543</ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label  class="ion-text-wrap"  slot="start"><strong>Policy No</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.POL_NO}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">P-345678</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap" ><strong>Place of accident</strong></ion-label>
+            <ion-input [(ngModel)]="place" formControlName="place" name="place" type="text" required></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.place.errors?.required">
+            Place of accident is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap" ><strong>Date of accident</strong></ion-label>
+            <!-- <ion-datetime  formControlName="lossdate" name="lossdate" displayFormat="MM/DD/YYYY"  placeholder="Month/Date/Year"></ion-datetime> -->
+            <ion-input  [(ngModel)]="lossdate" formControlName="lossdate" name="lossdate" type="date" placeholder="Date/Month/Year"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.lossdate.errors?.required">
+            Date of accident is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap" ><strong>Time of accident</strong></ion-label>
+            <ion-input [(ngModel)]="losstime" formControlName="losstime" type="time" name="losstime"  displayFormat="hh:mm A"></ion-input>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.losstime.errors?.required">
+            Time of accident is required.
+          </span> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap" ><strong>Cause of accident</strong></ion-label>
+            <ion-select [(ngModel)]="cause" formControlName="cause" name="cause">
+              <ion-select-option value="brBy fire, explosion, self-ignition or lightening">By fire, explosion, self-ignition or lightening</ion-select-option>
+              <ion-select-option value="By burglary, housebreaking or theft">By burglary, housebreaking or theft</ion-select-option>
+             <ion-select-option value="By Accidental external means ">By Accidental external means </ion-select-option>
+              <ion-select-option value="By malicious act">By malicious act</ion-select-option>
+              <ion-select-option value="By an Earthquake">By an Earthquake</ion-select-option>
+              <ion-select-option value="By flood, typhoon, hurricane, storm, tempest, inundation, cyclone, hailstorm, frost">By flood, typhoon, hurricane, storm, tempest, inundation, cyclone, hailstorm, frost</ion-select-option>
+              <ion-select-option value="By landslide or rockslide">By landslide or rockslide</ion-select-option>
+              <ion-select-option value="In Transit">In Transit</ion-select-option>
+            </ion-select>
+         </ion-item>
+         <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cause.errors?.required">
+          Cause of accident is required.
+        </span> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap" ><strong>Nearest RICB Branch office</strong></ion-label>
+            <ion-select [(ngModel)]="branch" formControlName="branch" name="branch">
+              <ion-select-option value="B001">Thimphu</ion-select-option>
+              <ion-select-option value="B008">Phuentsholing</ion-select-option>
+              <ion-select-option value="B003">Gelephu</ion-select-option>
+              <ion-select-option value="B007">Paro</ion-select-option>
+              <ion-select-option value="B035">Babesa</ion-select-option>
+              <ion-select-option value="B018">Jomotsangkha</ion-select-option>
+              <ion-select-option value="B019">Lhuntse</ion-select-option>
+              <ion-select-option value="B020">Pema Gatshel</ion-select-option>
+              <ion-select-option value="B021">Trashi Yangtse</ion-select-option>
+              <ion-select-option value="B022">Trongsa</ion-select-option>
+              <ion-select-option value="B023">Wamrong</ion-select-option>
+              <ion-select-option value="B024">Zhemgang</ion-select-option>
+              <ion-select-option value="B025">Gasa</ion-select-option>
+              <ion-select-option value="B027">Lhamoy Zhingkha</ion-select-option>
+              <ion-select-option value="B028">Panbang</ion-select-option>
+              <ion-select-option value="B031">Gyelposhing</ion-select-option>
+              <ion-select-option value="B036">Tashichholing</ion-select-option>
+              <ion-select-option value="B037">Dagana</ion-select-option>
+              <ion-select-option value="B002">Bumthang</ion-select-option>
+              <ion-select-option value="B004">Khuruthang</ion-select-option>
+              <ion-select-option value="B005">Mongar</ion-select-option>
+              <ion-select-option value="B006">Nganglam</ion-select-option>
+              <ion-select-option value="B009">Gedu</ion-select-option>
+              <ion-select-option value="B010">Samtse</ion-select-option>
+              <ion-select-option value="B011">Gomtu</ion-select-option>
+              <ion-select-option value="B012">Samdrup Jongkhar</ion-select-option>
+              <ion-select-option value="B013">Trashigang</ion-select-option>
+              <ion-select-option value="B014">Tsirang</ion-select-option>
+              <ion-select-option value="B015">Bajothang</ion-select-option>
+              <ion-select-option value="B016">Dagana</ion-select-option>
+              <ion-select-option value="B017">Haa</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cause.errors?.required">
+           Nearest RICB Branch office is required.
+          </span> -->
+            <ion-item>
+              <ion-label class="ion-text-wrap" ><strong>Relationship with policy holder</strong></ion-label>
+              <ion-select [(ngModel)]="relation" formControlName="relation" name="relation">
+                <ion-select-option value="Owner">Owner</ion-select-option>
+                <ion-select-option value="Spouse">Spouse</ion-select-option>
+                <ion-select-option value="Parent">Parent</ion-select-option>
+                <ion-select-option value="Siblings">Siblings</ion-select-option>
+                <ion-select-option value="Friend">Friend</ion-select-option>
+                <ion-select-option value="Relative">Relative</ion-select-option>
+              </ion-select>
+            </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.branch.errors?.required">
+           Relationship with policy holder is required.
+          </span> -->
+          <ion-item>
+            <ion-label position="floating" class="ion-text-wrap"><strong>Description of accident</strong></ion-label>
+            <ion-textarea [(ngModel)]="description" formControlName="description" name="description"></ion-textarea>
+          </ion-item>
+          <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+            Description of accident is required.
+          </span> -->
+
+        </ion-list>
+        <ion-button size="medium" type="submit"  expand="block">
+        <!-- <ion-button size "medium" type="button" expand="block" [disabled]="regClaimsForm.invalid" (click)="claim()"> -->
+          <ion-icon name="checkmark-sharp"></ion-icon>Submit
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+  </form>
+</ion-content>

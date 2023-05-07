@@ -1,0 +1,291 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-padding style="border-radius: 30px;">
+    <ion-card-header color="primary">
+      <ion-card-title style="font-size: larger;">Domestic Travel Insurance</ion-card-title>
+    </ion-card-header>
+    <form class="form ">
+      <h3 class="title">&nbsp; Register</h3>
+      <label>
+        <span class="label">Vehicle No:<small style="color: red; font-size: 21px;">&#42;</small></span>
+      </label>
+      <div class="input-group my-group">
+        <select id="lunch"
+        style="max-width: 56px;"
+        class="selectpicker form-control" data-live-search="true" title="Please select a lunch ...">
+          <option>BP-</option>
+          <option>BT-</option>
+          <option>BG-</option>
+          <option>CD-</option>
+        </select>
+        <input type="text" class="vehicle form-control"
+        onkeyup="this.value = this.value.toUpperCase();"
+        id="input"
+        name="vehicleNumber"
+        placeholder="2-AXXXX"
+        ngxMask="9-A9999"
+        required maxlength="7" [(ngModel)]="vehicleNumber"
+        (ngModelChange)="onVehicleNumberChange()"/>
+      </div>
+      <span id="error-msg" style="color: red;"></span>
+      <label><span class="label">Vehicle Type :<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+      <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;" placeholder="--Select--"  label="Outline select" label-placement="floating" fill="outline">
+        <ion-select-option value="Light Vehicle">Light Vehicle</ion-select-option>
+        <ion-select-option value="Earth Moving Equipment">Earth Moving Equipment</ion-select-option>
+        <ion-select-option value="Heavy Bus">Heavy Bus</ion-select-option>
+        <ion-select-option value="Medium Vehicle">Medium Vehicle</ion-select-option>
+        <ion-select-option value="Power Tiller">Power Tiller</ion-select-option>
+        <ion-select-option value="Taxi">Taxi</ion-select-option>
+        <ion-select-option value="Tractor">Tractor</ion-select-option>
+        <ion-select-option value="Two Wheeler">Two Wheeler</ion-select-option>
+      </ion-select>
+      <label><span class="label mb-3">Driver CID :<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+      <label>
+        <input required="" placeholder="Enter CID" type="text" class="input">
+      </label>
+      <label><span class="label">Driver Name :<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+      <label>
+        <input required="" placeholder="Enter Name" type="text" class="input">
+      </label>
+      <label><span class="label"> Start Date Of Journey :<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+      <label>
+        <input required="" placeholder="" type="date" class="input">
+      </label>
+      <label><span class="label">End Date Of Journey :<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+      <label>
+        <input required="" placeholder="" type="date" class="input">
+      </label>
+      <div class="row">
+        <h5 class="mt-2" style="color: rgb(0, 102, 255);text-align: center;"><strong>Origin Place</strong></h5>
+        <div class="col-6">
+          <label class="px-3"><span class="label">Dzongkhag:<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+          <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;"  label="Outline select" label-placement="floating" placeholder="--Select--" fill="outline">
+            <ion-select-option value="Thimphu">Thimphu</ion-select-option>
+            <ion-select-option value="Phuentsholing">Phuentsholing</ion-select-option>
+            <ion-select-option value="Samtse">Samtse</ion-select-option>
+            <ion-select-option value="Paro">Paro</ion-select-option>
+            <ion-select-option value="Punakha">Punakha</ion-select-option>
+            <ion-select-option value="Wangdue">Wangdue</ion-select-option>
+            <ion-select-option value="Bumthang">Bumthang</ion-select-option>
+            <ion-select-option value="Gelephu">Gelephu</ion-select-option>
+          </ion-select>
+        </div>
+        <div class="col-6">
+          <label class="px-3"><span class="label">Gewog:<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+          <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;"  label="Outline select" label-placement="floating" placeholder="--Select--" fill="outline">
+            <ion-select-option value="Mewang Gewog">Mewang Gewog</ion-select-option>
+            <ion-select-option value="Kawang Gewog">Kawang Gewog</ion-select-option>
+            <ion-select-option value="Genekha Gewog">Genekha Gewog</ion-select-option>
+            <ion-select-option value="Dagala Gewog">Dagala Gewog</ion-select-option>
+            <ion-select-option value="Soe Gewog">Soe Gewog</ion-select-option>
+            <ion-select-option value="Naro Gewog">Naro Gewog</ion-select-option>
+            <ion-select-option value="Lingzhi Gewog">Lingzhi Gewog</ion-select-option>
+            <ion-select-option value="Chang Gewog">Chang Gewog</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <h5 class="mt-2" style="color: rgb(0, 102, 255); text-align: center;"><strong>Destination</strong></h5>
+        <div class="col-6">
+          <label class="px-3"><span class="label">Dzongkhag:<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+          <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;"  label="Outline select" label-placement="floating" placeholder="--Select--" fill="outline">
+            <ion-select-option value="Thimphu">Thimphu</ion-select-option>
+            <ion-select-option value="Phuentsholing">Phuentsholing</ion-select-option>
+            <ion-select-option value="Samtse">Samtse</ion-select-option>
+            <ion-select-option value="Paro">Paro</ion-select-option>
+            <ion-select-option value="Punakha">Punakha</ion-select-option>
+            <ion-select-option value="Wangdue">Wangdue</ion-select-option>
+            <ion-select-option value="Bumthang">Bumthang</ion-select-option>
+            <ion-select-option value="Gelephu">Gelephu</ion-select-option>
+          </ion-select>
+        </div>
+        <div class="col-6">
+          <label class="px-3"><span class="label">Gewog:<small style="color: red; font-size: 21px;">&#42;</small></span></label>
+          <ion-select style="border: 0.5px solid  rgba(128, 128, 128, 0.705); border-radius: 20px;"  label="Outline select" label-placement="floating" placeholder="--Select--" fill="outline">
+            <ion-select-option value="Mewang Gewog">Mewang Gewog</ion-select-option>
+            <ion-select-option value="Kawang Gewog">Kawang Gewog</ion-select-option>
+            <ion-select-option value="Genekha Gewog">Genekha Gewog</ion-select-option>
+            <ion-select-option value="Dagala Gewog">Dagala Gewog</ion-select-option>
+            <ion-select-option value="Soe Gewog">Soe Gewog</ion-select-option>
+            <ion-select-option value="Naro Gewog">Naro Gewog</ion-select-option>
+            <ion-select-option value="Lingzhi Gewog">Lingzhi Gewog</ion-select-option>
+            <ion-select-option value="Chang Gewog">Chang Gewog</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <button class="submit" (click)="openModal()" >Add Passenger</button>
+
+  </form>
+  </ion-card>
+
+  <ion-card style="border-radius:30px" *ngIf="addPassengerToggle">
+    <div >
+      <div class="doctor-card"  *ngFor="let passengerList of passengerList; let i = index">
+        <div class="actions">
+          <div class="ratings" style="background-color: #3880ff;">
+            <span class="rating-count">Passenger {{i+1}}</span>
+          </div>
+          <div class="comments">
+            <span class="comment-count"><strong>Name</strong> {{passengerList.fullName}}</span>
+          </div>
+          <div class="consultation">
+            <span class="fee"><strong>CID</strong>{{passengerList.cid}}</span>
+          </div>
+          <div class="consultation">
+            <span class="fee"><strong>Phone</strong> {{passengerList.phone}}</span>
+          </div>
+          <div class="consultation">
+            <span class="fee"><strong>Gender</strong> Male</span>
+          </div>
+          <div class="appo">
+            <a  class="btn" (click)="removePassenger(i)">Remove</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-card>
+  <ion-button size="large" expand="block">
+    <ion-icon name="cash-outline"></ion-icon>
+    <div>&nbsp;Pay Now</div>
+  </ion-button>
+
+
+
+  <!-- <form class="form">
+    <div class="container my-1">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <h1 class="mb-3" class="text-center" style="color: rgb(0, 102, 255);"><u>Domestic Travel Insurance</u></h1>
+          <ion-card class="no-shadow">
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6" style="font: upp;">
+                  <label for="your-name" class="form-label"><strong>Vehicle No:</strong></label>
+                  <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" id="input" name="vehicleNumber" placeholder="BP-2-A-XXXX" pattern="^[A-Z]{2}-[1-9][0-9]?-[A-Z]-[0-9]{4}$" required maxlength="11" [(ngModel)]="vehicleNumber" (ngModelChange)="onVehicleNumberChange()">
+
+                </div>
+                <div class="col-md-6">
+                  <label for="your-surname" class="form-label"><strong>Vehicle Type :</strong></label>
+                  <input type="text" class="form-control" id="your-surname" name="your-surname" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="your-email" class="form-label"><strong>Driver CID :</strong></label>
+                  <input type="email" class="form-control" id="your-email" name="your-email" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="your-subject" class="form-label"><strong>Driver Name :</strong></label>
+                  <input type="text" class="form-control" id="your-subject" name="your-subject">
+                </div>
+                <div class="col-12">
+                  <label for="your-message" class="form-label"><strong>Start Date Of Journey :</strong></label>
+                  <input class="form-control" type="date" id="your-message" name="your-message" rows="5" required>
+                </div>
+                <div class="col-12">
+                  <label for="your-message" class="form-label"><strong>End Date Of Journey :</strong></label>
+                  <input class="form-control" type="date" id="your-message" name="your-message" rows="5" required>
+                </div>
+                <h4 class="mb-3" style="color: rgb(0, 102, 255);"><strong><u>Origin Place</u></strong></h4>
+                <div class="col-6">
+                  <label for="your-message" class="form-label"><strong>Dzongkhag :</strong></label>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>--select--</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="your-message" class="form-label"><strong>Gewog :</strong></label>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>--select--</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <h4 class="mb-3" style="color: rgb(0, 102, 255);"><strong><u>Destination</u></strong></h4>
+                <div class="col-6">
+                  <label for="your-message" class="form-label"><strong>Dzongkhag :</strong></label>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>--select--</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="your-message" class="form-label"><strong>Gewog :</strong></label>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>--select--</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button type="submit" class="btn btn-primary w-100 fw-bold" (click)="openModal()" >Add Passenger</button>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div *ngIf="addPassengerToggle">
+                  <div *ngFor="let passengerList of passengerList; let i = index">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title color="primary">Passenger <strong>{{i+1}}</strong></ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ion-list>
+                          <ion-item>
+                            <ion-label slot="start">
+                              <strong>CID :</strong>
+                            </ion-label>
+                            <ion-label>{{passengerList.cid}}</ion-label>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label slot="start">
+                              <strong>Name :</strong>
+                            </ion-label>
+                            <ion-label>{{passengerList.fullName}}</ion-label>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label slot="start">
+                              <strong>Phone :</strong>
+                            </ion-label>
+                            <ion-label>{{passengerList.phone}}</ion-label>
+                          </ion-item>
+                        </ion-list>
+                        <ion-button color="danger" (click)="removePassenger(i)">Remove</ion-button>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                </div>
+                <ion-button size="large" expand="block">
+                  <ion-icon name="cash-outline"></ion-icon>
+                  <div>&nbsp;Pay Now</div>
+                </ion-button>
+              </div>
+            </form>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+	</form> -->
+</ion-content>

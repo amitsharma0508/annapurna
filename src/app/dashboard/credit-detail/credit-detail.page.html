@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" >
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content *ngIf="!emptyFlag"> -->
+<ion-content>
+  <!-- <div *ngFor="let policy of policys"> -->
+  <div style="height: 100%;">
+    <ion-card class="no-shadow ">
+      <ion-list>
+        <ion-item lines="none" class="ion-text-center">
+          <ion-label style="color:green">
+          <ion-chip color="success">
+            <ion-avatar item-start><img  src="../../../assets/images/active.png" alt=""></ion-avatar>
+            <ion-label>Active</ion-label>
+          </ion-chip>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <!-- <ion-item>
+      <ion-avatar item-start>
+          <img *ngIf="policy.LOAN_STATUS === 'A'" src="../../../assets/images/active.png" alt="">
+          <img *ngIf="policy.LOAN_STATUS !== 'A'" src="../../../assets/images/inactive.jpg" alt="">
+        </ion-avatar>
+        <p><strong> {{policy.STATUS | uppercase}} </strong></p>
+      </ion-item> -->
+
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Account Holder :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.NAME}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Amit Sharma</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Loan Account No :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.NUMBER}}</ion-label> -->
+            <ion-label class="ion-text-wrap"  class="text-right">11202005475</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Sanctioned Amount:</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">Nu.{{policy.SANCTIONAMOUNT}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Nu.54,000</ion-label>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-label class="ion-text-wrap">Expiry Date</ion-label>
+            <ion-label class="ion-text-wrap" slot="end">{{policy.EXP_DT}}</ion-label>
+          </ion-item> -->
+          <!-- <ion-item>
+            <ion-label class="ion-text-wrap">Repayment Date</ion-label>
+            <ion-label class="ion-text-wrap" slot="end">{{policy.REPAY_DATE}}</ion-label>
+          </ion-item> -->
+          <!-- <ion-item>
+            <ion-label class="ion-text-wrap">Term (Months)</ion-label>
+            <ion-label class="ion-text-wrap" slot="end">{{policy.TERM}}</ion-label>
+          </ion-item> -->
+          <ion-item>
+            <ion-label class="ion-text-wrap"  slot="start"><strong>Interest Rate (%) :</strong> </ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">{{policy.INTEREST_RATE}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">7%</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>EMI :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">Nu.{{policy.EMI}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Nu.23,000</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-wrap" slot="start"><strong>Preclosure Amount :</strong></ion-label>
+            <!-- <ion-label class="ion-text-wrap" slot="end">Nu.{{policy.PRECLOSURE_AMOUNT}}</ion-label> -->
+            <ion-label class="ion-text-wrap" class="text-right">Nu.13,000.00</ion-label>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-label class="ion-text-wrap">Next Repayment</ion-label>
+            <ion-label class="ion-text-wrap" slot="end">{{policy.NEXT_REPAYMT12}}</ion-label>
+          </ion-item> -->
+          <ion-item [hidden]="!amtToPay">
+            <ion-label>Amount to Pay</ion-label>
+            <ion-input slot="end" id="rounded" type="number" [(ngModel)]="amountToPay" placeholder="0"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <!-- <ion-row [hidden]="!paymentOption"> -->
+        <ion-row >
+        <ion-col>
+          <ion-button [disabled]="amountToPay === 0 || amountToPay < 0" size="large" expand="block" (click)="confirmpayment()">
+            <ion-icon name="cash-outline"></ion-icon>
+            <div>&nbsp;Pay Now</div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row [hidden]="!statusMessage">
+        <ion-col>
+          <ion-label class="ion-text-wrap" color='danger'><strong> Your policy is inactive, Visit RICB office to review your policy.</strong></ion-label>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </div>
+
+</ion-content>
+
+<!-- <ion-content *ngIf="emptyFlag">
+  <div class="is-empty-state-content theme-light">
+    <h3>No Data Available</h3>
+    <img src="../../../assets/empty.png"/>
+  </div>
+</ion-content> -->
+

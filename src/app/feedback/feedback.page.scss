@@ -1,0 +1,13 @@
+ion-toolbar {
+    --background: #428cff;
+    --color: #fff;
+}
+
+.no-shadow {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.submit-button {
+    --background: #428cff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.322);
+}

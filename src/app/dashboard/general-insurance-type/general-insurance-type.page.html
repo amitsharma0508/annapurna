@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>MyRICB</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPopover($event)"><ion-icon style="color: white;" name="ellipsis-vertical-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+    <!-- <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div> -->
+    <div style="display: flex; align-items: center;justify-content: center;">
+      <img class="logo" src="../../assets/images/logo.png"/>
+    </div>
+    <ion-list>
+      <ion-list-header class="ion-text-center">
+        <ion-label line="true">Choose General Insurance Service</ion-label>
+      </ion-list-header>
+
+      <ion-item (click)="getGeneralInsurance('any', 'general')">
+        <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+        <ion-label>View Policy Details</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('motorTp')">
+        <ion-icon name="car-outline" slot="start"></ion-icon>
+        <ion-label>Motor Third Party Renewal</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('otip')">
+        <ion-icon name="airplane-outline" slot="start"></ion-icon>
+        <ion-label>Overseas Travel Insurance</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('mcp')">
+        <ion-icon name="car-sport-outline" slot="start"></ion-icon>
+        <ion-label style="font-size: 14px;">Motor Comprehensive Renewal</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('fire')">
+        <ion-icon name="flame-outline" slot="start"></ion-icon>
+        <ion-label>Standard Fire Renewal</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('DTI')">
+        <ion-icon name="bus-outline" slot="start"></ion-icon>
+        <ion-label>Domestic Travel Insurance</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('RHI')">
+        <ion-icon name="home-outline" slot="start"></ion-icon>
+        <ion-label>Rural Housing Insurance</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item (click)="policyDetails('nekor')">
+        <ion-icon name="happy-outline" slot="start"></ion-icon>
+        <ion-label>Nekor</ion-label>
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
