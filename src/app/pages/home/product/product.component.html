@@ -1,0 +1,36 @@
+<div class="container bg-trasparent my-4 p-3" style="position: relative">
+  <div  class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-5">
+    <div *ngFor="let imageList of imageList" class="col">
+      <div class="card h-100 shadow-sm">
+        <a href="#">
+          <img src="{{imageList.imageUrl}}" class="card-img-top" alt="product.title" />
+        </a>
+        <div class="label-top shadow-sm">
+          <a class="text-white" href="#">{{imageList.productName}}</a>
+        </div>
+        <div class="card-body">
+          <div class="clearfix mb-3">
+            <span class="float-start badge rounded-pill bg-success">{{imageList.productPrice}}</span>
+            <span class="float-end">
+              <a href="#" class="small text-muted text-uppercase aff-link">reviews</a>
+            </span>
+          </div>
+          <h5 class="card-title">
+            <a target="_blank" href="#">{{imageList.productDescription}}</a>
+          </h5>
+          <div class="d-grid gap-2 my-4">
+            <a href="#" class="btn btn-warning bold-btn">Purchase</a>
+          </div>
+          <div class="clearfix mb-1">
+            <span class="float-start">
+              <a href="#"><i class="fas fa-question-circle"></i></a>
+            </span>
+            <span class="float-end">
+              <i class="far fa-heart" style="cursor: pointer"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
