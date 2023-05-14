@@ -36,7 +36,16 @@ const routes: Routes = [
   },
   {
     path:'product',
-    component:ProductComponent
+    children:[
+      {
+        path:'',
+        component:ProductComponent
+      },
+      {
+        path:':detailID',
+        component:ProductDetailsComponent
+      }
+    ]
   },
   // {path:'', redirectTo:'image/upload', pathMatch:'full'},
   {
@@ -47,10 +56,7 @@ const routes: Routes = [
       { path: "list", component: ImageListComponent },
     ],
   },
-  {
-    path:'details',
-    component:ProductDetailsComponent
-  }
+ 
 ];
 
 @NgModule({

@@ -112,7 +112,7 @@ label.color-6{
   background-position: center top;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-image: url('https://assets.codepen.io/1462889/ch1.png');
+  
   opacity: 0;
 }
 .for-color-1:checked ~ .img-wrap.chair-1{

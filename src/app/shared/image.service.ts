@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,6 +9,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/datab
 export class ImageService {
   // imageDetailList: AngularFireList<any>;
   groceryDetails: AngularFireList<any>;
+  groceryItem: AngularFireList<any>;
   cigarettesDetails: AngularFireList<any>;
   despicableVapeDetails: AngularFireList<any>;
   electronicDetails: AngularFireList<any>;
@@ -25,6 +27,12 @@ export class ImageService {
   }
   insertGroceryDetails(groceryList) {
     this.groceryDetails.push(groceryList)
+  }
+  getGroceryById(id: string): Observable<any> {
+    const path = `groceryList/${id}`;
+    console.log(`Fetching grocery item at path ${path}`);
+    const groceryItemRef: AngularFireObject<any> = this.firebase.object(path);
+    return groceryItemRef.valueChanges();
   }
 
   getInsertCigarettesDetails(){

@@ -19,7 +19,7 @@
             <a target="_blank" href="#">{{imageList.productDescription}}</a>
           </h5>
           <div class="d-grid gap-2 my-4">
-            <a href="#" class="btn btn-warning bold-btn">Purchase</a>
+            <a class="btn btn-warning bold-btn" [routerLink]="['/','product',imageList.id]">Purchase</a>
           </div>
           <div class="clearfix mb-1">
             <span class="float-start">

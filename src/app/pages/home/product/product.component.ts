@@ -77,4 +77,9 @@ export class ProductComponent implements OnInit {
     }
   }
 
+
+  Viewdetails(){
+    
+  }
+
 }
