@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -16,6 +16,23 @@ export class ImageService {
   healthAndBeautyDetails: AngularFireList<any>;
   produceDetails: AngularFireList<any>;
   tobaccoDetails: AngularFireList<any>;
+
+  private dataSubject = new Subject<any>();
+  private random = new Subject<number>();
+  sendData(data: any) {
+    this.dataSubject.next(data);
+  }
+  sendAuth(data: number){
+    console.log(data + "service")
+    this.random.next(data)
+  }
+  getDatas(){
+    return this.random.asObservable();
+  }
+  getData() {
+    console.log(this.dataSubject.asObservable() + "service2")
+    return this.dataSubject.asObservable();
+  }
 
   constructor(private firebase: AngularFireDatabase) { 
 

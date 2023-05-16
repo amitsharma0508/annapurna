@@ -23,6 +23,7 @@ import { ProduceComponent } from "./admin/produce/produce.component";
 import { TobaccoComponent } from "./admin/tobacco/tobacco.component";
 import { HttpClientModule } from  '@angular/common/http';
 import { ProductDetailsComponent } from "./pages/home/product/product-details/product-details.component";
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component:AdminComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   },
   {
     path:'product',
@@ -74,7 +79,8 @@ const routes: Routes = [
     HealthAndBeautyComponent,
     ProduceComponent,
     TobaccoComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

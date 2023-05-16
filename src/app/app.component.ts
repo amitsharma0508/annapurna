@@ -13,6 +13,8 @@ export class AppComponent {
   title = 'teleport-project-template-angular';
   currentRoute: string;
   checkUrl:boolean=true;
+  checkAuth:boolean = true;
+  receivedData
   constructor(private router: Router, private service:ImageService){
   
   }
@@ -26,17 +28,18 @@ export class AppComponent {
     this.service.getTobaccoDetails();
     // detection of url and writing logic
     // start
+    this.service.getDatas().subscribe((data) => {
+      this.receivedData = data;
+    });
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)
     ).subscribe((event: { url: string; }) => {
       this.currentRoute = event.url;          
       console.log(this.currentRoute);
       if(event.url == "/admin"){
-        this.checkUrl=false;
-        console.log(this.checkUrl)
+          this.checkUrl=false;
      }else{
       this.checkUrl=true;
-      console.log(this.checkUrl)
      }
     });
     //end

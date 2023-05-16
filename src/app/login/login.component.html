@@ -1,0 +1,20 @@
+<div class="login-box" style="background: linear-gradient(to bottom, #1e90ff, #00008b);">
+  <h2>Dashboard Access</h2>
+  <form #form="ngForm"(ngSubmit)="login()">
+    <div class="user-box">
+      <input type="text" ngModel name="user" required="">
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" ngModel name="password" required="">
+      <label>Password</label>
+    </div>
+    <button style="background-color: aliceblue;" type="submit" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Login
+    </button>
+  </form>
+</div>
