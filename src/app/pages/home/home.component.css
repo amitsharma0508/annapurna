@@ -1293,7 +1293,7 @@ height: auto;
      /* min-height: 100vh;*/
   }
 .footer {
-background: linear-gradient(105deg,#6e99e6 ,#093c94);
+  background: -webkit-linear-gradient(#ffc535, #ff8108);
 padding-top: 80px;
 padding-bottom: 40px;
 }
