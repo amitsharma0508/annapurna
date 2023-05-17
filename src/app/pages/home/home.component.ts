@@ -5,7 +5,7 @@ import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
+  styleUrls: ['home.component.css', 'home.component.scss'],
 })
 export class Home {
   raw0cip: string = ' '
@@ -21,6 +21,14 @@ export class Home {
     ])
 
   }
+  ngOnInit(){
+ 
+    const script1 = document.createElement('script');
+ 
+    script1.src = 'assets/javascript.js';
+  
+    document.head.appendChild(script1);
+   }
 
   //dryGrocery function
   dryGrocery() {

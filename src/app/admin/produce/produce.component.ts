@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
 import { finalize } from 'rxjs/operators';
 import { ImageService } from 'src/app/shared/image.service';
 
@@ -16,6 +17,7 @@ export class ProduceComponent implements OnInit {
   isSubmitted: boolean;
 
   produceForm = new FormGroup({
+    id: new FormControl("", Validators.required),
     productName: new FormControl('', Validators.required),
     productPrice: new FormControl(''),
     productDescription: new FormControl('', Validators.required),
@@ -100,6 +102,7 @@ export class ProduceComponent implements OnInit {
   resetForm() {
     this.produceForm.reset();
     this.produceForm.setValue({
+      id: Math.random().toString(36).substring(2, 7),
       productName: '',
       productPrice:'',
       productDescription:'',
@@ -110,4 +113,45 @@ export class ProduceComponent implements OnInit {
     this.selectedImage = null;
     this.isSubmitted = false;
   }
+
+    //deleting
+    deleteGroceryItem(item, itemID) {
+      console.log("Deleting item with key:", itemID);
+  
+      const groceryListRef = firebase.database().ref("produceList");
+      let itemKey;
+  
+      // Find the key of the item with the given product name
+      groceryListRef
+        .orderByChild("id")
+        .equalTo(itemID)
+        .once("value", (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            itemKey = childSnapshot.key;
+          });
+        });
+  
+      // Remove the image from storage
+      const storageRef = firebase.storage().refFromURL(item.imageUrl);
+      storageRef
+        .delete()
+        .then(() => {
+          console.log("Image deleted successfully");
+        })
+        .catch((error) => {
+          console.log("Error deleting image:", error);
+        });
+  
+      // Remove the corresponding data from the real-time database
+      // Remove the corresponding data from the real-time database
+      groceryListRef
+        .child(itemKey)
+        .remove()
+        .then(() => {
+          console.log("Data deleted successfully");
+        })
+        .catch((error) => {
+          console.log("Error deleting data:", error);
+        });
+    }
 }

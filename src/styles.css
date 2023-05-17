@@ -123,7 +123,7 @@
   color: var(--dl-color-pallet-yellow);
 }
 .navbar-logo-title {
-  color: var(--dl-color-gray-black);
+  color: red;
   cursor: pointer;
   height: auto;
   font-size: 24px;

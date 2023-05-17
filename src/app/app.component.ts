@@ -19,6 +19,11 @@ export class AppComponent {
   
   }
   ngOnInit(): void {
+    const script1 = document.createElement('script');
+  
+    script1.src = 'assets/img/side-nav-toggle.js';
+
+    document.head.appendChild(script1);
     this.service.getinsertGroceryDetails();
     this.service.getInsertCigarettesDetails();
     this.service.getDespicableVapeDetails();
