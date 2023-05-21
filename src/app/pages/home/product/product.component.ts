@@ -75,6 +75,22 @@ export class ProductComponent implements OnInit {
        }
      );
     }
+    if(this.param == 'wareHouse'){
+      this.service.wareHouseDetails.snapshotChanges().subscribe(
+       list => {
+         this.imageList = list.map(item => { return item.payload.val(); });
+         this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+       }
+     );
+    }
+    if(this.param == 'accessories'){
+      this.service.accessoriesDetails.snapshotChanges().subscribe(
+       list => {
+         this.imageList = list.map(item => { return item.payload.val(); });
+         this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+       }
+     );
+    }
   }
 
 

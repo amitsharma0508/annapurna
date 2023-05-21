@@ -16,7 +16,8 @@ export class ImageService {
   healthAndBeautyDetails: AngularFireList<any>;
   produceDetails: AngularFireList<any>;
   tobaccoDetails: AngularFireList<any>;
-
+  wareHouseDetails:AngularFireList<any>;
+  accessoriesDetails:AngularFireList<any>;
   private dataSubject = new Subject<any>();
   private random = new Subject<number>();
   sendData(data: any) {
@@ -94,6 +95,20 @@ export class ImageService {
     this.tobaccoDetails.push(tobaccoList)
   }
 
+  getWareHouseDetails(){
+    this.wareHouseDetails= this.firebase.list('wareHouseList')
+  }
+  insertWareHouseDetails(wareHouseList){
+    console.log("trigreed")
+    this.wareHouseDetails.push(wareHouseList)
+  }
+  getAccessoriesDetails(){
+    this.accessoriesDetails= this.firebase.list('accessoriesList')
+  }
+  insertAccessoriesDetails(accessoriesList){
+    console.log("trigreed")
+    this.accessoriesDetails.push(accessoriesList)
+  }
 
   
 }

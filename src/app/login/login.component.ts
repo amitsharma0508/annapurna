@@ -21,14 +21,7 @@ export class LoginComponent implements OnInit {
       this.randomNumber = Math.random()
       console.log(this.randomNumber + "random")
     
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          param: "FMfcgzGsmXCRWQRtxVwCvtvppFKnmbrN",
-          type: this.randomNumber
-        }
-      };
-      this.dataService.sendAuth(this.randomNumber)
-      this.router.navigate(['/admin'], navigationExtras);
+      this.router.navigate(['/admin']);
     }
   }
 

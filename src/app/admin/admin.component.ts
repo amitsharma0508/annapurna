@@ -23,6 +23,8 @@ export class AdminComponent implements OnInit {
   receivedData:any
   receivedData2:number
   toggleActive = false;
+  wareHouseToggle =false;
+  accessoriesToggle=false;
 
 
   toggleMenu() {
@@ -65,6 +67,8 @@ export class AdminComponent implements OnInit {
     this.electronicToggle=false;
     this.healthAndBeautyToggle=false;
     this.produceToggle=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     this.tobacco=false;
     console.log("trigerred")
   }
@@ -76,6 +80,8 @@ export class AdminComponent implements OnInit {
     this.healthAndBeautyToggle=false;
     this.produceToggle=false;
     this.tobacco=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     console.log("trigerred oooooooo")
   }
   despicableVapeToggleFunction(){
@@ -85,6 +91,8 @@ export class AdminComponent implements OnInit {
     this.electronicToggle=false;
     this.healthAndBeautyToggle=false;
     this.produceToggle=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     this.tobacco=false;
   }
   electronicToggleFunction(){
@@ -94,6 +102,8 @@ export class AdminComponent implements OnInit {
     this.electronicToggle=true;
     this.healthAndBeautyToggle=false;
     this.produceToggle=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     this.tobacco=false;
   }
   healthAndBeautyToggleFunction(){
@@ -103,6 +113,8 @@ export class AdminComponent implements OnInit {
     this.electronicToggle=false;
     this.healthAndBeautyToggle=true;
     this.produceToggle=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     this.tobacco=false;
   }
   produceToggleFunction(){
@@ -112,6 +124,8 @@ export class AdminComponent implements OnInit {
     this.electronicToggle=false;
     this.healthAndBeautyToggle=false;
     this.produceToggle=true;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     this.tobacco=false;
   }
   tobaccoFunction(){
@@ -121,7 +135,31 @@ export class AdminComponent implements OnInit {
     this.electronicToggle=false;
     this.healthAndBeautyToggle=false;
     this.produceToggle=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
     this.tobacco=true;
+  }
+  wareHouseFunction(){
+    this.dryGroceryToggle=false;
+    this.cigaretToggle=false;
+    this.despicableVapeToggle=false;
+    this.electronicToggle=false;
+    this.healthAndBeautyToggle=false;
+    this.produceToggle=false;
+    this.tobacco=false;
+    this.accessoriesToggle=false;
+    this.wareHouseToggle = true;
+  }
+  accessoriesFunction(){
+    this.dryGroceryToggle=false;
+    this.cigaretToggle=false;
+    this.despicableVapeToggle=false;
+    this.electronicToggle=false;
+    this.healthAndBeautyToggle=false;
+    this.produceToggle=false;
+    this.tobacco=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=true;
   }
 
 }

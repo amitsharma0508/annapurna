@@ -106,4 +106,24 @@ export class Home {
     };
     this.router.navigate(['/product'], navigationExtras);
   }
+
+  wareHouse(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param: "wareHouse",
+        type: "wareHouse"
+      }
+    };
+    this.router.navigate(['/product'], navigationExtras);
+  }
+
+  accessories(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param: "accessories",
+        type: "accessories"
+      }
+    };
+    this.router.navigate(['/product'], navigationExtras);
+  }
 }

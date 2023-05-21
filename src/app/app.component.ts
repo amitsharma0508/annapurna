@@ -31,10 +31,13 @@ export class AppComponent {
     this.service.getHealthAndBeautyDetails();
     this.service.getProduceDetails();
     this.service.getTobaccoDetails();
+    this.service.getWareHouseDetails();
+    this.service.getAccessoriesDetails();
     // detection of url and writing logic
     // start
     this.service.getDatas().subscribe((data) => {
       this.receivedData = data;
+      console.log(this.receivedData + "recieved data")
     });
     this.router.events.pipe(
       filter((event: any) => event instanceof NavigationEnd)

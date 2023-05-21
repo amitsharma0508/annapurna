@@ -42,8 +42,18 @@
                         (change)="showPreview($event)">
                     </div>
                     <div class="input-box">
+                      <span class="details">Image1</span>
+                      <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1"
+                          (change)="showPreview1($event)" />
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Image2</span>
+                    <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2"
+                        (change)="showPreview2($event)" />
+                </div>
+                    <div class="input-box">
                         <div class="text-center">
-                            <img [src]="imgSrc" width="150px" height="150px" (click)="fileUploader.click()">
+                            <img [src]="imgSrc" width="150px" height="150px"  />
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,11 @@ import { ImageService } from 'src/app/shared/image.service';
 })
 export class HealthAndBeautyComponent implements OnInit {
   imgSrc: string;
+  imgSrc2: string;
+  imgSrc3: string;
   selectedImage: any = null;
+  selectedImage1:any = null;
+  selectedImage2:any = null;
   isSubmitted: boolean;
 
   healthAndBeautyForm = new FormGroup({
@@ -22,7 +26,9 @@ export class HealthAndBeautyComponent implements OnInit {
     productPrice: new FormControl(''),
     productDescription: new FormControl('', Validators.required),
     productType: new FormControl('', Validators.required),
-    imageUrl: new FormControl('', Validators.required)
+    imageUrl: new FormControl('', Validators.required),
+    imageUrl1: new FormControl(""),
+    imageUrl2: new FormControl("")
   })
   toggleAddForm:boolean=false;
   toggleViewProduct:boolean=false;
@@ -71,28 +77,119 @@ export class HealthAndBeautyComponent implements OnInit {
       this.selectedImage = null;
     }
   }
-
+  showPreview1(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => (this.imgSrc = e.target.result);
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage1 = event.target.files[0];
+    } else {
+      this.imgSrc3 =
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
+      this.selectedImage1 = null;
+    }
+  }
+  showPreview2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => (this.imgSrc = e.target.result);
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage2 = event.target.files[0];
+    } else {
+      this.imgSrc =
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
+      this.selectedImage2 = null;
+    }
+  }
   //onSubmit
+  // onSubmit(formValue) {
+  //   this.isSubmitted = true;
+  //   if (this.healthAndBeautyForm.valid) {
+  //     var filePath = `${formValue.productType}/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+  //     const fileRef = this.storage.ref(filePath);
+  //     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+  //       finalize(() => {
+  //         fileRef.getDownloadURL().subscribe((url) => {
+  //           formValue['imageUrl'] = url;
+  //           console.log(this.healthAndBeautyForm.value)
+  //           console.log(formValue)
+  //           this.service.insertHealthAndBeautyDetails(this.healthAndBeautyForm.value);
+  //           console.log(formValue)
+  //           this.resetForm();
+  //         })
+  //       })
+  //     ).subscribe();
+  //   }
+  // }
+
+
+
   onSubmit(formValue) {
     this.isSubmitted = true;
     if (this.healthAndBeautyForm.valid) {
-      var filePath = `${formValue.productType}/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-      const fileRef = this.storage.ref(filePath);
-      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            formValue['imageUrl'] = url;
-            console.log(this.healthAndBeautyForm.value)
-            console.log(formValue)
-            this.service.insertHealthAndBeautyDetails(this.healthAndBeautyForm.value);
-            console.log(formValue)
-            this.resetForm();
+      var filePath1 = `${formValue.productType}/${this.selectedImage.name
+        .split(".")
+        .slice(0, -1)
+        .join(".")}_${new Date().getTime()}`;
+      var filePath2 = `${formValue.productType}/${this.selectedImage1.name
+        .split(".")
+        .slice(0, -1)
+        .join(".")}_${new Date().getTime()}`;
+      var filePath3 = `${formValue.productType}/${this.selectedImage2.name
+        .split(".")
+        .slice(0, -1)
+        .join(".")}_${new Date().getTime()}`;
+  
+      const fileRef1 = this.storage.ref(filePath1);
+      const fileRef2 = this.storage.ref(filePath2);
+      const fileRef3 = this.storage.ref(filePath3);
+  
+      // Upload the first image
+      this.storage
+        .upload(filePath1, this.selectedImage)
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            fileRef1.getDownloadURL().subscribe((url1) => {
+              formValue["imageUrl"] = url1;
+  
+              // Upload the second image
+              this.storage
+                .upload(filePath2, this.selectedImage1)
+                .snapshotChanges()
+                .pipe(
+                  finalize(() => {
+                    fileRef2.getDownloadURL().subscribe((url2) => {
+                      formValue["imageUrl1"] = url2;
+  
+                      // Upload the third image
+                      this.storage
+                        .upload(filePath3, this.selectedImage2)
+                        .snapshotChanges()
+                        .pipe(
+                          finalize(() => {
+                            fileRef3.getDownloadURL().subscribe((url3) => {
+                              formValue["imageUrl2"] = url3;
+  
+                              // Insert grocery details
+                              console.log(formValue);
+                              this.service.insertHealthAndBeautyDetails(this.healthAndBeautyForm.value);
+                              console.log(formValue);
+                              this.resetForm();
+                            });
+                          })
+                        )
+                        .subscribe();
+                    });
+                  })
+                )
+                .subscribe();
+            });
           })
-        })
-      ).subscribe();
+        )
+        .subscribe();
     }
   }
-
   //
   get formControls() {
     return this.healthAndBeautyForm['controls'];
@@ -107,9 +204,16 @@ export class HealthAndBeautyComponent implements OnInit {
       productPrice:'',
       productDescription:'',
       productType:'',
-      imageUrl: ''
+      imageUrl: '',
+      imageUrl1:"",
+      imageUrl2:""
     });
-    this.imgSrc = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU';
+    this.imgSrc =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
+      this.imgSrc2 =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
+      this.imgSrc3 =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
     this.selectedImage = null;
     this.isSubmitted = false;
   }
@@ -142,7 +246,25 @@ export class HealthAndBeautyComponent implements OnInit {
         .catch((error) => {
           console.log("Error deleting image:", error);
         });
+        const storageRef1 = firebase.storage().refFromURL(item.imageUrl1);
+        storageRef1
+        .delete()
+        .then(() => {
+          console.log("Image deleted successfully");
+        })
+        .catch((error) => {
+          console.log("Error deleting image:", error);
+        });
   
+        const storageRef2 = firebase.storage().refFromURL(item.imageUrl2);
+        storageRef2
+        .delete()
+        .then(() => {
+          console.log("Image deleted successfully");
+        })
+        .catch((error) => {
+          console.log("Error deleting image:", error);
+        });
       // Remove the corresponding data from the real-time database
       // Remove the corresponding data from the real-time database
       groceryListRef

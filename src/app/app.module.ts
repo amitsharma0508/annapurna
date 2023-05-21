@@ -24,6 +24,8 @@ import { TobaccoComponent } from "./admin/tobacco/tobacco.component";
 import { HttpClientModule } from  '@angular/common/http';
 import { ProductDetailsComponent } from "./pages/home/product/product-details/product-details.component";
 import { LoginComponent } from "./login/login.component";
+import { AccessoriesComponent } from "./admin/accessories/accessories.component";
+import { WarehouseComponent } from "./admin/warehouse/warehouse.component";
 
 const routes: Routes = [
   {
@@ -80,7 +82,10 @@ const routes: Routes = [
     ProduceComponent,
     TobaccoComponent,
     ProductDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    AccessoriesComponent,
+    WarehouseComponent
+
   ],
   imports: [
     BrowserModule,
