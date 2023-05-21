@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ImageService } from 'src/app/shared/image.service';
 
 @Component({
@@ -94,7 +94,13 @@ export class ProductComponent implements OnInit {
 
 
   redirect(id:any){
-    this.router.navigate(['/product', id]);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param: this.param,
+        type: this.param,
+      }
+    };
+    this.router.navigate(['/product', id],navigationExtras);
   }
 
 }
