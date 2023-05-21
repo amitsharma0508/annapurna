@@ -1,6 +1,6 @@
 <div class="container mt-5 pt-5 ">
     <div style="height: 70px; background-color: cornflowerblue; color: white; max-width: 100%;">
-    <h3 style="padding: 15px;" class="text-center">WareHouse Section</h3>
+    <h3 style="padding: 15px;" class="text-center">Houseware Section</h3>
     </div>
     <div class="multi-button mt-2">
         <button class="group-button" (click)="openAddForm()"><ion-icon name="add-outline"></ion-icon> Add</button>
@@ -13,7 +13,7 @@
     <!-- adding new product form start -->
     <div *ngIf="toggleAddForm">
         <div class="wrapper">
-            <div class="title">Add WareHouse</div>
+            <div class="title">Add Houseware</div>
             <form [formGroup]="CigarettesForm" action="#" (submit)="onSubmit(CigarettesForm.value)">
                 <div class="user-details">
                     <div class="input-box">
