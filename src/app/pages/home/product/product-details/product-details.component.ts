@@ -30,6 +30,22 @@ export class ProductDetailsComponent implements OnInit {
           // Rest of your code that relies on the filtered product details
         }
       );
+      this.service.cigarettesDetails.snapshotChanges().subscribe(
+        list => {
+          this.imageList = list.map(item => item.payload.val());
+          this.product = this.imageList.filter(item => item.id === id);
+          console.log(this.product, "product");
+          // Rest of your code that relies on the filtered product details
+        }
+      );
+      this.service.accessoriesDetails.snapshotChanges().subscribe(
+        list => {
+          this.imageList = list.map(item => item.payload.val());
+          this.product = this.imageList.filter(item => item.id === id);
+          console.log(this.product, "product");
+          // Rest of your code that relies on the filtered product details
+        }
+      );
     });
   }
 
