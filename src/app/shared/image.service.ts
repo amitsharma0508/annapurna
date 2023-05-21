@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -46,11 +47,23 @@ export class ImageService {
   insertGroceryDetails(groceryList) {
     this.groceryDetails.push(groceryList)
   }
-  getGroceryById(id: string): Observable<any> {
-    const path = `groceryList/${id}`;
-    console.log(`Fetching grocery item at path ${path}`);
-    const groceryItemRef: AngularFireObject<any> = this.firebase.object(path);
-    return groceryItemRef.valueChanges();
+  getGroceryByName(id: string): Observable<any> {
+    console.log("id" + id)
+    const groceryNamesRef = this.firebase.list('groceryList');
+    return groceryNamesRef.valueChanges().pipe(
+      map((groceryNames: any) => {
+        const ids = groceryNames[id];
+        if (groceryNames.hasOwnProperty(ids)) {
+          console.log("fetchee")
+          const groceryItemRef = this.firebase.list(`groceryList/${id}`);
+          return groceryItemRef.valueChanges();
+
+        } else {
+          console.log("fetchee wrong")
+          throw new Error(`Grocery item with name "${id}" not found.`);
+        }
+      })
+    );
   }
 
   getInsertCigarettesDetails(){

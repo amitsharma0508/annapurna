@@ -6,21 +6,30 @@ import { ImageService } from 'src/app/shared/image.service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
   id
   product:any
+  imageList:any
   constructor(private route:ActivatedRoute,private service: ImageService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id');
-      console.log("id"+this.id)
-      this.service.getGroceryById("t33qr").subscribe(data => {
-        this.product = data;
-        console.log("array"+this.product)
-      });
+    const script1 = document.createElement('script');
+  
+    script1.src = 'assets/img/side-nav-toggle.js';
+
+    document.head.appendChild(script1);
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.service.groceryDetails.snapshotChanges().subscribe(
+        list => {
+          this.imageList = list.map(item => item.payload.val());
+          this.product = this.imageList.filter(item => item.id === id);
+          console.log(this.product, "product");
+          // Rest of your code that relies on the filtered product details
+        }
+      );
     });
   }
 

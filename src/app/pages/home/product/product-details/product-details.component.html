@@ -1,63 +1,87 @@
-<div class="section-fluid-main">
-    <div class="section">
-          <div class="info-wrap mob-margin">
-              <p class="title-up">{{product.productName}}</p>
-              <h2>Sella Gastro</h2>
-              <h4>$174 <span>$237</span></h4>	
-              <div class="section-fluid">
-                  <input class="desc-btn" type="radio" id="desc-1" name="desc-btn" checked/>
-                  <label for="desc-1">Description</label> 
-                  <input class="desc-btn" type="radio" id="desc-2" name="desc-btn"/>
-                  <label for="desc-2">Details</label> 
-                  <div class="section-fluid desc-sec accor-1">
-                      <p>The chair construction is made of ash tree. Upholstery and wood color at customer's request.</p>
-                  </div>	
-                  <div class="section-fluid desc-sec accor-2">
-                      <div class="section-inline">
-                          <p><span>76</span>cm<br>Lenght</p>
-                      </div>	
-                      <div class="section-inline">
-                          <p><span>68</span>cm<br>Width</p>
-                      </div>
-                      <div class="section-inline">
-                          <p><span>87</span>cm<br>Height</p>
-                      </div>
-                      <div class="section-inline">
-                          <p><span>10</span>kg<br>Weight</p>
-                      </div>
-                  </div>	
-              </div>	
-              <!-- <h5>Choose upholstery:</h5> -->
+<div class="container-fluid" *ngFor="let product of product">
+  <div class="cart">
+      <div class="row row1">
+          <div class="col-md-4">
+              <img [src]="product.imageUrl" width="100%" id="ProductImg">
+              <div class="small-imgs">
+                  <img [src]="product.imageUrl1" width="100%" class="small-img">
+                  <img [src]="product.imageUrl2" width="100%" class="small-img">
+              </div>                
           </div>
-          <div class="info-wrap">
-            <a href="#" class="btn"><i class="uil uil-shopping-cart icon"></i> Add To Cart</a>
+          <div class="col-md-6">
+              <h1 class="product-title">{{product.productName}}</h1>
+              <div class="reviews">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <p>240 reviews</p>
+              </div>
+              <div class="price">
+                  <span>{{product.productPrice}}</span>
+                  <!-- <span>$49.99</span> -->
+              </div>
+              <!-- <div class="row">
+                  <div class="col-md-4">
+                      <h4>Color</h4>
+                      <div class="colors">
+                          <div class="black"></div>
+                          <div class="red"></div>
+                          <div class="white"></div>
+                          <div class="yellow"></div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 sze">
+                      <h5>Size</h5>
+                      <select class="size custom-select">
+                          <option>Select Size</option>
+                          <option>39</option>
+                          <option>40</option>
+                          <option>41</option>
+                          <option>42</option>
+                      </select>
+                  </div>
+                  <div class="col-md-4 qty">
+                      <h5>Quantity</h5>
+                      <select class="quantity custom-select">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                      </select>
+                  </div>
+              </div> -->
+              <div id="product" class="product-inf">
+                  <ul>
+                    <li class="active"><a href="#Description">Product Description</a></li>
+                    <!-- <li><a href="#Details">Product Details</a></li> -->
+                  </ul>
+                  <div class="tabs-content">
+                      <div id="Description">
+                          <p>{{product.productDescription}}</p>
+                      </div>
+                      <!-- <div id="Details" >
+                          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque sequi eaque quisquam corrupti reprehenderit exercitationem iusto asperiores quae commodi quo?</p>
+                      </div> -->
+                  </div>
+              </div>
+              <div class="buttons">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <a href="#" class="custom-btn">Add To Cart <i class="fas fa-angle-right"></i></a>
+                      </div>
+                      <div class="col-md-6">
+                          <a href="#" class="custom-btn">Buy Now <i class="fas fa-angle-right"></i></a>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="clearfix"></div>
-          <input style="visibility: hidden;" class="color-btn for-color-1" type="radio" id="color-1" name="color-btn" checked/>
-          <label style="visibility: hidden;" class="first-color" for="color-1"></label> 
-          <!-- <input class="color-btn for-color-2" type="radio" id="color-2" name="color-btn"/>
-          <label class="color-2" for="color-2"></label> 
-          <input class="color-btn for-color-3" type="radio" id="color-3" name="color-btn"/>
-          <label class="color-3" for="color-3"></label> 
-          <input class="color-btn for-color-4" type="radio" id="color-4" name="color-btn"/>
-          <label class="color-4" for="color-4"></label> 
-          <input class="color-btn for-color-5" type="radio" id="color-5" name="color-btn"/>
-          <label class="color-5" for="color-5"></label> 
-          <input class="color-btn for-color-6" type="radio" id="color-6" name="color-btn"/>
-          <label class="color-6" for="color-6"></label>  -->
-          <div class="clearfix"></div>
-         
-          <div class="img-wrap chair-1" style="background-image: url('https://assets.codepen.io/1462889/ch1.png');"></div>
-          <div class="img-wrap chair-2"></div>	
-          <div class="img-wrap chair-3"></div>
-          <div class="img-wrap chair-4"></div>
-          <div class="img-wrap chair-5"></div>
-          <div class="img-wrap chair-6"></div>		
-          <div class="back-color"></div>	
-          <div class="back-color chair-2"></div>	
-          <div class="back-color chair-3"></div>	
-          <div class="back-color chair-4"></div>	
-          <div class="back-color chair-5"></div>	
-          <div class="back-color chair-6"></div>	
-    </div>
+      </div>
+  </div>
 </div>
+
+
+
+
+<script src="script.js"></script>

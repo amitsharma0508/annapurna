@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageService } from 'src/app/shared/image.service';
 
 @Component({
@@ -12,8 +12,7 @@ export class ProductComponent implements OnInit {
   testToggle:boolean=false;
   imageList: any[];
   rowIndexArray: any[];
-  constructor(private route: ActivatedRoute,private service: ImageService) { }
-
+  constructor(private route: ActivatedRoute,private service: ImageService, private router: Router) { }
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.param = params['param'];
@@ -94,8 +93,8 @@ export class ProductComponent implements OnInit {
   }
 
 
-  Viewdetails(){
-    
+  redirect(id:any){
+    this.router.navigate(['/product', id]);
   }
 
 }
