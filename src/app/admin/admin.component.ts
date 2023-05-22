@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
   toggleActive = false;
   wareHouseToggle =false;
   accessoriesToggle=false;
-
+  householdToggle=false;
 
   toggleMenu() {
     this.toggleActive = !this.toggleActive;
@@ -70,6 +70,7 @@ export class AdminComponent implements OnInit {
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
     this.tobacco=false;
+    this.householdToggle=false;
     console.log("trigerred")
   }
   cigaretToggleFunction(){
@@ -82,6 +83,7 @@ export class AdminComponent implements OnInit {
     this.tobacco=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     console.log("trigerred oooooooo")
   }
   despicableVapeToggleFunction(){
@@ -93,6 +95,7 @@ export class AdminComponent implements OnInit {
     this.produceToggle=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     this.tobacco=false;
   }
   electronicToggleFunction(){
@@ -104,6 +107,7 @@ export class AdminComponent implements OnInit {
     this.produceToggle=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     this.tobacco=false;
   }
   healthAndBeautyToggleFunction(){
@@ -115,6 +119,7 @@ export class AdminComponent implements OnInit {
     this.produceToggle=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     this.tobacco=false;
   }
   produceToggleFunction(){
@@ -126,6 +131,7 @@ export class AdminComponent implements OnInit {
     this.produceToggle=true;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     this.tobacco=false;
   }
   tobaccoFunction(){
@@ -137,6 +143,7 @@ export class AdminComponent implements OnInit {
     this.produceToggle=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     this.tobacco=true;
   }
   wareHouseFunction(){
@@ -148,6 +155,7 @@ export class AdminComponent implements OnInit {
     this.produceToggle=false;
     this.tobacco=false;
     this.accessoriesToggle=false;
+    this.householdToggle=false;
     this.wareHouseToggle = true;
   }
   accessoriesFunction(){
@@ -159,7 +167,21 @@ export class AdminComponent implements OnInit {
     this.produceToggle=false;
     this.tobacco=false;
     this.wareHouseToggle=false;
+    this.householdToggle=false;
     this.accessoriesToggle=true;
+  }
+  householdFunction(){
+    this.dryGroceryToggle=false;
+    this.cigaretToggle=false;
+    this.despicableVapeToggle=false;
+    this.electronicToggle=false;
+    this.healthAndBeautyToggle=false;
+    this.produceToggle=false;
+    this.tobacco=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
+    this.householdToggle=true;
+
   }
 
 }

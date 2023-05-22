@@ -26,6 +26,7 @@ import { ProductDetailsComponent } from "./pages/home/product/product-details/pr
 import { LoginComponent } from "./login/login.component";
 import { AccessoriesComponent } from "./admin/accessories/accessories.component";
 import { WarehouseComponent } from "./admin/warehouse/warehouse.component";
+import { HouseholdComponent } from "./admin/household/household.component";
 
 const routes: Routes = [
   {
@@ -84,7 +85,8 @@ const routes: Routes = [
     ProductDetailsComponent,
     LoginComponent,
     AccessoriesComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    HouseholdComponent
 
   ],
   imports: [

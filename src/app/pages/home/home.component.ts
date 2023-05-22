@@ -126,4 +126,14 @@ export class Home {
     };
     this.router.navigate(['/product'], navigationExtras);
   }
+
+  household(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param: "household",
+        type: "household"
+      }
+    };
+    this.router.navigate(['/product'], navigationExtras);
+  }
 }

@@ -62,7 +62,7 @@ body {
 }
 
 .navigation ul li:nth-child(1) {
-  margin-bottom: 40px;
+  margin-bottom: 4px;
   pointer-events: none;
 }
 
@@ -83,8 +83,8 @@ body {
   position: relative;
   display: block;
   min-width: 60px;
-  height: 60px;
-  line-height: 75px;
+  height: 40px;
+  line-height: 52px;
   text-align: center;
 }
 .navigation ul li a .icon ion-icon {
@@ -95,8 +95,8 @@ body {
   position: relative;
   display: block;
   padding: 0 10px;
-  height: 60px;
-  line-height: 60px;
+  height: 56px;
+  line-height: 30px;
   text-align: start;
   white-space: nowrap;
 }

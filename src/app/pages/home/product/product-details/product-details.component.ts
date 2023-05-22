@@ -118,7 +118,16 @@ export class ProductDetailsComponent implements OnInit {
           }
         );
       }
-      
+      if(this.param == "household"){
+        this.service.householdDetails.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
     });
   }
 

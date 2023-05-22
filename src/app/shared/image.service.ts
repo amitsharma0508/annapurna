@@ -19,6 +19,7 @@ export class ImageService {
   tobaccoDetails: AngularFireList<any>;
   wareHouseDetails:AngularFireList<any>;
   accessoriesDetails:AngularFireList<any>;
+  householdDetails:AngularFireList<any>;
   private dataSubject = new Subject<any>();
   private random = new Subject<number>();
   sendData(data: any) {
@@ -122,6 +123,12 @@ export class ImageService {
     console.log("trigreed")
     this.accessoriesDetails.push(accessoriesList)
   }
-
+  getHouseholdDetails(){
+    this.householdDetails= this.firebase.list('HouseholdList')
+  }
+  insertHouseholdDetails(HouseholdList){
+    console.log("trigreed")
+    this.householdDetails.push(HouseholdList)
+  }
   
 }

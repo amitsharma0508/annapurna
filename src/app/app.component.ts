@@ -33,6 +33,7 @@ export class AppComponent {
     this.service.getTobaccoDetails();
     this.service.getWareHouseDetails();
     this.service.getAccessoriesDetails();
+    this.service.getHouseholdDetails();
     // detection of url and writing logic
     // start
     this.service.getDatas().subscribe((data) => {

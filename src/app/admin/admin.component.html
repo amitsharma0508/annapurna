@@ -117,6 +117,15 @@
                 </li>
 
                 <li>
+                    <a (click)="householdFunction()">
+                        <span class="icon">
+                            <ion-icon name="gift-outline"></ion-icon>
+                        </span>
+                        <span class="title">Household</span>
+                    </a>
+                </li>
+
+                <li>
                     <a (click)="dryGroceryToggleFunction()">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
@@ -179,7 +188,9 @@
             <div *ngIf="accessoriesToggle">
                 <app-accessories></app-accessories>
             </div>
-
+            <div *ngIf="householdToggle">
+                <app-household></app-household>
+            </div>
         </div>
     </div>
 </body>
