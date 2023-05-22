@@ -7,9 +7,9 @@ width: 100%;">
     <img style="mix-blend-mode: color-burn;" height="70px" src="/assets/logo.jpg"> &nbsp;
     <a class="navbar-brand" href="#" style="color: rgb(238 55 7);font-size: 30px;
     font-weight: bold;">Annapurna Wholesale</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" style="max-width: 100%;">
@@ -28,7 +28,29 @@ width: 100%;">
   </div>
 </nav>
 </div>
-
+<div class="nav" style="justify-content: center; z-index: 99999;">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <!-- <div class="nav-title">
+      JoGeek
+    </div> -->
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a  (click)="accessories()" >Accessories</a>
+    <a  (click)="wareHouse()">Houseware</a>
+    <a  (click)="healthAndBeauty()">Health & Beauty</a>
+    <a  (click)="despicableVape()">Disposable Vape</a>
+    <a  (click)="electronic()">Electronic</a>
+  </div>
+</div>
 <div>
     <router-outlet></router-outlet>
 </div>
