@@ -12,6 +12,14 @@ export class ProductComponent implements OnInit {
   testToggle:boolean=false;
   imageList: any[];
   rowIndexArray: any[];
+  searchTerm: string; // New property for the search term
+  filterProducts(): any[] {
+    if (!this.searchTerm) {
+      return this.imageList;
+    }
+    const searchTerm = this.searchTerm.toLowerCase();
+    return this.imageList.filter(item => item.productName.toLowerCase().includes(searchTerm));
+  }
   constructor(private route: ActivatedRoute,private service: ImageService, private router: Router) { }
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
