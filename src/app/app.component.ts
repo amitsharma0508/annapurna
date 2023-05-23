@@ -1,9 +1,10 @@
 
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ImageService } from './shared/image.service';
 import { Location } from '@angular/common';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,16 @@ export class AppComponent {
   checkUrl:boolean=true;
   checkAuth:boolean = true;
   receivedData
-  constructor(private router: Router, private service:ImageService,private location: Location){
+  constructor(private router: Router, private service:ImageService,private renderer: Renderer2){
   
+  }
+  @ViewChild('susbcFormModal') susbcFormModal!: ElementRef;
+
+  ngAfterViewInit() {
+    const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    if (button) {
+      button.dispatchEvent(new Event('click'));
+    }
   }
   ngOnInit(): void {
     const script1 = document.createElement('script');
