@@ -1389,7 +1389,7 @@ button {
 }
 
 .container{
-  width: 820px;
+  /* width: 820px; */
   height: 90%;
   /* margin: 1% auto; */
   display: flex;
