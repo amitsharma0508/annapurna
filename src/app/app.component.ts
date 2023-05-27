@@ -64,6 +64,10 @@ export class AppComponent {
     //end
   
   }
+  //cart
+  cart(){
+    
+  }
   //dryGrocery function
   dryGrocery() {
     let navigationExtras: NavigationExtras = {
