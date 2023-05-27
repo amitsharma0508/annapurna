@@ -75,7 +75,7 @@ width: 100%;">
           <p style="color: #ffffff;"  id="description" class="description text-center">Thank you for using our platform</p>
         </div>
       </header> 
-      <form id="survey-form" class="right">
+      <form id="survey-form" class="right" #f="ngForm" (ngSubmit)="confirm()">
         <div class="form-set">
           <label id="name-label" for="name">Name</label>
             <input
@@ -149,7 +149,7 @@ width: 100%;">
       
        <div class="form-set">
           <button class="close" type="submit" id="submit" value="Submit" class="submit-button">
-            <!-- Submit -->
+            Submit
           </button>
        </div>
       </form>

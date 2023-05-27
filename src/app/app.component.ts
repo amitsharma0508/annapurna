@@ -5,6 +5,7 @@ import { filter } from 'rxjs/operators';
 import { ImageService } from './shared/image.service';
 import { Location } from '@angular/common';
 import * as $ from 'jquery';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,9 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('f') form!:NgForm;
+
+  
   title = 'teleport-project-template-angular';
   currentRoute: string;
   checkUrl:boolean=true;
@@ -66,8 +70,13 @@ export class AppComponent {
   }
   //cart
   cart(){
-    
+
   }
+  //submit
+  confirm(){
+
+  }
+  
   //dryGrocery function
   dryGrocery() {
     let navigationExtras: NavigationExtras = {
