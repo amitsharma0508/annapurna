@@ -83,10 +83,11 @@ export class AppComponent {
       queryParams: {
         param: "dryGrocery",
         type: "dryGrocery"
-      }
+      },
+      replaceUrl: true
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -96,10 +97,11 @@ export class AppComponent {
       queryParams: {
         param: "cigarettes",
         type: "cigarettes"
-      }
+      },
+      replaceUrl: true
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -112,7 +114,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -125,7 +127,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -138,7 +140,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -151,7 +153,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -164,7 +166,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -176,7 +178,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -189,7 +191,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -201,7 +203,7 @@ export class AppComponent {
       }
     };
     this.router.navigate(['/product'], navigationExtras).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   }
 }
