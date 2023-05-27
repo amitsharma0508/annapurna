@@ -74,7 +74,7 @@ export class AppComponent {
   }
   //submit
   confirm(){
-
+    console.log(this.form.value)
   }
   
   //dryGrocery function
