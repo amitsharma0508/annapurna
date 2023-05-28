@@ -66,7 +66,7 @@ width: 100%;">
 
 <button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button>
 
-<dialog  id="dialog">
+<dialog  id="dialog" *ngIf="dialogOpen">
   <div id="wrapper">
     <div class="container">
       <header class="left header">
@@ -75,7 +75,7 @@ width: 100%;">
           <p style="color: #ffffff;"  id="description" class="description text-center">Thank you for using our platform</p>
         </div>
       </header> 
-      <form id="survey-form" class="right" #f="ngForm" (ngSubmit)="confirm()">
+      <form id="survey-form" class="right" #f="ngForm" (ngSubmit)="confirm(f); dialogOpen = false;">
         <div class="form-set">
           <label id="name-label" for="name">Name</label>
             <input
@@ -105,10 +105,9 @@ width: 100%;">
             <input
                    type="number"
                    ngModel
-                   name="age"
+                   name="number"
                    id="number"
-                   min="17"
-                   max="99"
+                  
                    class="form-control"
                    placeholder="Phone"/>
         </div>
@@ -148,18 +147,16 @@ width: 100%;">
         </div>
       
        <div class="form-set">
-        <form method="dialog">
-          <button class="close" type="submit" id="submit" value="Submit" class="submit-button close">
+
+          <button type="submit" id="submit" value="Submit" [disabled]="!f.form.valid" class="submit-button">
             Submit
           </button>
-        </form>
+
        </div>
       </form>
     </div>
   </div>
-  <!-- <form method="dialog">
-    <button class="close">Close</button>
-  </form> -->
+
 </dialog>
 
 

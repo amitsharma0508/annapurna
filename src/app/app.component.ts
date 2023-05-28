@@ -14,8 +14,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('f') form!:NgForm;
+  @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
+  dialogOpen = true;
 
-  
   title = 'teleport-project-template-angular';
   currentRoute: string;
   checkUrl:boolean=true;
@@ -73,8 +74,19 @@ export class AppComponent {
 
   }
   //submit
-  confirm(){
-    console.log(this.form.value)
+  confirm(form: NgForm) {
+    if (form.valid) {
+      // Handle the form submission logic here
+      console.log(this.form.value)
+      // Close the dialog
+      // const dialog = document.getElementById('dialog') as HTMLDialogElement;
+      // setTimeout(() => {
+      //   dialog.close();
+      // }, 2000);
+
+    } else {
+      // Show error messages or handle the incomplete form case
+    }
   }
   
   //dryGrocery function
