@@ -27,6 +27,7 @@ import { LoginComponent } from "./login/login.component";
 import { AccessoriesComponent } from "./admin/accessories/accessories.component";
 import { WarehouseComponent } from "./admin/warehouse/warehouse.component";
 import { HouseholdComponent } from "./admin/household/household.component";
+import { CartComponent } from "./cart/cart.component";
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
       { path: "list", component: ImageListComponent },
     ],
   },
+  {
+    path:'cart',
+    component:CartComponent
+  }
  
 ];
 

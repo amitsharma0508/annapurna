@@ -71,7 +71,7 @@ export class AppComponent {
   }
   //cart
   cart(){
-
+   this.router.navigate(['/cart'])
   }
   //submit
   confirm(form: NgForm) {
