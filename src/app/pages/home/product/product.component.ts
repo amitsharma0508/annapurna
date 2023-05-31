@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ImageService } from 'src/app/shared/image.service';
 
@@ -20,13 +21,27 @@ export class ProductComponent implements OnInit {
     const searchTerm = this.searchTerm.toLowerCase();
     return this.imageList.filter(item => item.productName.toLowerCase().includes(searchTerm));
   }
+
+
+  @ViewChild('f') form!:NgForm;
+  @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
+  dialogOpen = true;
+
+
+navagatingID:any;
+
+
   constructor(private route: ActivatedRoute,private service: ImageService, private router: Router) { }
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.param = params['param'];
       this.fetchDataBasedOnParam();
     });
+    const script1 = document.createElement('script');
+  
+    script1.src = 'assets/img/side-nav-toggle.js';
 
+    document.head.appendChild(script1);
 
   }
   fetchDataBasedOnParam() {
@@ -113,13 +128,32 @@ export class ProductComponent implements OnInit {
   }
 
   redirect(id:any){
+    this.navagatingID=id
+    const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    if (button) {
+      button.dispatchEvent(new Event('click'));
+    }
+   
+  }
+//submit
+confirm(form: NgForm) {
+  if (form.valid) {
+    // Handle the form submission logic here
+    console.log(this.form.value)
+    // Close the dialog
+    // const dialog = document.getElementById('dialog') as HTMLDialogElement;
+    // setTimeout(() => {
+    //   dialog.close();
+    // }, 2000);
     let navigationExtras: NavigationExtras = {
       queryParams: {
         param: this.param,
         type: this.param,
       }
     };
-    this.router.navigate(['/product', id],navigationExtras);
+    this.router.navigate(['/product', this.navagatingID],navigationExtras);
+  } else {
+    // Show error messages or handle the incomplete form case
   }
-
+}
 }

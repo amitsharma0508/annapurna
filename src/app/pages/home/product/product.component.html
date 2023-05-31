@@ -36,39 +36,103 @@
     </div>
   </div>
 </div>
-<!-- <div class="container bg-trasparent my-4 p-3" style="position: relative">
-  <div  class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-5">
-    <div *ngFor="let imageList of imageList" class="col">
-      <div class="card h-100 shadow-sm">
-        <a href="#">
-          <img src="{{imageList.imageUrl}}" class="card-img-top" alt="product.title" />
-        </a>
-        <div class="label-top shadow-sm">
-          <a class="text-white" href="#">{{imageList.productName}}</a>
+
+
+
+<button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button>
+
+<dialog style="z-index: 1000000;"  id="dialog" *ngIf="dialogOpen">
+  <div id="wrapper">
+    <div class="containerss">
+      <header class="left header">
+        <div class="title-header">
+          <h1 style="color: #ffffff;" id="title" class="text-center">Annapurna Wholesale</h1>
+          <p style="color: #ffffff;"  id="description" class="description text-center">Thank you for using our platform</p>
         </div>
-        <div class="card-body">
-          <div class="clearfix mb-3">
-            <span class="float-start badge rounded-pill bg-success">{{imageList.productPrice}}</span>
-            <span class="float-end">
-              <a href="#" class="small text-muted text-uppercase aff-link">reviews</a>
-            </span>
-          </div>
-          <h5 class="card-title">
-            <a target="_blank" href="#">{{imageList.productDescription}}</a>
-          </h5>
-          <div class="d-grid gap-2 my-4">
-            <a class="btn btn-warning bold-btn" (click)="redirect(imageList.id)">Purchase</a>
-          </div>
-          <div class="clearfix mb-1">
-            <span class="float-start">
-              <a href="#"><i class="fas fa-question-circle"></i></a>
-            </span>
-            <span class="float-end">
-              <i class="far fa-heart" style="cursor: pointer"></i>
-            </span>
-          </div>
+      </header> 
+      <form id="survey-form" class="right" #f="ngForm" (ngSubmit)="confirm(f); dialogOpen = false;">
+        <div class="form-set">
+          <label id="name-label" for="name">Name</label>
+            <input
+                   type="text"
+                   name="name"
+                   ngModel
+                   id="name"
+                   class="form-control"
+                   placeholder="Enter your name"
+                   required/>
         </div>
-      </div>
+    
+        <div class="form-set">
+          <label id="email-label" for="email">E-mail</label>
+            <input
+                   type="email"
+                   name="email"
+                   id="email"
+                   ngModel
+                   class="form-control"
+                   placeholder="Enter your e-mail"
+                   required/>
+        </div>
+    
+        <div class="form-set">
+          <label id="number-label" for="number">Phone Number</label>
+            <input
+                   type="number"
+                   ngModel
+                   name="number"
+                   id="number"
+                  
+                   class="form-control"
+                   placeholder="Phone"/>
+        </div>
+    
+        <!-- <div class="form-set">
+          <label id="drop-label">Which Country Are You From?</label>
+          <select id="dropdown" name="role" class="form-control" required>
+            <option disabled selected value>Select current role</option>
+            <option value="student">USA</option>
+            <option value="job">Canada</option>
+            <option value="learner">Australia</option>
+            <option value="preferNo">India</option>
+            <option value="other">Other</option>
+          </select>
+        </div> -->
+
+
+        <div class="form-set">
+          <label id="country-label" for="country">Country and State</label>
+            <input
+                   type="text"
+                   ngModel
+                   name="country"
+                   id="country"
+                   class="form-control"
+                   placeholder="Enter your country and state"
+                   required/>
+        </div>
+        <div class="form-set">
+          <label id="companyName-label" for="companyName">Company Name</label>
+            <input
+                   type="text"
+                   ngModel
+                   name="companyName"
+                   id="companyName"
+                   class="form-control"
+                   placeholder="Enter your Company Name"
+                   required/>
+        </div>
+      
+       <div class="form-set">
+
+          <button type="submit" id="submit" value="Submit" [disabled]="!f.form.valid" class="submit-button">
+            Submit
+          </button>
+
+       </div>
+      </form>
     </div>
   </div>
-</div> -->
+
+</dialog>
+
