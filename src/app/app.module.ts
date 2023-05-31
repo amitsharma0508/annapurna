@@ -91,8 +91,8 @@ const routes: Routes = [
     LoginComponent,
     AccessoriesComponent,
     WarehouseComponent,
-    HouseholdComponent
-
+    HouseholdComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

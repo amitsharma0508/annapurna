@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ImageService } from 'src/app/shared/image.service';
@@ -31,7 +32,7 @@ export class ProductComponent implements OnInit {
 navagatingID:any;
 
 
-  constructor(private route: ActivatedRoute,private service: ImageService, private router: Router) { }
+  constructor(private route: ActivatedRoute,private service: ImageService, private router: Router,private afAuth: AngularFireAuth) { }
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.param = params['param'];
@@ -155,5 +156,52 @@ confirm(form: NgForm) {
   } else {
     // Show error messages or handle the incomplete form case
   }
+}
+
+
+email: string;
+password: string;
+errorMessage: string;
+isSignUp: boolean = false;
+login() {
+  this.afAuth.signInWithEmailAndPassword(this.email, this.password)
+    .then((userCredential) => {
+      // Get the current user from the userCredential object
+      const user = userCredential.user;
+      
+      // Access the user properties
+      console.log('Current user:', user);
+      console.log('User email:', user.email);
+
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          param: this.param,
+          type: this.param,
+          email:user.uid
+        }
+      };
+      this.router.navigate(['/product', this.navagatingID], navigationExtras);
+    })
+    .catch(error => {
+      this.errorMessage = error.message;
+    });
+}
+
+signup() {
+  this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
+    .then(() => {
+      // Redirect or do something after successful signup
+      this.toggleSignup()
+    })
+    .catch(error => {
+      this.errorMessage = error.message;
+    });
+}
+
+toggleSignup() {
+  this.isSignUp = !this.isSignUp;
+  this.errorMessage = null;
+  this.email = '';
+  this.password = '';
 }
 }

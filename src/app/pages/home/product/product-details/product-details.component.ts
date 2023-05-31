@@ -14,6 +14,9 @@ export class ProductDetailsComponent implements OnInit {
   imageList:any
   param:any;
   constructor(private route:ActivatedRoute,private service: ImageService) { }
+   
+   currentUserEmail:any;
+
 
   ngOnInit(): void {
     const script1 = document.createElement('script');
@@ -23,6 +26,8 @@ export class ProductDetailsComponent implements OnInit {
     document.head.appendChild(script1);
     this.route.queryParams.subscribe(params => {
       this.param = params['param'];
+      this.currentUserEmail = params['email']
+      console.log(this.currentUserEmail + "currentuseremail")
     });
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
@@ -38,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
       }
 
       if(this.param == "accessories"){
+        console.log(this.currentUserEmail + "currentuseremail")
         this.service.accessoriesDetails.snapshotChanges().subscribe(
           list => {
             this.imageList = list.map(item => item.payload.val());
@@ -131,4 +137,18 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+
+
+  addToCart(product: any): void {
+    console.log(product + "product")
+  this.service.addToCart(product, this.currentUserEmail)
+    .then(() => {
+      // Item added to cart successfully
+      console.log("Item added to cart successfully")
+    })
+    .catch(error => {
+      console.log('Error adding item to cart:', error);
+    });
+     
+  }
 }

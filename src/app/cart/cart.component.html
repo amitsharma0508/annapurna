@@ -11,44 +11,24 @@
     <label class="product-line-price">Total</label>
   </div>
 
-  <div class="product">
+  <div class="product" *ngFor="let item of cartItems">
     <div class="product-image">
-      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+      <img [src]="item.imageUrl" alt="Product Image">
     </div>
     <div class="product-details">
-      <div class="product-title">Dingo Dog Bones</div>
-      <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+      <div class="product-title">{{ item.productName }}</div>
+      <p class="product-description">{{ item.productDescription }}</p>
     </div>
-    <div class="product-price">12.99</div>
+    <div class="product-price">{{ item.productPrice }}</div>
     <div class="product-quantity">
-      <input type="number" value="2" min="1">
+      <input type="number" [(ngModel)]="item.quantity" min="1">
     </div>
     <div class="product-removal">
-      <button class="remove-product">
+      <button class="remove-product" (click)="removeFromCart(item)">
         Remove
       </button>
     </div>
-    <div class="product-line-price">25.98</div>
-  </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-      <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
-    </div>
-    <div class="product-price">45.99</div>
-    <div class="product-quantity">
-      <input type="number" value="1" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">45.99</div>
+    <div class="product-line-price">{{ calculateLineTotal(item) }}</div>
   </div>
 
   <div class="totals">
@@ -70,6 +50,13 @@
     </div>
   </div>
       
-      <button class="checkout">Checkout</button>
+      <button (click)="sendEmail()" class="checkout">Checkout</button>
 
 </div>
+
+
+<!-- <form action="https://formsubmit.co/811e3174953e6de987a8e2c44d7e167b" method="POST">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <button type="submit">Send</button>
+  </form> -->

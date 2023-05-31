@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { AngularFirestore, DocumentReference } from '@angular/fire/compat/firestore';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -131,4 +132,29 @@ export class ImageService {
     this.householdDetails.push(HouseholdList)
   }
   
+
+
+  addToCart(product: any, userEmail: string): Promise<void> {
+    const [username, domain] = userEmail.split('@');
+    const encodedDomain = encodeURIComponent(domain);
+    const cartItemId = this.sanitizeCartItemId(product.id);
+    return this.firebase.object(`/Cart/${username}@${encodedDomain}/${cartItemId}`).set(product);
+  }
+
+  getCartItems(userEmail: string): Observable<any[]> {
+    const [username, domain] = userEmail.split('@');
+    const encodedDomain = encodeURIComponent(domain);
+    return this.firebase.list<any>(`/Cart/${username}@${encodedDomain}`).valueChanges();
+  }
+
+  removeCartItem(cartItemId: string, userEmail: string): Promise<void> {
+    const [username, domain] = userEmail.split('@');
+    const encodedDomain = encodeURIComponent(domain);
+    const sanitizedCartItemId = this.sanitizeCartItemId(cartItemId);
+    return this.firebase.object(`/Cart/${username}@${encodedDomain}/${sanitizedCartItemId}`).remove();
+  }
+
+  private sanitizeCartItemId(cartItemId: string): string {
+    return cartItemId.replace(/[.#$[\]/]/g, '');
+  }
 }

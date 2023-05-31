@@ -50,86 +50,50 @@
           <p style="color: #ffffff;"  id="description" class="description text-center">Thank you for using our platform</p>
         </div>
       </header> 
-      <form id="survey-form" class="right" #f="ngForm" (ngSubmit)="confirm(f); dialogOpen = false;">
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      
+      <form  id="survey-form" class="right" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
         <div class="form-set">
-          <label id="name-label" for="name">Name</label>
-            <input
-                   type="text"
-                   name="name"
-                   ngModel
-                   id="name"
-                   class="form-control"
-                   placeholder="Enter your name"
-                   required/>
+          <label id="name-label" for="email">Email</label>
+            <input placeholder="enter Your Email"
+            type="email" id="email" name="email" [(ngModel)]="email" required/>
         </div>
-    
-        <div class="form-set">
-          <label id="email-label" for="email">E-mail</label>
-            <input
-                   type="email"
-                   name="email"
-                   id="email"
-                   ngModel
-                   class="form-control"
-                   placeholder="Enter your e-mail"
-                   required/>
-        </div>
-    
-        <div class="form-set">
-          <label id="number-label" for="number">Phone Number</label>
-            <input
-                   type="number"
-                   ngModel
-                   name="number"
-                   id="number"
-                  
-                   class="form-control"
-                   placeholder="Phone"/>
-        </div>
-    
-        <!-- <div class="form-set">
-          <label id="drop-label">Which Country Are You From?</label>
-          <select id="dropdown" name="role" class="form-control" required>
-            <option disabled selected value>Select current role</option>
-            <option value="student">USA</option>
-            <option value="job">Canada</option>
-            <option value="learner">Australia</option>
-            <option value="preferNo">India</option>
-            <option value="other">Other</option>
-          </select>
+<!-- 
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="email" required>
         </div> -->
-
-
         <div class="form-set">
-          <label id="country-label" for="country">Country and State</label>
-            <input
-                   type="text"
-                   ngModel
-                   name="country"
-                   id="country"
-                   class="form-control"
-                   placeholder="Enter your country and state"
-                   required/>
+          <label id="name-label" for="password">Password:</label>
+            <input placeholder="enter Your password"
+            type="password" id="password" name="password" [(ngModel)]="password" required/>
         </div>
+        <!-- <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required>
+        </div> -->
+      
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <p>Don't have an account? <a (click)="toggleSignup()">Sign up</a></p>
+      </form>
+      
+      <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
         <div class="form-set">
-          <label id="companyName-label" for="companyName">Company Name</label>
-            <input
-                   type="text"
-                   ngModel
-                   name="companyName"
-                   id="companyName"
-                   class="form-control"
-                   placeholder="Enter your Company Name"
-                   required/>
+          <label id="name-label" for="email">Email</label>
+            <input placeholder="enter Your Email"
+            type="email" id="email" name="email" [(ngModel)]="email" required/>
         </div>
       
-       <div class="form-set">
-
-          <button type="submit" id="submit" value="Submit" [disabled]="!f.form.valid" class="submit-button">
-            Submit
-          </button>
-
-       </div>
+        <div class="form-set">
+          <label id="name-label" for="password">Password:</label>
+            <input placeholder="enter Your password"
+            type="password" id="password" name="password" [(ngModel)]="password" required/>
+        </div>
+      
+        <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
+        <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
       </form>
     </div>
   </div>
