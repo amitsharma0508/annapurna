@@ -55,6 +55,7 @@
       </div>
       
       <form  id="survey-form" class="right" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
+        
         <div class="form-set">
           <label id="name-label" for="email">Email</label>
             <input placeholder="enter Your Email"
@@ -80,6 +81,43 @@
       </form>
       
       <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
+        <div class="form-set">
+          <label id="name-label" for="password">Customer Name:</label>
+            <input placeholder="Enter Your name"
+            type="text" id="password"  required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">Company Name:</label>
+            <input placeholder="Enter Your company Name"
+            type="text" id="password" required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">Address:</label>
+            <input placeholder="Enter Your Address"
+            type="text" id="password" required/>
+        </div>
+
+        
+        <div class="form-set">
+          <label id="name-label" for="password">State:</label>
+            <input placeholder="Enter Your State"
+            type="text" id="password" required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">City:</label>
+            <input placeholder="Enter Your City"
+            type="text" id="password" required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">EIN number:</label>
+            <input placeholder="Enter Your EIN"
+            type="text" id="password" required/>
+        </div>
+        
         <div class="form-set">
           <label id="name-label" for="email">Email</label>
             <input placeholder="enter Your Email"
