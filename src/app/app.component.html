@@ -54,14 +54,14 @@ width: 100%;">
 </div>
 
 <!-- ---------------------- Watermark (Please Ignore) ---------------------- -->
-<div class="watermark-ctr">
+<!-- <div class="watermark-ctr">
   <a target="_blank" href="https://www.facebook.com/annapurnafoodandgrocery?mibextid=LQQJ4d">
     <button class="generate-button">
       <i class="fab fa-facebook-f"></i>
       &nbsp;&nbsp;
       <span>Facebook</span>
     </button></a>
-</div>
+</div> -->
 
 
 <button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button>
@@ -106,14 +106,51 @@ width: 100%;">
       
       <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
         <div class="form-set">
+          <label id="name-label" for="password">Customer Name:</label>
+            <input placeholder="Enter Your name"
+            type="text" id="password"  required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">Company Name:</label>
+            <input placeholder="Enter Your company Name"
+            type="text" id="password" required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">Address:</label>
+            <input placeholder="Enter Your Address"
+            type="text" id="password" required/>
+        </div>
+
+        
+        <div class="form-set">
+          <label id="name-label" for="password">State:</label>
+            <input placeholder="Enter Your State"
+            type="text" id="password" required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">City:</label>
+            <input placeholder="Enter Your City"
+            type="text" id="password" required/>
+        </div>
+
+        <div class="form-set">
+          <label id="name-label" for="password">EIN number:</label>
+            <input placeholder="Enter Your EIN"
+            type="text" id="password" required/>
+        </div>
+        
+        <div class="form-set">
           <label id="name-label" for="email">Email</label>
-            <input placeholder="enter Your Email"
+            <input placeholder="Enter Your Email"
             type="email" id="email" name="email" [(ngModel)]="email" required/>
         </div>
       
         <div class="form-set">
           <label id="name-label" for="password">Password:</label>
-            <input placeholder="enter Your password"
+            <input placeholder="Enter Your password"
             type="password" id="password" name="password" [(ngModel)]="password" required/>
         </div>
       

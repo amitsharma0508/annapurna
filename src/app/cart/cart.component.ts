@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
    }
    currentUserEmail:any;
    actualEmail:any
+   totalPrice:number=0;
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.currentUserEmail = params['email']
@@ -30,6 +31,12 @@ export class CartComponent implements OnInit {
   fetchCartItems(currentUserEmail:any) {
     this.cartService.getCartItems(currentUserEmail).subscribe(items => {
       this.cartItems = items;
+      for (let i = 0; i < this.cartItems.length; i++) {
+        const priceWithoutSymbol = this.cartItems[i].productPrice.replace('$', '');
+        const priceAsNumber = parseFloat(priceWithoutSymbol);
+        
+        this.totalPrice += priceAsNumber;
+      }
       console.log(items)
     });
   }
@@ -71,7 +78,9 @@ export class CartComponent implements OnInit {
 
 
   btnValue = 'Send Email';
-
+  phoneNumber:any;
+  address:any
+  ein:any
   sendEmails() {
     this.btnValue = 'Sending...';
 
@@ -83,8 +92,8 @@ export class CartComponent implements OnInit {
       from_name: 'your valuable customer',
       to_name: 'Annapurna Wholesale',
       email_id: this.actualEmail,
-      phone_number:"17811482",
-      address:"Thimphu Bhutan",
+      phone_number: this.phoneNumber,
+      address: this.address,
       message: this.generateEmailMessage(),
       reply_to: this.actualEmail
     }, userID)

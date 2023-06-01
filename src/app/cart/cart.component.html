@@ -1,91 +1,90 @@
-<h1 class="container">Shopping Cart</h1>
 
-<div class="shopping-cart container">
-
-  <div class="column-labels">
-    <label class="product-image">Image</label>
-    <label class="product-details">Product</label>
-    <label class="product-price">Price</label>
-    <label class="product-quantity">Quantity</label>
-    <label class="product-removal">Remove</label>
-    <!-- <label class="product-line-price">Total</label> -->
-  </div>
-
-  <!-- <form action="https://formsubmit.co/annapurnawholesale123@gmail.com" target="_blank" method="POST"> -->
-    <div class="product" *ngFor="let item of cartItems">
-      <div class="product-image">
-        <img [src]="item.imageUrl" alt="Product Image">
-      </div>
-      <div class="product-details">
-        <div class="product-title">{{ item.productName }}</div>
-        <p class="product-description">{{ item.productDescription }}</p>
-      </div>
-      <div class="product-price">{{ item.productPrice }}</div>
-      <div class="product-quantity" style="border: 1px solid black;
-      padding: 0px;
-      margin-right: 16px;">
-        <input style="width: 67px;" type="number" [(ngModel)]="item.quantity" min="1" name="productQuantity">
-      </div>
-      <div class="product-removal">
-        <button class="remove-product" (click)="removeFromCart(item.id)">
-          Remove
-        </button>
-      </div>
-      <!-- <div class="product-line-price">{{ calculateLineTotal(item) }}</div> -->
-    </div>
-
-  <!-- <div class="totals">
-    <div class="totals-item">
-      <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
-    </div>
-    <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">3.60</div>
-    </div>
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">15.00</div>
-    </div>
-    <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
-    </div>
-  </div> -->
-      
-  <button type="submit" id="button" (click)="sendEmails()" class="checkout">Checkout</button>
-
-<!-- </form> -->
-
-</div>
-
-<!-- <form (submit)="onSubmit()">
-  <div class="field">
-    <label for="from_name">from_name</label>
-    <input type="text" name="from_name" id="from_name" [(ngModel)]="emailData.from_name">
-  </div>
-  <div class="field">
-    <label for="to_name">to_name</label>
-    <input type="text" name="to_name" id="to_name" [(ngModel)]="emailData.to_name">
-  </div>
-  <div class="field">
-    <label for="email_id">email_id</label>
-    <input type="text" name="email_id" id="email_id" [(ngModel)]="emailData.email_id">
-  </div>
-  <div class="field">
-    <label for="message">message</label>
-    <input type="text" name="message" id="message" [(ngModel)]="emailData.message">
-  </div>
-  <div class="field">
-    <label for="reply_to">reply_to</label>
-    <input type="text" name="reply_to" id="reply_to" [(ngModel)]="emailData.reply_to">
-  </div>
-
-  <input type="submit" id="button" [value]="btnValue">
-</form> -->
 <script type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script type="text/javascript">
   emailjs.init('02q_sPSjlR7D5mYBQ')
 </script>
+
+
+
+<section class="cart_wrapper">
+  <div class="cart_lists">
+    <div class="cart_title">
+      <span class="material-icons-outlined">local_mall</span>
+      Your Shopping Cart
+    </div>
+
+
+    <div class="cart_list_wrap">
+      <div class="cart_responsive" *ngFor="let item of cartItems">
+        <div class="tr_item">
+          <div class="td_item item_img">
+            <img [src]="item.imageUrl" alt="Product Image">
+          </div>
+          <div class="td_item item_name">
+            <label class="main">{{ item.productName }}</label>
+            <label class="sub">{{ item.productDescription }}</label>
+          </div>
+          <div class="td_item item_color">
+            <label>Quantity &#8594;</label>
+          </div>
+          <div class="td_item item_qty">
+            <input style="width: 67px;" placeholder="" type="number" [(ngModel)]="item.quantity" min="1" name="productQuantity">
+          </div>
+          <div class="td_item item_price">
+            <label>{{ item.productPrice }}</label>
+          </div>
+          <div class="td_item item_remove">
+            <span class="material-icons-outlined" (click)="removeFromCart(item.id)">close</span>
+          </div>
+        </div>
+
+       
+
+       
+
+       
+
+      </div>
+      <div class="footer">
+        <div class="back_cart">
+          <a href="#back">
+            <span class="material-icons-outlined">west</span>
+            Back to Shop
+          </a>
+        </div>
+        <div class="subtotal">
+          <label>Subtotal: </label>
+          <strong>$ {{totalPrice}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart_details">
+    <div class="cart_title">
+      Cart Details
+    </div>
+    <div class="form_row">
+
+      <div class="form_group">
+        <label class="input_label">Phone Number</label>
+        <input class="input" placeholder="" type="number" [(ngModel)]="phoneNumber"  name="phoneNumber">
+      </div>
+
+      <div class="form_group w_75">
+        <label class="input_label">Address</label>
+        <input class="input" placeholder="" type="text" [(ngModel)]="address"  name="address">
+      </div>
+
+      <div class="form_group w_25">
+        <label class="input_label">EIN </label>
+        <input class="input" placeholder="" type="text" [(ngModel)]="ein"  name="ein">
+      </div>
+
+      <button  type="submit" id="button" (click)="sendEmails()" class="btn">Checkout</button>
+    </div>
+
+  </div>
+</section>

@@ -16,7 +16,7 @@ export class ItemCard {
   @Input()
   currency: string = '$'
   @Input()
-  value: string = '429'
+  value: string = '195'
   @Input()
   rootClassName: string = ''
   constructor() {}
