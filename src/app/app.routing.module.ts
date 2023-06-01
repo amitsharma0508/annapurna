@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ImagesComponent } from "./images/images.component";
 import { ImageComponent } from "./images/image/image.component";
 import { ImageListComponent } from "./images/image-list/image-list.component";
+import { CartComponent } from "./cart/cart.component";
 
 const routes: Routes =[
     {path:'', redirectTo:'image/upload', pathMatch:'full'},
@@ -11,6 +12,7 @@ const routes: Routes =[
         { path: 'upload', component:ImageComponent },
         {path:'list', component:ImageListComponent}
     ] },
+    {path:'cart',component:CartComponent}
 ]
 
 @NgModule({

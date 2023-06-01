@@ -44,7 +44,7 @@ $font-bold: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
 
 /* Apply dollar signs */
 .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-  content: '$';
+  // content: '$';
 }
 
 
@@ -329,7 +329,7 @@ label {
 .product .product-price:before,
 .product .product-line-price:before,
 .totals-value:before {
-  content: '$';
+  // content: '$';
 }
 
 

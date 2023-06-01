@@ -1344,6 +1344,8 @@ article {
     opacity: 0;
   }
 }
+
+
 dialog::backdrop {
   background: rgba(#000000, 0.25);
   backdrop-filter: blur(0.15rem);
@@ -1388,7 +1390,7 @@ button {
  margin: 0.5em;
 }
 
-.container{
+.containerss{
   /* width: 820px; */
   height: 90%;
   /* margin: 1% auto; */
@@ -1396,13 +1398,13 @@ button {
   flex: 1 1 100%;
   overflow: hidden;
   align-items: stretch;
-	/* justify-content: space-between; */
+    /* justify-content: space-between; */
   /* box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.2); */
   border-radius: 10px;
 }
 
 @media (max-width: 767px) {
-  .container {
+  .containerss {
     flex-direction: column;
     width: 375px; 
   }
@@ -1517,3 +1519,4 @@ button {
 /* .submit-button:hover {
   background: white;
 } */
+

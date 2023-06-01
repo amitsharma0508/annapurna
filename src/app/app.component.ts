@@ -6,6 +6,7 @@ import { ImageService } from './shared/image.service';
 import { Location } from '@angular/common';
 import * as $ from 'jquery';
 import { NgForm } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,15 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('f') form!:NgForm;
-  @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
-  dialogOpen = true;
+
 
   title = 'teleport-project-template-angular';
   currentRoute: string;
   checkUrl:boolean=true;
   checkAuth:boolean = true;
   receivedData
-  constructor(private router: Router, private service:ImageService,private renderer: Renderer2){
+  constructor(private router: Router, 
+    private service:ImageService,private afAuth: AngularFireAuth){
   
   }
   @ViewChild('susbcFormModal') susbcFormModal!: ElementRef;
@@ -218,4 +219,86 @@ export class AppComponent {
       // window.location.reload();
     });
   }
+
+
+
+
+  @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
+  dialogOpen = false;
+  
+  redirect(){
+    this.dialogOpen = true;
+    const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    if (button) {
+      button.dispatchEvent(new Event('click'));
+    }
+   
+  }
+// //submit
+// confirm(form: NgForm) {
+//   if (form.valid) {
+//     // Handle the form submission logic here
+//     console.log(this.form.value)
+//     // Close the dialog
+//     // const dialog = document.getElementById('dialog') as HTMLDialogElement;
+//     // setTimeout(() => {
+//     //   dialog.close();
+//     // }, 2000);
+//     let navigationExtras: NavigationExtras = {
+//       queryParams: {
+//         param: this.param,
+//         type: this.param,
+//       }
+//     };
+//     this.router.navigate(['/product', this.navagatingID],navigationExtras);
+//   } else {
+//     // Show error messages or handle the incomplete form case
+//   }
+// }
+
+
+email: string;
+password: string;
+errorMessage: string;
+isSignUp: boolean = false;
+login() {
+  this.afAuth.signInWithEmailAndPassword(this.email, this.password)
+    .then((userCredential) => {
+      // Get the current user from the userCredential object
+      const user = userCredential.user;
+      
+      // Access the user properties
+      console.log('Current user:', user);
+      console.log('User email:', user.email);
+      this.dialogOpen=false;
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          email:user.uid
+        }
+      };
+      this.router.navigate(['/cart'], navigationExtras);
+   
+    })
+    .catch(error => {
+      this.errorMessage = error.message;
+    });
+}
+
+signup() {
+  this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
+    .then(() => {
+      // Redirect or do something after successful signup
+      this.toggleSignup()
+    })
+    .catch(error => {
+      this.errorMessage = error.message;
+    });
+}
+
+toggleSignup() {
+  this.isSignUp = !this.isSignUp;
+  this.errorMessage = null;
+  this.email = '';
+  this.password = '';
+}
 }

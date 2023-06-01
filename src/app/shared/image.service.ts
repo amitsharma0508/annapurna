@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { AngularFirestore, DocumentReference } from '@angular/fire/compat/firestore';
 import { Observable, Subject } from 'rxjs';
@@ -38,7 +39,7 @@ export class ImageService {
     return this.dataSubject.asObservable();
   }
 
-  constructor(private firebase: AngularFireDatabase) { 
+  constructor(private firebase: AngularFireDatabase, private afAuth: AngularFireAuth) { 
 
   }
 
@@ -147,11 +148,10 @@ export class ImageService {
     return this.firebase.list<any>(`/Cart/${username}@${encodedDomain}`).valueChanges();
   }
 
-  removeCartItem(cartItemId: string, userEmail: string): Promise<void> {
+  deleteFromCart(productId: string, userEmail: string): Promise<void> {
     const [username, domain] = userEmail.split('@');
-    const encodedDomain = encodeURIComponent(domain);
-    const sanitizedCartItemId = this.sanitizeCartItemId(cartItemId);
-    return this.firebase.object(`/Cart/${username}@${encodedDomain}/${sanitizedCartItemId}`).remove();
+    const cartItemId = productId;
+    return this.firebase.object(`/Cart/${username}@${domain}/${cartItemId}`).remove();
   }
 
   private sanitizeCartItemId(cartItemId: string): string {

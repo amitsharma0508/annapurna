@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ImageService } from '../shared/image.service';
 import { HttpClient } from '@angular/common/http';
+import emailjs from 'emailjs-com';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,21 +12,30 @@ import { HttpClient } from '@angular/common/http';
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
 
-  constructor(private cartService: ImageService, private http:HttpClient) { }
-
+  constructor(private cartService: ImageService, private http:HttpClient, private route:ActivatedRoute) {
+    this.cartItems.forEach(item => {
+      item.quantity = 1;
+    });
+   }
+   currentUserEmail:any;
   ngOnInit() {
-    this.fetchCartItems();
+    this.route.queryParams.subscribe(params => {
+      this.currentUserEmail = params['email']
+      console.log(this.currentUserEmail + "currentuseremail")
+    });
+    this.fetchCartItems(this.currentUserEmail);
   }
-  fetchCartItems() {
-    this.cartService.getCartItems("YOp3F6vVpgOJ3eDvLysPoc7lvuA2").subscribe(items => {
+  fetchCartItems(currentUserEmail:any) {
+    this.cartService.getCartItems(currentUserEmail).subscribe(items => {
       this.cartItems = items;
       console.log(items)
     });
   }
 
   removeFromCart(item: any) {
-    this.cartService.removeCartItem(item.cartItemId, "YOp3F6vVpgOJ3eDvLysPoc7lvuA2").then(() => {
+    this.cartService.deleteFromCart(item, this.currentUserEmail).then(() => {
       // Item removed from cart successfully
+      console.log("working")
     }).catch(error => {
       console.log('Error removing item from cart:', error);
     });
@@ -54,23 +65,47 @@ export class CartComponent implements OnInit {
     return this.calculateSubtotal() + this.calculateTax() + this.calculateShipping();
   }
 
-  sendEmail() {
-    const emailEndpoint = 'https://formspree.io/f/xwkjjgdb';
-    const emailData = {
-      productName: this.cartItems['productName'],
-      productDescription: this.cartItems['productDescription'],
-      productPrice: this.cartItems['productPrice']
-    };
 
-    this.http.post(emailEndpoint, emailData).subscribe(
-      () => {
-        // Email sent successfully
-        // this.contactForm.reset();
-      },
-      (error) => {
-        console.error('Error sending email:', error);
-        console.log('Response:', error.error);
-      }
-    );
+
+
+  btnValue = 'Send Email';
+
+  sendEmails() {
+    this.btnValue = 'Sending...';
+
+    const serviceID = 'default_service';
+    const templateID = 'template_by7nelr';
+    const userID = '02q_sPSjlR7D5mYBQ'; // Replace with your actual User ID
+
+    emailjs.send(serviceID, templateID, {
+      from_name: 'John Doe',
+      to_name: 'Annapurna Wholesale',
+      email_id: 'example@example.com',
+      message: this.generateEmailMessage(),
+      reply_to: 'reply@example.com'
+    }, userID)
+      .then(() => {
+        this.btnValue = 'Send Email';
+        alert('Sent!');
+      }, (err) => {
+        this.btnValue = 'Send Email';
+        alert(JSON.stringify(err));
+      });
   }
+  quantity
+  generateEmailMessage(): string {
+    let message = '';
+
+    this.cartItems.forEach(item => {
+      message += `Product Name: ${item.productName}\n`;
+      message += `Product Description: ${item.productDescription}\n`;
+      message += `Product Price: ${item.productPrice}\n`;
+      message += `Product Quantity: ${item.quantity}\n\n`;
+    });
+    console.log(message)
+    return message;
+  }
+
+
+  
 }

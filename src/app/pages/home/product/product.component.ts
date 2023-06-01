@@ -136,27 +136,27 @@ navagatingID:any;
     }
    
   }
-//submit
-confirm(form: NgForm) {
-  if (form.valid) {
-    // Handle the form submission logic here
-    console.log(this.form.value)
-    // Close the dialog
-    // const dialog = document.getElementById('dialog') as HTMLDialogElement;
-    // setTimeout(() => {
-    //   dialog.close();
-    // }, 2000);
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        param: this.param,
-        type: this.param,
-      }
-    };
-    this.router.navigate(['/product', this.navagatingID],navigationExtras);
-  } else {
-    // Show error messages or handle the incomplete form case
-  }
-}
+// //submit
+// confirm(form: NgForm) {
+//   if (form.valid) {
+//     // Handle the form submission logic here
+//     console.log(this.form.value)
+//     // Close the dialog
+//     // const dialog = document.getElementById('dialog') as HTMLDialogElement;
+//     // setTimeout(() => {
+//     //   dialog.close();
+//     // }, 2000);
+//     let navigationExtras: NavigationExtras = {
+//       queryParams: {
+//         param: this.param,
+//         type: this.param,
+//       }
+//     };
+//     this.router.navigate(['/product', this.navagatingID],navigationExtras);
+//   } else {
+//     // Show error messages or handle the incomplete form case
+//   }
+// }
 
 
 email: string;

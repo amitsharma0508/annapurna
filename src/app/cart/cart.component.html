@@ -11,25 +11,28 @@
     <label class="product-line-price">Total</label>
   </div>
 
-  <div class="product" *ngFor="let item of cartItems">
-    <div class="product-image">
-      <img [src]="item.imageUrl" alt="Product Image">
+  <!-- <form action="https://formsubmit.co/annapurnawholesale123@gmail.com" target="_blank" method="POST"> -->
+    <div class="product" *ngFor="let item of cartItems">
+      <div class="product-image">
+        <img [src]="item.imageUrl" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <div class="product-title">{{ item.productName }}</div>
+        <p class="product-description">{{ item.productDescription }}</p>
+      </div>
+      <div class="product-price">{{ item.productPrice }}</div>
+      <div class="product-quantity" style="border: 1px solid black;
+      padding: 0px;
+      margin-right: 16px;">
+        <input style="width: 67px;" type="number" [(ngModel)]="item.quantity" min="1" name="productQuantity">
+      </div>
+      <div class="product-removal">
+        <button class="remove-product" (click)="removeFromCart(item.id)">
+          Remove
+        </button>
+      </div>
+      <div class="product-line-price">{{ calculateLineTotal(item) }}</div>
     </div>
-    <div class="product-details">
-      <div class="product-title">{{ item.productName }}</div>
-      <p class="product-description">{{ item.productDescription }}</p>
-    </div>
-    <div class="product-price">{{ item.productPrice }}</div>
-    <div class="product-quantity">
-      <input type="number" [(ngModel)]="item.quantity" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product" (click)="removeFromCart(item)">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">{{ calculateLineTotal(item) }}</div>
-  </div>
 
   <div class="totals">
     <div class="totals-item">
@@ -50,13 +53,39 @@
     </div>
   </div>
       
-      <button (click)="sendEmail()" class="checkout">Checkout</button>
+  <button type="submit" id="button" (click)="sendEmails()" class="checkout">Checkout</button>
+
+<!-- </form> -->
 
 </div>
 
+<!-- <form (submit)="onSubmit()">
+  <div class="field">
+    <label for="from_name">from_name</label>
+    <input type="text" name="from_name" id="from_name" [(ngModel)]="emailData.from_name">
+  </div>
+  <div class="field">
+    <label for="to_name">to_name</label>
+    <input type="text" name="to_name" id="to_name" [(ngModel)]="emailData.to_name">
+  </div>
+  <div class="field">
+    <label for="email_id">email_id</label>
+    <input type="text" name="email_id" id="email_id" [(ngModel)]="emailData.email_id">
+  </div>
+  <div class="field">
+    <label for="message">message</label>
+    <input type="text" name="message" id="message" [(ngModel)]="emailData.message">
+  </div>
+  <div class="field">
+    <label for="reply_to">reply_to</label>
+    <input type="text" name="reply_to" id="reply_to" [(ngModel)]="emailData.reply_to">
+  </div>
 
-<!-- <form action="https://formsubmit.co/811e3174953e6de987a8e2c44d7e167b" method="POST">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <button type="submit">Send</button>
-  </form> -->
+  <input type="submit" id="button" [value]="btnValue">
+</form> -->
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('02q_sPSjlR7D5mYBQ')
+</script>
