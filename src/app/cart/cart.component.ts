@@ -85,8 +85,8 @@ export class CartComponent implements OnInit {
     this.btnValue = 'Sending...';
 
     const serviceID = 'default_service';
-    const templateID = 'template_by7nelr';
-    const userID = '02q_sPSjlR7D5mYBQ'; // Replace with your actual User ID
+    const templateID = 'template_ymlrotd';
+    const userID = 'LbNjrA62NgKQo88NX'; // Replace with your actual User ID
 
     emailjs.send(serviceID, templateID, {
       from_name: 'your valuable customer',
