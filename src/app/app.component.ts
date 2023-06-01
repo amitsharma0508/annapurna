@@ -234,29 +234,6 @@ export class AppComponent {
     }
    
   }
-// //submit
-// confirm(form: NgForm) {
-//   if (form.valid) {
-//     // Handle the form submission logic here
-//     console.log(this.form.value)
-//     // Close the dialog
-//     // const dialog = document.getElementById('dialog') as HTMLDialogElement;
-//     // setTimeout(() => {
-//     //   dialog.close();
-//     // }, 2000);
-//     let navigationExtras: NavigationExtras = {
-//       queryParams: {
-//         param: this.param,
-//         type: this.param,
-//       }
-//     };
-//     this.router.navigate(['/product', this.navagatingID],navigationExtras);
-//   } else {
-//     // Show error messages or handle the incomplete form case
-//   }
-// }
-
-
 email: string;
 password: string;
 errorMessage: string;
@@ -273,11 +250,12 @@ login() {
       this.dialogOpen=false;
       let navigationExtras: NavigationExtras = {
         queryParams: {
-          email:user.uid
+          email:user.uid,
+          actualEmail:user.email
         }
       };
       this.router.navigate(['/cart'], navigationExtras);
-   
+      this.dialogOpen=false;
     })
     .catch(error => {
       this.errorMessage = error.message;

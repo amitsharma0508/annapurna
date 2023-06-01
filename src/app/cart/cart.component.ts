@@ -18,9 +18,11 @@ export class CartComponent implements OnInit {
     });
    }
    currentUserEmail:any;
+   actualEmail:any
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.currentUserEmail = params['email']
+      this.actualEmail = params['actualEmail']
       console.log(this.currentUserEmail + "currentuseremail")
     });
     this.fetchCartItems(this.currentUserEmail);
@@ -78,11 +80,13 @@ export class CartComponent implements OnInit {
     const userID = '02q_sPSjlR7D5mYBQ'; // Replace with your actual User ID
 
     emailjs.send(serviceID, templateID, {
-      from_name: 'John Doe',
+      from_name: 'your valuable customer',
       to_name: 'Annapurna Wholesale',
-      email_id: 'example@example.com',
+      email_id: this.actualEmail,
+      phone_number:"17811482",
+      address:"Thimphu Bhutan",
       message: this.generateEmailMessage(),
-      reply_to: 'reply@example.com'
+      reply_to: this.actualEmail
     }, userID)
       .then(() => {
         this.btnValue = 'Send Email';
