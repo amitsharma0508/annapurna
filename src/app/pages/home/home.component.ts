@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { Title, Meta } from '@angular/platform-browser'
 import { NavigationExtras, Router } from '@angular/router';
+import { ImageService } from 'src/app/shared/image.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,22 @@ import { NavigationExtras, Router } from '@angular/router';
 export class Home {
   raw0cip: string = ' '
   emailService: any;
+  imageList: any[];
+  imageLists: any[];
+  rowIndexArray: any[];
 
-  constructor(private title: Title, private meta: Meta,private router: Router,) {
+  items = [
+    {
+      name: "Rice Cooker(1.5Ltrs)",
+      value: "25",
+      image_src: "assets/img6.jpg",
+      rootClassName: "rootClassName4"
+    },
+    
+    // Add more items as needed
+  ];
+
+  constructor(private title: Title, private meta: Meta,private router: Router,private service: ImageService) {
     this.title.setTitle('Mobillio Online Store')
     this.meta.addTags([
       {
@@ -28,6 +43,22 @@ export class Home {
     script1.src = 'assets/javascript.js';
   
     document.head.appendChild(script1);
+
+    this.service.featuredDetails.snapshotChanges().subscribe(
+      list => {
+        this.imageList = list.map(item => { return item.payload.val(); });
+        // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+      }
+    )
+
+    this.service.trendingProductsDetails.snapshotChanges().subscribe(
+      list => {
+        this.imageLists = list.map(item => { return item.payload.val(); });
+        // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+      }
+    )
+    
+    console.log(this.imageList)
    }
 
   //dryGrocery function

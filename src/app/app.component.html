@@ -7,9 +7,7 @@ width: 100%;">
     <img style="mix-blend-mode: color-burn;" height="70px" src="/assets/logo.jpg"> &nbsp;
     <a class="navbar-brand" href="#" style="color: rgb(238 55 7);font-size: 30px;
     font-weight: bold;">Annapurna Wholesale</a>
-    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item" style="max-width: 95%;">
@@ -28,12 +26,10 @@ width: 100%;">
   </div>
 </nav>
 </div>
-<div class="nav" style="justify-content: center; z-index: 999;">
+<div *ngIf="checkUrl" class="nav" style="justify-content: center; z-index: 999;">
   <input type="checkbox" id="nav-check">
   <div class="nav-header">
-    <!-- <div class="nav-title">
-      JoGeek
-    </div> -->
+
   </div>
   <div class="nav-btn">
     <label for="nav-check">
@@ -52,7 +48,72 @@ width: 100%;">
     <a (click)="redirect()">Cart &nbsp; <i style="font-size:24px" class="fa">&#xf290;</i> </a>
   </div>
 </div>
-
+<!-- <nav class="navbar navbar-expand-md bg-body-tertiary">
+  <div class="container-xl">
+    <a class="navbar-brand" href="#">
+      <img  height="70px" src="/assets/logo.jpg">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Another Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Another Link</a>
+        </li>
+      </ul>
+      <div class="search-and-icons">
+        <form class="d-flex mb-2 me-2" role="search">
+          <input class="form-control me-2" type="search" aria-label="Search">
+        </form>
+        <div class="user-icons d-flex mb-2">
+          <div class="profile"><i class="bi bi-person"></i></div>
+          <div class="wishlist"><i class="bi bi-heart"></i></div>
+          <div class="cart"><i class="bi bi-cart3"></i></div>
+        </div>
+      </div>
+      <div class="contact-info d-md-flex">
+        <p>+0987654321 | +1234567890 </p>
+        <p><a href="mailto:">contact@domainname.com</a></p>
+      </div>
+    </div>
+  </div>
+</nav> -->
 <!-- ---------------------- Watermark (Please Ignore) ---------------------- -->
 <!-- <div class="watermark-ctr">
   <a target="_blank" href="https://www.facebook.com/annapurnafoodandgrocery?mibextid=LQQJ4d">
@@ -64,7 +125,7 @@ width: 100%;">
 </div> -->
 
 
-<button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button>
+<!-- <button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button> -->
 
 <dialog style="z-index: 1000000;"  id="dialog" *ngIf="dialogOpen">
   <div id="wrapper">
@@ -85,7 +146,7 @@ width: 100%;">
             <input placeholder="enter Your Email"
             type="email" id="email" name="email" [(ngModel)]="email" required/>
         </div>
-<!-- 
+        <!-- 
         <div>
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" [(ngModel)]="email" required>

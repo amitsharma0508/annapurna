@@ -28,6 +28,8 @@ import { AccessoriesComponent } from "./admin/accessories/accessories.component"
 import { WarehouseComponent } from "./admin/warehouse/warehouse.component";
 import { HouseholdComponent } from "./admin/household/household.component";
 import { CartComponent } from "./cart/cart.component";
+import { FeaturedProductComponent } from "./admin/featured-product/featured-product.component";
+import { TrendingProductComponent } from "./admin/trending-product/trending-product.component";
 
 const routes: Routes = [
   {
@@ -92,7 +94,9 @@ const routes: Routes = [
     AccessoriesComponent,
     WarehouseComponent,
     HouseholdComponent,
-    CartComponent
+    CartComponent,
+    FeaturedProductComponent,
+    TrendingProductComponent
   ],
   imports: [
     BrowserModule,

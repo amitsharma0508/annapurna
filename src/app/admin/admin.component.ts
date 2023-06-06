@@ -26,6 +26,8 @@ export class AdminComponent implements OnInit {
   wareHouseToggle =false;
   accessoriesToggle=false;
   householdToggle=false;
+  featuredToggle=false;
+  trendingToggle=false;
 
   toggleMenu() {
     this.toggleActive = !this.toggleActive;
@@ -71,6 +73,8 @@ export class AdminComponent implements OnInit {
     this.accessoriesToggle=false;
     this.tobacco=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
+    this.trendingToggle=false;
     console.log("trigerred")
   }
   cigaretToggleFunction(){
@@ -83,7 +87,9 @@ export class AdminComponent implements OnInit {
     this.tobacco=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.featuredToggle=false;
     this.householdToggle=false;
+    this.trendingToggle=false;
     console.log("trigerred oooooooo")
   }
   despicableVapeToggleFunction(){
@@ -96,7 +102,9 @@ export class AdminComponent implements OnInit {
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
     this.tobacco=false;
+    this.trendingToggle=false;
   }
   electronicToggleFunction(){
     this.dryGroceryToggle=false;
@@ -108,7 +116,9 @@ export class AdminComponent implements OnInit {
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
     this.tobacco=false;
+    this.trendingToggle=false;
   }
   healthAndBeautyToggleFunction(){
     this.dryGroceryToggle=false;
@@ -120,7 +130,9 @@ export class AdminComponent implements OnInit {
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
     this.tobacco=false;
+    this.trendingToggle=false;
   }
   produceToggleFunction(){
     this.dryGroceryToggle=false;
@@ -132,7 +144,9 @@ export class AdminComponent implements OnInit {
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
     this.tobacco=false;
+    this.trendingToggle=false;
   }
   tobaccoFunction(){
     this.dryGroceryToggle=false;
@@ -144,6 +158,8 @@ export class AdminComponent implements OnInit {
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
+    this.trendingToggle=false;
     this.tobacco=true;
   }
   wareHouseFunction(){
@@ -156,6 +172,8 @@ export class AdminComponent implements OnInit {
     this.tobacco=false;
     this.accessoriesToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
+    this.trendingToggle=false;
     this.wareHouseToggle = true;
   }
   accessoriesFunction(){
@@ -168,6 +186,8 @@ export class AdminComponent implements OnInit {
     this.tobacco=false;
     this.wareHouseToggle=false;
     this.householdToggle=false;
+    this.featuredToggle=false;
+    this.trendingToggle=false;
     this.accessoriesToggle=true;
   }
   householdFunction(){
@@ -180,8 +200,39 @@ export class AdminComponent implements OnInit {
     this.tobacco=false;
     this.wareHouseToggle=false;
     this.accessoriesToggle=false;
+    this.featuredToggle=false;
+    this.trendingToggle=false;
     this.householdToggle=true;
+  }
 
+  featuredFunction(){
+    this.dryGroceryToggle=false;
+    this.cigaretToggle=false;
+    this.despicableVapeToggle=false;
+    this.electronicToggle=false;
+    this.healthAndBeautyToggle=false;
+    this.produceToggle=false;
+    this.tobacco=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
+    this.householdToggle=false;
+    this.trendingToggle=false;
+    this.featuredToggle=true;
+  }
+
+  TrendingFunction(){
+    this.dryGroceryToggle=false;
+    this.cigaretToggle=false;
+    this.despicableVapeToggle=false;
+    this.electronicToggle=false;
+    this.healthAndBeautyToggle=false;
+    this.produceToggle=false;
+    this.tobacco=false;
+    this.wareHouseToggle=false;
+    this.accessoriesToggle=false;
+    this.householdToggle=false;
+    this.featuredToggle=false;
+    this.trendingToggle=true;
   }
 
 }

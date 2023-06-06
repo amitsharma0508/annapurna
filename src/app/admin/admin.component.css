@@ -1,7 +1,4 @@
-/* =========== Google Fonts ============ */
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-/* =============== Globals ============== */
 * {
   font-family: "Ubuntu", sans-serif;
   margin: 0;
@@ -13,8 +10,6 @@
   --blue: #2a2185;
   --white: #fff;
   --gray: #f5f5f5;
-  /* #222: #222; */
-  /* #999: #999; */
 }
 
 body {
@@ -27,7 +22,7 @@ body {
   width: 100%;
 }
 
-/* =============== Navigation ================ */
+
 .navigation {
   position: fixed;
   width: 300px;
@@ -84,7 +79,7 @@ body {
   display: block;
   min-width: 60px;
   height: 40px;
-  line-height: 52px;
+  line-height: 81px;
   text-align: center;
 }
 .navigation ul li a .icon ion-icon {
@@ -96,12 +91,11 @@ body {
   display: block;
   padding: 0 10px;
   height: 56px;
-  line-height: 30px;
+  line-height: 68px;
   text-align: start;
   white-space: nowrap;
 }
 
-/* --------- curve outside ---------- */
 .navigation ul li:hover a::before,
 .navigation ul li.hovered a::before {
   content: "";
@@ -129,7 +123,7 @@ body {
   pointer-events: none;
 }
 
-/* ===================== Main ===================== */
+
 .main {
   position: absolute;
   width: calc(100% - 300px);
@@ -215,7 +209,7 @@ body {
   object-fit: cover;
 }
 
-/* ======================= Cards ====================== */
+
 .cardBox {
   position: relative;
   width: 100%;
@@ -264,7 +258,7 @@ body {
   color: #fff;
 }
 
-/* ================== Order Details List ============== */
+
 .details {
   position: relative;
   width: 100%;
@@ -272,7 +266,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 30px;
-  /* margin-top: 10px; */
+
 }
 
 .details .recentOrders {
@@ -411,7 +405,7 @@ body {
   color: #fff;
 }
 
-/* ====================== Responsive Design ========================== */
+
 @media (max-width: 991px) {
   .navigation {
     left: -300px;
@@ -476,8 +470,6 @@ body {
 }
 
 
-
-/* group-button css start*/
 .group-button{
   font-size: 5vmin;
   padding: .5em 1em;
@@ -520,9 +512,7 @@ body {
   transform: rotate(-10deg);
 }
 
-/* group-button css end*/
 
-/* adding new product css start */
 .wrapper{
   max-width: 700px;
   width: 100%;
@@ -580,10 +570,7 @@ form .user-details .input-box{
 .user-details .input-box input,textarea,select:valid{
   border-color: #9B59B6;
 }
-/* .user-details .input-box textarea:focus,
-.user-details .input-box textarea:valid{
-  border-color: #9B59B6;
-} */
+
 form .gender-details .gender-title{
   font-size: 20px;
   font-weight: 500;
@@ -658,7 +645,6 @@ form .button textarea:hover{
   background: linear-gradient(-135deg, #71B7E6, #9B59B6);
 }
 
-/* Media Query */
 @media (max-width: 584px) {
   .wrapper{
       max-width: 100%;
@@ -678,8 +664,6 @@ form .button textarea:hover{
       width: 0;
   }
 }
-/* adding new product css end */
-
 
 
 
@@ -836,4 +820,21 @@ form .button textarea:hover{
 	  bottom: 100%;
 	}
   }
+  .navigation::-webkit-scrollbar {
+    width: 6px;
+  }
   
+  .navigation::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .navigation::-webkit-scrollbar-thumb {
+    background-color: #5176c4;
+  }
+  
+  .navigation::-webkit-scrollbar-thumb:hover {
+    background-color: #665cbd;
+  }
+
+
+ 

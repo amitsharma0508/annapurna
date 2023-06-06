@@ -50,6 +50,8 @@ export class AppComponent {
     this.service.getWareHouseDetails();
     this.service.getAccessoriesDetails();
     this.service.getHouseholdDetails();
+    this.service.getfeaturedDetails();
+    this.service.gettrendingProductsDetails();
     // detection of url and writing logic
     // start
     this.service.getDatas().subscribe((data) => {

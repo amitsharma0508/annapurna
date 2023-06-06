@@ -21,9 +21,9 @@
   </div>
 
 <body *ngIf="wholeDisplay"> 
-    <!-- =============== Navigation ================ -->
+
     <div  class="container">
-        <div class="navigation" [ngClass]="{ active: toggleActive }">
+        <div class="navigation" [ngClass]="{ active: toggleActive }" style="max-height: 100vh; overflow-y: auto;">
             <ul>
                 <li>
                     <a href="#">
@@ -126,6 +126,24 @@
                 </li>
 
                 <li>
+                    <a (click)="featuredFunction()">
+                        <span class="icon">
+                            <ion-icon name="gift-outline"></ion-icon>
+                        </span>
+                        <span class="title">Featured</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a (click)="TrendingFunction()">
+                        <span class="icon">
+                            <ion-icon name="gift-outline"></ion-icon>
+                        </span>
+                        <span class="title">Trending</span>
+                    </a>
+                </li>
+
+                <li>
                     <a (click)="dryGroceryToggleFunction()">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
@@ -136,7 +154,7 @@
             </ul>
         </div>
 
-        <!-- ========================= Main ==================== -->
+
         <div class="main" [ngClass]="{ active: toggleActive }">
             <div class="topbar">
                 <div class="toggle">
@@ -191,6 +209,13 @@
             <div *ngIf="householdToggle">
                 <app-household></app-household>
             </div>
+            <div *ngIf="featuredToggle"> 
+                <app-featured-product></app-featured-product>
+            </div>
+            <div *ngIf="trendingToggle">
+                <app-trending-product></app-trending-product>
+            </div>
         </div>
     </div>
 </body>
+

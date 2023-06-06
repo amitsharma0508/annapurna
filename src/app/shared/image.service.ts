@@ -22,6 +22,8 @@ export class ImageService {
   wareHouseDetails:AngularFireList<any>;
   accessoriesDetails:AngularFireList<any>;
   householdDetails:AngularFireList<any>;
+  featuredDetails:AngularFireList<any>;
+  trendingProductsDetails:AngularFireList<any>;
   private dataSubject = new Subject<any>();
   private random = new Subject<number>();
   sendData(data: any) {
@@ -131,6 +133,22 @@ export class ImageService {
   insertHouseholdDetails(HouseholdList){
     console.log("trigreed")
     this.householdDetails.push(HouseholdList)
+  }
+
+  getfeaturedDetails(){
+    this.featuredDetails= this.firebase.list('featuredList')
+  }
+  insertfeaturedDetails(featuredList){
+    console.log("trigreed")
+    this.featuredDetails.push(featuredList)
+  }
+  
+  gettrendingProductsDetails(){
+    this.trendingProductsDetails= this.firebase.list('trendingList')
+  }
+  inserttrendingProductsDetails(trendingList){
+    console.log("trigreed")
+    this.trendingProductsDetails.push(trendingList)
   }
   
 
