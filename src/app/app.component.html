@@ -1,237 +1,261 @@
-<div *ngIf="checkUrl" class="nav-bar" style="z-index: 999;
-position: relative;background: -webkit-linear-gradient(#ffc535, #ff8108);
-background: -webkit-linear-gradient(#ffc535, #ff8108);
-width: 100%;">
-  <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <img style="mix-blend-mode: color-burn;" height="70px" src="/assets/logo.jpg"> &nbsp;
-    <a class="navbar-brand" href="#" style="color: rgb(238 55 7);font-size: 30px;
-    font-weight: bold;">Annapurna Wholesale</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" style="max-width: 95%;">
-          <section class="early">
-            <article>  
-              <marquee style="color: #ffffff;
-              font-weight: bolder;
-              font-size: 25px;
-              margin-top: 1%;" behavior="scroll" direction="left">Discover the best deals on a wide range of high-quality products for your business at our wholesale prices. From trendy electronics to top-notch beauty essentials, we have everything you need to elevate your inventory and attract satisfied customers. Explore our vast selection today and take your business to new heights!</marquee>
-              </article>
-          </section>
-        </li>
-      </ul>
-      
-    </div>
-  </div>
-</nav>
-</div>
-<div *ngIf="checkUrl" class="nav" style="justify-content: center; z-index: 999;">
-  <input type="checkbox" id="nav-check">
-  <div class="nav-header">
-
-  </div>
-  <div class="nav-btn">
-    <label for="nav-check">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-  </div>
+<div *ngIf="!isLoggedIn">
+  <div *ngIf="checkUrl" class="nav-bar" style="z-index: 999;
+  position: relative;background: -webkit-linear-gradient(#ffc535, #ff8108);
+  background: -webkit-linear-gradient(#ffc535, #ff8108);
+  width: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <img style="mix-blend-mode: color-burn;" height="70px" src="/assets/logo.jpg"> &nbsp;
+      <a class="navbar-brand" href="#" style="color: rgb(238 55 7);font-size: 30px;
+      font-weight: bold;">Annapurna Wholesale</a>
   
-  <div class="nav-links">
-    <a  (click)="accessories()" >Accessories</a>
-    <a  (click)="wareHouse()">Houseware</a>
-    <a  (click)="healthAndBeauty()">Health & Beauty</a>
-    <a  (click)="despicableVape()">Disposable Vape</a>
-    <a  (click)="electronic()">Electronic</a>
-    <a (click)="redirect()">Cart &nbsp; <i style="font-size:24px" class="fa">&#xf290;</i> </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" style="max-width: 95%;">
+            <section class="early">
+              <article>  
+                <marquee style="color: #ffffff;
+                font-weight: bolder;
+                font-size: 25px;
+                margin-top: 1%;" behavior="scroll" direction="left">Discover the best deals on a wide range of high-quality products for your business at our wholesale prices. From trendy electronics to top-notch beauty essentials, we have everything you need to elevate your inventory and attract satisfied customers. Explore our vast selection today and take your business to new heights!</marquee>
+                </article>
+            </section>
+          </li>
+        </ul>
+        
+      </div>
+      <div>
+        <a (click)="redirect()"><i style="font-size:24px" class="fa">&#xf290;</i> </a>
+      </div>
+    </div>
+  </nav>
   </div>
-</div>
-<!-- <nav class="navbar navbar-expand-md bg-body-tertiary">
-  <div class="container-xl">
-    <a class="navbar-brand" href="#">
-      <img  height="70px" src="/assets/logo.jpg">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Another Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Another Link</a>
-        </li>
-      </ul>
-      <div class="search-and-icons">
-        <form class="d-flex mb-2 me-2" role="search">
-          <input class="form-control me-2" type="search" aria-label="Search">
+  <router-outlet></router-outlet>
+  <div *ngIf="checkUrl" class="nav" style="justify-content: center; z-index: 999;">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+  
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    
+    <div class="nav-links">
+      <a  (click)="accessories()" >Accessories</a>
+      <a  (click)="wareHouse()">Houseware</a>
+      <a  (click)="healthAndBeauty()">Health & Beauty</a>
+      <a  (click)="despicableVape()">Disposable Vape</a>
+      <a  (click)="electronic()">Electronic</a>
+      <!-- <a (click)="redirect()">Cart &nbsp; <i style="font-size:24px" class="fa">&#xf290;</i> </a> -->
+    </div>
+  </div>
+  <!-- <button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button> -->
+  
+  <dialog style="z-index: 1000000;"  id="dialog" *ngIf="dialogOpen">
+    <div id="wrapper">
+      <div class="containerss">
+        <header class="left header">
+          <div class="title-header">
+            <h1 style="color: #ffffff;" id="title" class="text-center">Annapurna Wholesale</h1>
+            <p style="color: #ffffff;"  id="description" class="description text-center">Thank you for using our platform</p>
+          </div>
+        </header> 
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+        
+        <form  id="survey-form" class="right" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
+          <div class="form-set">
+            <label id="name-label" for="email">Email</label>
+              <input placeholder="enter Your Email"
+              type="email" id="email" name="email" [(ngModel)]="email" required/>
+          </div>
+          <!-- 
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email" required>
+          </div> -->
+          <div class="form-set">
+            <label id="name-label" for="password">Password:</label>
+              <input placeholder="enter Your password"
+              type="password" id="password" name="password" [(ngModel)]="password" required/>
+          </div>
+          <!-- <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required>
+          </div> -->
+        
+          <button type="submit" [disabled]="loginForm.invalid">Login</button>
+          <p>Don't have an account? <a (click)="toggleSignup()">Sign up</a></p>
         </form>
-        <div class="user-icons d-flex mb-2">
-          <div class="profile"><i class="bi bi-person"></i></div>
-          <div class="wishlist"><i class="bi bi-heart"></i></div>
-          <div class="cart"><i class="bi bi-cart3"></i></div>
-        </div>
-      </div>
-      <div class="contact-info d-md-flex">
-        <p>+0987654321 | +1234567890 </p>
-        <p><a href="mailto:">contact@domainname.com</a></p>
+        
+        <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
+          <div class="form-set">
+            <label id="name-label" for="password">Customer Name:</label>
+              <input placeholder="Enter Your name"
+              type="text" id="password"  required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">Company Name:</label>
+              <input placeholder="Enter Your company Name"
+              type="text" id="password" required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">Address:</label>
+              <input placeholder="Enter Your Address"
+              type="text" id="password" required/>
+          </div>
+  
+          
+          <div class="form-set">
+            <label id="name-label" for="password">State:</label>
+              <input placeholder="Enter Your State"
+              type="text" id="password" required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">City:</label>
+              <input placeholder="Enter Your City"
+              type="text" id="password" required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">EIN number:</label>
+              <input placeholder="Enter Your EIN"
+              type="text" id="password" required/>
+          </div>
+          
+          <div class="form-set">
+            <label id="name-label" for="email">Email</label>
+              <input placeholder="Enter Your Email"
+              type="email" id="email" name="email" [(ngModel)]="email" required/>
+          </div>
+        
+          <div class="form-set">
+            <label id="name-label" for="password">Password:</label>
+              <input placeholder="Enter Your password"
+              type="password" id="password" name="password" [(ngModel)]="password" required/>
+          </div>
+        
+          <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
+          <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
+        </form>
       </div>
     </div>
+  
+  </dialog>
+  
+  
+  
+  <div>
+      <router-outlet></router-outlet>
   </div>
-</nav> -->
-<!-- ---------------------- Watermark (Please Ignore) ---------------------- -->
-<!-- <div class="watermark-ctr">
-  <a target="_blank" href="https://www.facebook.com/annapurnafoodandgrocery?mibextid=LQQJ4d">
-    <button class="generate-button">
-      <i class="fab fa-facebook-f"></i>
-      &nbsp;&nbsp;
-      <span>Facebook</span>
-    </button></a>
-</div> -->
-
-
-<!-- <button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button> -->
-
-<dialog style="z-index: 1000000;"  id="dialog" *ngIf="dialogOpen">
-  <div id="wrapper">
-    <div class="containerss">
-      <header class="left header">
-        <div class="title-header">
-          <h1 style="color: #ffffff;" id="title" class="text-center">Annapurna Wholesale</h1>
-          <p style="color: #ffffff;"  id="description" class="description text-center">Thank you for using our platform</p>
-        </div>
-      </header> 
-      <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-      </div>
-      
-      <form  id="survey-form" class="right" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
-        <div class="form-set">
-          <label id="name-label" for="email">Email</label>
-            <input placeholder="enter Your Email"
-            type="email" id="email" name="email" [(ngModel)]="email" required/>
-        </div>
-        <!-- 
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" [(ngModel)]="email" required>
-        </div> -->
-        <div class="form-set">
-          <label id="name-label" for="password">Password:</label>
-            <input placeholder="enter Your password"
-            type="password" id="password" name="password" [(ngModel)]="password" required/>
-        </div>
-        <!-- <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" [(ngModel)]="password" required>
-        </div> -->
-      
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
-        <p>Don't have an account? <a (click)="toggleSignup()">Sign up</a></p>
-      </form>
-      
-      <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
-        <div class="form-set">
-          <label id="name-label" for="password">Customer Name:</label>
-            <input placeholder="Enter Your name"
-            type="text" id="password"  required/>
-        </div>
-
-        <div class="form-set">
-          <label id="name-label" for="password">Company Name:</label>
-            <input placeholder="Enter Your company Name"
-            type="text" id="password" required/>
-        </div>
-
-        <div class="form-set">
-          <label id="name-label" for="password">Address:</label>
-            <input placeholder="Enter Your Address"
-            type="text" id="password" required/>
-        </div>
-
-        
-        <div class="form-set">
-          <label id="name-label" for="password">State:</label>
-            <input placeholder="Enter Your State"
-            type="text" id="password" required/>
-        </div>
-
-        <div class="form-set">
-          <label id="name-label" for="password">City:</label>
-            <input placeholder="Enter Your City"
-            type="text" id="password" required/>
-        </div>
-
-        <div class="form-set">
-          <label id="name-label" for="password">EIN number:</label>
-            <input placeholder="Enter Your EIN"
-            type="text" id="password" required/>
-        </div>
-        
-        <div class="form-set">
-          <label id="name-label" for="email">Email</label>
-            <input placeholder="Enter Your Email"
-            type="email" id="email" name="email" [(ngModel)]="email" required/>
-        </div>
-      
-        <div class="form-set">
-          <label id="name-label" for="password">Password:</label>
-            <input placeholder="Enter Your password"
-            type="password" id="password" name="password" [(ngModel)]="password" required/>
-        </div>
-      
-        <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
-        <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
-      </form>
-    </div>
+  <div *ngIf="!checkUrl">
+      <router-outlet></router-outlet>
   </div>
-
-</dialog>
-
-
-
-<div>
-    <router-outlet></router-outlet>
-</div>
-<div *ngIf="!checkUrl">
-    <router-outlet></router-outlet>
 </div>
 
 
 
 
+<!-- icons  -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+<body>
+  <div class=" flex-r container" *ngIf="isLoggedIn">
+    <div class="flex-r login-wrapper">
+      <div class="login-text">
+        <!-- <div class="logo">
+          <span><i class="fab fa-speakap"></i></span>
+          <span>Coders</span>
+        </div> -->
+        <h1>Sign Up</h1>
+        <p>It's not long before you embark on this journey! </p>
+
+        <form class="flex-c" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
+          <div class="form-set">
+            <label id="name-label" for="email">Email</label>
+              <input placeholder="enter Your Email"
+              type="email" id="email" name="email" [(ngModel)]="email" required/>
+          </div>
+          <!-- 
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email" required>
+          </div> -->
+          <div class="form-set">
+            <label id="name-label" for="password">Password:</label>
+              <input placeholder="enter Your password"
+              type="password" id="password" name="password" [(ngModel)]="password" required/>
+          </div>
+          <!-- <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required>
+          </div> -->
+        
+          <button type="submit" [disabled]="loginForm.invalid">Login</button>
+          <p>Don't have an account? <a (click)="toggleSignup()">Sign up</a></p>
+        </form>
+        <form class="flex-c" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
+          <div class="form-set">
+            <label id="name-label" for="password">Customer Name:</label>
+              <input placeholder="Enter Your name"
+              type="text" id="password"  required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">Company Name:</label>
+              <input placeholder="Enter Your company Name"
+              type="text" id="password" required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">Address:</label>
+              <input placeholder="Enter Your Address"
+              type="text" id="password" required/>
+          </div>
+  
+          
+          <div class="form-set">
+            <label id="name-label" for="password">State:</label>
+              <input placeholder="Enter Your State"
+              type="text" id="password" required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">City:</label>
+              <input placeholder="Enter Your City"
+              type="text" id="password" required/>
+          </div>
+  
+          <div class="form-set">
+            <label id="name-label" for="password">EIN number:</label>
+              <input placeholder="Enter Your EIN"
+              type="text" id="password" required/>
+          </div>
+          
+          <div class="form-set">
+            <label id="name-label" for="email">Email</label>
+              <input placeholder="Enter Your Email"
+              type="email" id="email" name="email" [(ngModel)]="email" required/>
+          </div>
+        
+          <div class="form-set">
+            <label id="name-label" for="password">Password:</label>
+              <input placeholder="Enter Your password"
+              type="password" id="password" name="password" [(ngModel)]="password" required/>
+          </div>
+        
+          <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
+          <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

@@ -96,7 +96,7 @@ const routes: Routes = [
     HouseholdComponent,
     CartComponent,
     FeaturedProductComponent,
-    TrendingProductComponent
+    TrendingProductComponent,
   ],
   imports: [
     BrowserModule,

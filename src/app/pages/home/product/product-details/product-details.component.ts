@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { observable } from 'rxjs';
 import { ImageService } from 'src/app/shared/image.service';
 
@@ -13,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   product:any
   imageList:any
   param:any;
-  constructor(private route:ActivatedRoute,private service: ImageService) { }
+  constructor(private route:ActivatedRoute,private service: ImageService, private router:Router) { }
    
    currentUserEmail:any;
 
@@ -134,16 +134,42 @@ export class ProductDetailsComponent implements OnInit {
           }
         );
       }
+      if(this.param == "featuredProduct"){
+        this.service.featuredDetails.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
     });
   }
 
 
-
+  loading:boolean;
+  quantity:any;
   addToCart(product: any): void {
     console.log(product + "product")
   this.service.addToCart(product, this.currentUserEmail)
     .then(() => {
       // Item added to cart successfully
+      this.loading=true;
+      setTimeout(() => {
+        this.loading=false;
+      }, 2000);
+      setTimeout(() => {
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            quantity:this.quantity,
+            email: this.currentUserEmail
+          }
+        };
+        console.log(JSON.stringify(this.quantity) + "dsfasf")
+        this.router.navigate(['/cart'], navigationExtras);
+      }, 2001);
+    
       console.log("Item added to cart successfully")
     })
     .catch(error => {

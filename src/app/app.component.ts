@@ -14,7 +14,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild('f') form!:NgForm;
+  // @ViewChild('f') form!:NgForm;
 
 
   title = 'teleport-project-template-angular';
@@ -225,22 +225,24 @@ export class AppComponent {
 
 
 
+  @ViewChild('f') form!:NgForm;
   @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
-  dialogOpen = false;
+  dialogOpen:boolean=false;
   
-  redirect(){
-    this.dialogOpen = true;
-    const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
-    if (button) {
-      button.dispatchEvent(new Event('click'));
-    }
-   
+  redirect() {
+    // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    // if (button) {
+    //   button.dispatchEvent(new Event('click'));
+    // }
+    this.isLoggedIn = true; // Set dialogOpen to true only when triggered
   }
 email: string;
 password: string;
 errorMessage: string;
 isSignUp: boolean = false;
+isLoggedIn:boolean=false;
 login() {
+  this.checkUrl = false;
   this.afAuth.signInWithEmailAndPassword(this.email, this.password)
     .then((userCredential) => {
       // Get the current user from the userCredential object
@@ -249,21 +251,21 @@ login() {
       // Access the user properties
       console.log('Current user:', user);
       console.log('User email:', user.email);
-      this.dialogOpen=false;
+      this.isLoggedIn=false;
       let navigationExtras: NavigationExtras = {
         queryParams: {
-          email:user.uid,
-          actualEmail:user.email
+          actualEmail: user.email,
+          email: user.uid
         }
-      };
-      this.router.navigate(['/cart'], navigationExtras);
-      this.dialogOpen=false;
+      }
+        this.router.navigate(['/cart'], navigationExtras); // Navigate to cart page only when dialogOpen is true
+      // this.dialogOpen=false;
     })
     .catch(error => {
       this.errorMessage = error.message;
+      console.log(this.errorMessage)
     });
 }
-
 signup() {
   this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
     .then(() => {

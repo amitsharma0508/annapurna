@@ -1,4 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, ElementRef, ViewChild } from '@angular/core'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { NgForm } from '@angular/forms';
 import { Title, Meta } from '@angular/platform-browser'
 import { NavigationExtras, Router } from '@angular/router';
 import { ImageService } from 'src/app/shared/image.service';
@@ -15,6 +17,10 @@ export class Home {
   imageLists: any[];
   rowIndexArray: any[];
 
+  @ViewChild('f') form!:NgForm;
+  @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
+  dialogOpen = true;
+
   items = [
     {
       name: "Rice Cooker(1.5Ltrs)",
@@ -26,7 +32,9 @@ export class Home {
     // Add more items as needed
   ];
 
-  constructor(private title: Title, private meta: Meta,private router: Router,private service: ImageService) {
+  constructor(private title: Title, private meta: Meta,
+    private router: Router,private service: ImageService,
+    private afAuth: AngularFireAuth) {
     this.title.setTitle('Mobillio Online Store')
     this.meta.addTags([
       {
@@ -167,4 +175,66 @@ export class Home {
     };
     this.router.navigate(['/product'], navigationExtras);
   }
+
+
+
+
+  navagatingID:any;
+  email: string;
+password: string;
+errorMessage: string;
+isSignUp: boolean = false;
+
+
+featuredProduct(id:any){
+  this.navagatingID=id
+  const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    if (button) {
+      button.dispatchEvent(new Event('click'));
+    }
+}
+login() {
+  this.afAuth.signInWithEmailAndPassword(this.email, this.password)
+    .then((userCredential) => {
+      // Get the current user from the userCredential object
+      const user = userCredential.user;
+      
+      // Access the user properties
+      console.log('Current user:', user);
+      console.log('User email:', user.email);
+
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          param:"featuredProduct",
+          type: "featuredProduct",
+          email:user.uid
+        }
+      };
+      this.router.navigate(['/product', this.navagatingID], navigationExtras);
+    })
+    .catch(error => {
+      this.errorMessage = error.message;
+    });
+}
+
+signup() {
+  this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
+    .then(() => {
+      // Redirect or do something after successful signup
+      this.toggleSignup()
+    })
+    .catch(error => {
+      this.errorMessage = error.message;
+    });
+}
+
+toggleSignup() {
+  this.isSignUp = !this.isSignUp;
+  this.errorMessage = null;
+  this.email = '';
+  this.password = '';
+}
+
+
+
 }

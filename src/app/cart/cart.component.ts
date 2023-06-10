@@ -14,17 +14,19 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: ImageService, private http:HttpClient, private route:ActivatedRoute) {
     this.cartItems.forEach(item => {
-      item.quantity = 1;
+      item.quantity = this.quantity;
     });
    }
    currentUserEmail:any;
    actualEmail:any
    totalPrice:number=0;
+   quantity:any;
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.currentUserEmail = params['email']
       this.actualEmail = params['actualEmail']
-      console.log(this.currentUserEmail + "currentuseremail")
+      this.quantity = params['quantity']
+      console.log(this.currentUserEmail + "currentuseremail", this.quantity + ("Quantity"))
     });
     this.fetchCartItems(this.currentUserEmail);
   }
@@ -105,7 +107,7 @@ export class CartComponent implements OnInit {
         alert(JSON.stringify(err));
       });
   }
-  quantity
+  
   generateEmailMessage(): string {
     let message = '';
 
