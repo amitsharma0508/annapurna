@@ -24,6 +24,7 @@ export class ProductDetailsComponent implements OnInit {
    actualEmail:any
 
   ngOnInit(): void {
+    this.service.getUserDetails();
     const script1 = document.createElement('script');
   
     script1.src = 'assets/img/side-nav-toggle.js';
@@ -233,15 +234,46 @@ export class ProductDetailsComponent implements OnInit {
         this.errorMessage = error.message;
       });
   }
-  
+  name
+  companyName
+  address
+  state
+  city
+  einNumber
+  phoneNumber
+  signUpEmail
+  // userDetails:AngularFireList<any>;
+  // getUserDetails(){
+  //   this.userDetails= this.firebase.list('userDetails')
+  // }
+  // insertUserDetails(userList){
+  //   console.log("trigreed")
+  //   this.userDetails.push(userList)
+  // }
   signup() {
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
       .then(() => {
+        // Push data to Firebase Realtime Database
+        const userData = {
+          name: this.name,
+          companyName: this.companyName,
+          address: this.address,
+          state: this.state,
+          city: this.city,
+          einNumber: this.einNumber,
+          phoneNumber: this.phoneNumber,
+          email: this.email
+        };
+        console.log(userData + "userDAta")
+        console.log(this.email + "email")
+        this.service.insertUserDetails(userData);
+        console.log(userData)
         // Redirect or do something after successful signup
-        this.toggleSignup()
+        this.toggleSignup();
       })
       .catch(error => {
         this.errorMessage = error.message;
+        console.log("trigerred" + this.errorMessage)
       });
   }
   isSignUp

@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
         console.log(this.userDetail);
       } else {
         console.log('User details not found!');
+        console.log(this.actualEmail)
       }
     });
   }

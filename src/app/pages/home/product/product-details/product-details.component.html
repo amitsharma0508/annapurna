@@ -41,58 +41,54 @@
             </form>
             
             <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
-              <div class="form-set">
-                <label id="name-label" for="password">Customer Name:</label>
-                  <input placeholder="Enter Your name"
-                  type="text" id="password"  required/>
-              </div>
-      
-              <div class="form-set">
-                <label id="name-label" for="password">Company Name:</label>
-                  <input placeholder="Enter Your company Name"
-                  type="text" id="password" required/>
-              </div>
-      
-              <div class="form-set">
-                <label id="name-label" for="password">Address:</label>
-                  <input placeholder="Enter Your Address"
-                  type="text" id="password" required/>
-              </div>
-      
+                <div class="form-set">
+                  <label id="name-label" for="password">Customer Name:</label>
+                  <input placeholder="Enter Your name" type="text" id="passw" name="name" [(ngModel)]="name" required/>
+                </div>
               
-              <div class="form-set">
-                <label id="name-label" for="password">State:</label>
-                  <input placeholder="Enter Your State"
-                  type="text" id="password" required/>
-              </div>
-      
-              <div class="form-set">
-                <label id="name-label" for="password">City:</label>
-                  <input placeholder="Enter Your City"
-                  type="text" id="password" required/>
-              </div>
-      
-              <div class="form-set">
-                <label id="name-label" for="password">EIN number:</label>
-                  <input placeholder="Enter Your EIN"
-                  type="text" id="password" required/>
-              </div>
+                <div class="form-set">
+                  <label id="name-label" for="password">Company Name:</label>
+                  <input placeholder="Enter Your company Name" type="text" id="passwordfsdf" name="companyName" [(ngModel)]="companyName" required/>
+                </div>
               
-              <div class="form-set">
-                <label id="name-label" for="email">Email</label>
-                  <input placeholder="enter Your Email"
-                  type="email" id="email" name="email" [(ngModel)]="email" required/>
-              </div>
-            
-              <div class="form-set">
-                <label id="name-label" for="password">Password:</label>
-                  <input placeholder="enter Your password"
-                  type="password" id="password" name="password" [(ngModel)]="password" required/>
-              </div>
-            
-              <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
-              <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
-            </form>
+                <div class="form-set">
+                  <label id="name-label" for="password">Address:</label>
+                  <input placeholder="Enter Your Address" type="text" id="passwordwerwer" name="address" [(ngModel)]="address" required/>
+                </div>
+              
+                <div class="form-set">
+                  <label id="name-label" for="password">State:</label>
+                  <input placeholder="Enter Your State" type="text" id="passwordgfhgf" name="state" [(ngModel)]="state" required/>
+                </div>
+              
+                <div class="form-set">
+                  <label id="name-label" for="password">City:</label>
+                  <input placeholder="Enter Your City" type="text" id="passwordjkh" name="city" [(ngModel)]="city" required/>
+                </div>
+              
+                <div class="form-set">
+                  <label id="name-label" for="password">EIN number:</label>
+                  <input placeholder="Enter Your EIN" type="text" id="passwordgfhrtrb" name="einNumber" [(ngModel)]="einNumber" required/>
+                </div>
+              
+                <div class="form-set">
+                  <label id="name-label" for="password">phoneNumber:</label>
+                  <input placeholder="Enter Your phoneNumber" type="number" id="passwordgfd" name="phoneNumber" [(ngModel)]="phoneNumber" required/>
+                </div>
+              
+                <div class="form-set">
+                  <label id="name-label" for="email">Email</label>
+                  <input placeholder="Enter Your Email" type="email" id="email" name="email" [(ngModel)]="email" required/>
+                </div>
+              
+                <div class="form-set">
+                  <label id="name-label" for="password">Password:</label>
+                  <input placeholder="Enter Your password" type="password" id="password" name="password" [(ngModel)]="password" required/>
+                </div>
+              
+                <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
+                <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
+              </form>
           </div>
         </div>
       

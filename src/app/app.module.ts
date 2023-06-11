@@ -97,6 +97,7 @@ const routes: Routes = [
     CartComponent,
     FeaturedProductComponent,
     TrendingProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
