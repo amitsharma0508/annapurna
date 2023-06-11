@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { observable } from 'rxjs';
 import { ImageService } from 'src/app/shared/image.service';
@@ -13,7 +15,10 @@ export class ProductDetailsComponent implements OnInit {
   product:any
   imageList:any
   param:any;
-  constructor(private route:ActivatedRoute,private service: ImageService, private router:Router) { }
+  constructor(private route:ActivatedRoute,private afAuth: AngularFireAuth,private service: ImageService, private router:Router) {
+    this.currentUserEmail = localStorage.getItem('currentUserEmail');
+    this.actualEmail = localStorage.getItem('actualEmail');
+   }
    
    currentUserEmail:any;
    actualEmail:any
@@ -161,9 +166,94 @@ export class ProductDetailsComponent implements OnInit {
 
   loading:boolean;
   quantity:any;
+  @ViewChild('f') form!:NgForm;
+  @ViewChild('closeButton') closeButton: ElementRef<HTMLButtonElement>;
+  dialogOpen = true;
   addToCart(product: any): void {
-    console.log(product + "product")
-  this.service.addToCart(product, this.currentUserEmail)
+    this.productDetails = product;
+    console.log(product + "product");
+  
+    const currentUserEmail = localStorage.getItem('currentUserEmail');
+    const actualEmail = localStorage.getItem('actualEmail');
+  
+    if (!currentUserEmail || !actualEmail) {
+      const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+      if (button) {
+        button.dispatchEvent(new Event('click'));
+      }
+      this.login();
+    } else {
+      this.service.addToCart(product, currentUserEmail)
+        .then(() => {
+          // Item added to cart successfully
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+          }, 2000);
+          setTimeout(() => {
+            let navigationExtras: NavigationExtras = {
+              queryParams: {
+                quantity: this.quantity,
+                email: currentUserEmail,
+                actualEmail: actualEmail
+              }
+            };
+            console.log(JSON.stringify(this.quantity) + "dsfasf")
+            this.router.navigate(['/cart'], navigationExtras);
+          }, 2001);
+  
+          console.log("Item added to cart successfully");
+        })
+        .catch(error => {
+          console.log('Error adding item to cart:', error);
+        });
+    }
+  }
+
+  email
+  password
+  errorMessage
+  login() {
+    this.afAuth.signInWithEmailAndPassword(this.email, this.password)
+      .then((userCredential) => {
+        // Get the current user from the userCredential object
+        const user = userCredential.user;
+        
+        // Access the user properties
+        console.log('Current user:', user);
+        console.log('User email:', user.email);
+        this.currentUserEmail=user.uid,
+        this.actualEmail=user.email,
+
+        localStorage.setItem('currentUserEmail', user.uid);
+        localStorage.setItem('actualEmail', user.email);
+
+        this.navigate();
+      }).catch(error => {
+        this.errorMessage = error.message;
+      });
+  }
+  
+  signup() {
+    this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        // Redirect or do something after successful signup
+        this.toggleSignup()
+      })
+      .catch(error => {
+        this.errorMessage = error.message;
+      });
+  }
+  isSignUp
+  toggleSignup() {
+    this.isSignUp = !this.isSignUp;
+    this.errorMessage = null;
+    this.email = '';
+    this.password = '';
+  }
+productDetails:any
+  navigate(){
+      this.service.addToCart(this.productDetails, this.currentUserEmail)
     .then(() => {
       // Item added to cart successfully
       this.loading=true;
@@ -187,6 +277,5 @@ export class ProductDetailsComponent implements OnInit {
     .catch(error => {
       console.log('Error adding item to cart:', error);
     });
-     
   }
 }

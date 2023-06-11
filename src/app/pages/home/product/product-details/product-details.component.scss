@@ -2,7 +2,7 @@
 
 * {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
+    // margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -318,3 +318,177 @@ a:hover {
   }
   
   
+  dialog::backdrop {
+    background: rgba(#000000, 0.25);
+    backdrop-filter: blur(0.15rem);
+  }
+  
+  dialog {
+    display: block;
+  }
+  
+  dialog:not(:target):not([open]) {
+    display: none;
+  }
+  
+  button,
+  a {
+    &:focus-visible {
+      outline: 2px solid black;
+      outline-offset: 2px;
+    }
+  }
+  
+  
+  button {
+    background: #14213d;
+    color: #ffffff;
+    border: 0;
+    appearance: none;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+  
+  
+  #title h1{
+    text-align: center;
+    color: white;
+    font-family: inherit;
+  }
+  
+  .text-center {
+   text-align: center;
+   margin: 0.5em;
+  }
+  
+  .containerss{
+    /* width: 820px; */
+    height: 90%;
+    /* margin: 1% auto; */
+    display: flex;
+    flex: 1 1 100%;
+    overflow: hidden;
+    align-items: stretch;
+      /* justify-content: space-between; */
+    /* box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.2); */
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 767px) {
+    .containerss {
+      flex-direction: column;
+      width: 375px; 
+    }
+    .left {
+      height: 100%;
+    }
+  }
+  
+  .left {
+    background-color: #1E88E5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://images.unsplash.com/photo-1601598505513-7489a6272d2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQxfHxncm9jZXJ5JTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60');
+    overflow: hidden;
+  }
+  
+  .right {
+    position: relative;
+    background: -webkit-linear-gradient(#ffc535, #ff8108);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+  
+  /* Form */
+  form {
+    padding: 2.5rem 0.625rem;
+    border-radius: 0.25rem;
+  }
+  
+  .form-set{
+    padding: 5px; 
+  }
+  
+  @media (min-width: 480px) {
+    form {
+      padding: 1rem;
+      display: block;
+    }
+  }
+  
+  .form-control {
+    width: 100%;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  #name-label,
+  #email-label,
+  #number-label,
+  #drop-label,
+  #radio-label,
+  #checkbox-label,
+  #textarea-label{
+    display: flex;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  input,
+  button,
+  select,
+  textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  
+  /*Comment*/
+  textarea {
+    background: none;
+  }
+  
+  .input-textarea {
+    margin-top: 6px;
+    width: 100%;
+    height: 105px;
+    border: 1px solid white;
+    border-radius: 5px;
+    resize: none;
+    transition: 0.3s;
+  }
+  
+  .input-textarea:hover {
+    border: 2px solid white;
+  }
+  
+  /*Button */
+  button {
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    width: 100%;
+    height: 51px;
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  /* .submit-button:hover {
+    background: white;
+  } */
+

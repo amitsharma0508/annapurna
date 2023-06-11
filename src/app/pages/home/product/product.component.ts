@@ -130,10 +130,19 @@ navagatingID:any;
 
   redirect(id:any){
     this.navagatingID=id
-    const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
-    if (button) {
-      button.dispatchEvent(new Event('click'));
-    }
+    // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    // if (button) {
+    //   button.dispatchEvent(new Event('click'));
+    // }
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param: this.param,
+        type: this.param,
+        // email:user.uid,
+        // actualEmail:user.email
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
    
   }
 // //submit

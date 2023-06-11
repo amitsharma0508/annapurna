@@ -190,22 +190,37 @@ navigatingParam:any;
 navigatingType:any;
 featuredProduct(id:any){
   this.navagatingID=id
-  const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
-    if (button) {
-      button.dispatchEvent(new Event('click'));
-    }
+  // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+  //   if (button) {
+  //     button.dispatchEvent(new Event('click'));
+  //   }
     this.navigatingParam="featuredProduct"
     this.navigatingType="featuredProduct"
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param:this.navigatingParam,
+        type: this.navigatingType,
+        // email:user.uid
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
 }
 
 trendingProduct(id:any){
   this.navagatingID=id
-  const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
-    if (button) {
-      button.dispatchEvent(new Event('click'));
-    }
+  // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+  //   if (button) {
+  //     button.dispatchEvent(new Event('click'));
+  //   }
     this.navigatingParam="trendingProduct"
     this.navigatingType="trendingProduct"
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param:this.navigatingParam,
+        type: this.navigatingType,
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
 }
 
 login() {
@@ -217,7 +232,7 @@ login() {
       // Access the user properties
       console.log('Current user:', user);
       console.log('User email:', user.email);
-
+      
       let navigationExtras: NavigationExtras = {
         queryParams: {
           param:this.navigatingParam,
