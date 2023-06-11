@@ -30,7 +30,7 @@
     </div>
   </nav>
   </div>
-  <router-outlet></router-outlet>
+
   <div *ngIf="checkUrl" class="nav" style="justify-content: center; z-index: 999;">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
@@ -54,7 +54,7 @@
     </div>
   </div>
   <!-- <button style="visibility: hidden;" id="openDialogButton" onclick="window.dialog.showModal();">Open dialog</button> -->
-  
+  <router-outlet></router-outlet>
   <dialog style="z-index: 1000000;"  id="dialog" *ngIf="dialogOpen">
     <div id="wrapper">
       <div class="containerss">
@@ -152,10 +152,7 @@
   </dialog>
   
   
-  
-  <div>
-      <router-outlet></router-outlet>
-  </div>
+
   <div *ngIf="!checkUrl">
       <router-outlet></router-outlet>
   </div>
@@ -204,57 +201,54 @@
         </form>
         <form class="flex-c" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
           <div class="form-set">
-            <label id="name-label" for="password">Customer Name:</label>
-              <input placeholder="Enter Your name"
-              type="text" id="password"  required/>
-          </div>
-  
-          <div class="form-set">
-            <label id="name-label" for="password">Company Name:</label>
-              <input placeholder="Enter Your company Name"
-              type="text" id="password" required/>
-          </div>
-  
-          <div class="form-set">
-            <label id="name-label" for="password">Address:</label>
-              <input placeholder="Enter Your Address"
-              type="text" id="password" required/>
-          </div>
-  
-          
-          <div class="form-set">
-            <label id="name-label" for="password">State:</label>
-              <input placeholder="Enter Your State"
-              type="text" id="password" required/>
-          </div>
-  
-          <div class="form-set">
-            <label id="name-label" for="password">City:</label>
-              <input placeholder="Enter Your City"
-              type="text" id="password" required/>
-          </div>
-  
-          <div class="form-set">
-            <label id="name-label" for="password">EIN number:</label>
-              <input placeholder="Enter Your EIN"
-              type="text" id="password" required/>
-          </div>
-          
-          <div class="form-set">
-            <label id="name-label" for="email">Email</label>
-              <input placeholder="Enter Your Email"
-              type="email" id="email" name="email" [(ngModel)]="email" required/>
+            <label id="name-label" for="name">Customer Name:</label>
+            <input placeholder="Enter Your name" type="text" id="name" name="name" [(ngModel)]="name" required />
           </div>
         
           <div class="form-set">
-            <label id="name-label" for="password">Password:</label>
-              <input placeholder="Enter Your password"
-              type="password" id="password" name="password" [(ngModel)]="password" required/>
+            <label id="company-name-label" for="companyName">Company Name:</label>
+            <input placeholder="Enter Your company Name" type="text" id="companyName" name="companyName" [(ngModel)]="companyName" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="address-label" for="address">Address:</label>
+            <input placeholder="Enter Your Address" type="text" id="address" name="address" [(ngModel)]="address" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="state-label" for="state">State:</label>
+            <input placeholder="Enter Your State" type="text" id="state" name="state" [(ngModel)]="state" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="city-label" for="city">City:</label>
+            <input placeholder="Enter Your City" type="text" id="city" name="city" [(ngModel)]="city" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="ein-label" for="einNumber">EIN number:</label>
+            <input placeholder="Enter Your EIN" type="text" id="einNumber" name="einNumber" [(ngModel)]="einNumber" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="phone-label" for="phoneNumber">Phone number:</label>
+            <input placeholder="Enter Your phone number" type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="email-label" for="email">Email</label>
+            <input placeholder="Enter Your Email" type="email" id="email" name="email" [(ngModel)]="email" required />
+          </div>
+        
+          <div class="form-set">
+            <label id="password-label" for="password">Password:</label>
+            <input placeholder="Enter Your password" type="password" id="password" name="password" [(ngModel)]="password" required />
           </div>
         
           <button type="submit" [disabled]="signupForm.invalid">Sign up</button>
           <p>Already have an account? <a (click)="toggleSignup()">Login</a></p>
         </form>
+        
       </div>
     </div>
   </div>

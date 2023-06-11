@@ -150,6 +150,17 @@ export class ImageService {
     console.log("trigreed")
     this.trendingProductsDetails.push(trendingList)
   }
+  userDetails:AngularFireList<any>;
+getUserDetails(){
+  this.userDetails= this.firebase.list('userDetails')
+}
+insertUserDetails(userList){
+  if (this.userDetails) {
+    this.userDetails.push(userList);
+  } else {
+    console.error("userDetails is not initialized.");
+  }
+}
   
 
 

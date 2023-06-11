@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route:ActivatedRoute,private service: ImageService, private router:Router) { }
    
    currentUserEmail:any;
-
+   actualEmail:any
 
   ngOnInit(): void {
     const script1 = document.createElement('script');
@@ -27,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.param = params['param'];
       this.currentUserEmail = params['email']
+      this.actualEmail = params['actualEmail']
       console.log(this.currentUserEmail + "currentuseremail")
     });
     this.route.paramMap.subscribe(params => {
@@ -144,6 +145,16 @@ export class ProductDetailsComponent implements OnInit {
           }
         );
       }
+      if(this.param == "trendingProduct"){
+        this.service.trendingProductsDetails.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
     });
   }
 
@@ -163,7 +174,8 @@ export class ProductDetailsComponent implements OnInit {
         let navigationExtras: NavigationExtras = {
           queryParams: {
             quantity:this.quantity,
-            email: this.currentUserEmail
+            email: this.currentUserEmail,
+            actualEmail:this.actualEmail
           }
         };
         console.log(JSON.stringify(this.quantity) + "dsfasf")

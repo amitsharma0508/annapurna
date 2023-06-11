@@ -14,13 +14,14 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: ImageService, private http:HttpClient, private route:ActivatedRoute) {
     this.cartItems.forEach(item => {
-      item.quantity = this.quantity;
+      item.quantity = 1;
     });
    }
    currentUserEmail:any;
    actualEmail:any
    totalPrice:number=0;
    quantity:any;
+   userDetail:any;
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.currentUserEmail = params['email']
@@ -29,6 +30,16 @@ export class CartComponent implements OnInit {
       console.log(this.currentUserEmail + "currentuseremail", this.quantity + ("Quantity"))
     });
     this.fetchCartItems(this.currentUserEmail);
+    console.log(this.actualEmail + "Actual Email")
+    this.cartService.userDetails.snapshotChanges().subscribe(data => {
+      const userDetails = data.find(item => item.payload.val().email === this.actualEmail);
+      if (userDetails) {
+        this.userDetail = userDetails.payload.val();
+        console.log(this.userDetail);
+      } else {
+        console.log('User details not found!');
+      }
+    });
   }
   fetchCartItems(currentUserEmail:any) {
     this.cartService.getCartItems(currentUserEmail).subscribe(items => {
@@ -83,7 +94,9 @@ export class CartComponent implements OnInit {
   phoneNumber:any;
   address:any
   ein:any
+  loading:boolean;
   sendEmails() {
+    console.log(this.userDetail['phoneNumber'],)
     this.btnValue = 'Sending...';
 
     const serviceID = 'default_service';
@@ -94,13 +107,21 @@ export class CartComponent implements OnInit {
       from_name: 'your valuable customer',
       to_name: 'Annapurna Wholesale',
       email_id: this.actualEmail,
-      phone_number: this.phoneNumber,
-      address: this.address,
+      phone_number: this.userDetail['phoneNumber'],
+      address: this.userDetail['address'],
+      state:this.userDetail['state'],
+      city:this.userDetail['city'],
+      einNumber:this.userDetail['einNumber'],
+      company:this.userDetail['companyName'],
       message: this.generateEmailMessage(),
       reply_to: this.actualEmail
     }, userID)
       .then(() => {
         this.btnValue = 'Send Email';
+        this.loading=true;
+        setTimeout(() => {
+          this.loading=false;
+        }, 2000);
         alert('Sent!');
       }, (err) => {
         this.btnValue = 'Send Email';

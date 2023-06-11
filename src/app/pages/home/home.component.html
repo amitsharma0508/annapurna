@@ -124,7 +124,7 @@
       <section-heading></section-heading>
       <div class="home-gallery">
         <div class="home-left1">
-          <div class="item-card-gallery-card">
+          <div class="item-card-gallery-card" (click)="trendingProduct(imageLists[0]?.id)">
             <img src="{{imageLists[0]?.imageUrl}}" class="item-card-image" />
             <div class="item-card-container">
               <h3 class="item-card-text">{{ imageLists[0]?.productName }}</h3>
@@ -161,7 +161,7 @@
         <div class="home-right1">
           <div class="home-top">
             <div class="home-left2">
-              <div class="item-card-gallery-card">
+              <div class="item-card-gallery-card" (click)="trendingProduct(imageLists[1]?.id)">
                 <img src="{{imageLists[1]?.imageUrl}}" class="item-card-image" />
                 <div class="item-card-container">
                   <h3 class="item-card-text">{{ imageLists[1]?.productName }}</h3>
@@ -196,7 +196,7 @@
               </div>
             </div>
             <div class="home-right2">
-              <div class="item-card-gallery-card">
+              <div class="item-card-gallery-card" (click)="trendingProduct(imageLists[2]?.id)">
                 <img src="{{imageLists[2]?.imageUrl}}" class="item-card-image" />
                 <div class="item-card-container">
                   <h3 class="item-card-text">{{ imageLists[2]?.productName }}</h3>
@@ -233,7 +233,7 @@
           </div>
           <div class="home-bottom">
             <div class="home-left3">
-              <div class="item-card-gallery-card">
+              <div class="item-card-gallery-card" (click)="trendingProduct(imageLists[3]?.id)">
                 <img src="{{imageLists[3]?.imageUrl}}" class="item-card-image" />
                 <div class="item-card-container">
                   <h3 class="item-card-text">{{ imageLists[3]?.productName }}</h3>
@@ -268,7 +268,7 @@
               </div>
             </div>
             <div class="home-right3">
-              <div class="item-card-gallery-card">
+              <div class="item-card-gallery-card" (click)="trendingProduct(imageLists[4]?.id)">
                 <img src="{{imageLists[4]?.imageUrl}}" class="item-card-image" />
                 <div class="item-card-container">
                   <h3 class="item-card-text">{{ imageLists[4]?.productName }}</h3>

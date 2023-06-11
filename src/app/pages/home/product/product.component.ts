@@ -177,7 +177,8 @@ login() {
         queryParams: {
           param: this.param,
           type: this.param,
-          email:user.uid
+          email:user.uid,
+          actualEmail:user.email
         }
       };
       this.router.navigate(['/product', this.navagatingID], navigationExtras);

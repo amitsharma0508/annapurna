@@ -8,6 +8,9 @@ import * as $ from 'jquery';
 import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
+import 'firebase/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,7 +25,7 @@ export class AppComponent {
   checkUrl:boolean=true;
   checkAuth:boolean = true;
   receivedData
-  constructor(private router: Router, 
+  constructor(private router: Router, private firebase: AngularFireDatabase,
     private service:ImageService,private afAuth: AngularFireAuth){
   
   }
@@ -52,6 +55,7 @@ export class AppComponent {
     this.service.getHouseholdDetails();
     this.service.getfeaturedDetails();
     this.service.gettrendingProductsDetails();
+    this.service.getUserDetails();
     // detection of url and writing logic
     // start
     this.service.getDatas().subscribe((data) => {
@@ -266,14 +270,45 @@ login() {
       console.log(this.errorMessage)
     });
 }
+name
+companyName
+address
+state
+city
+einNumber
+phoneNumber
+signUpEmail
+// userDetails:AngularFireList<any>;
+// getUserDetails(){
+//   this.userDetails= this.firebase.list('userDetails')
+// }
+// insertUserDetails(userList){
+//   console.log("trigreed")
+//   this.userDetails.push(userList)
+// }
 signup() {
   this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
     .then(() => {
+      // Push data to Firebase Realtime Database
+      const userData = {
+        name: this.name,
+        companyName: this.companyName,
+        address: this.address,
+        state: this.state,
+        city: this.city,
+        einNumber: this.einNumber,
+        phoneNumber: this.phoneNumber,
+        email: this.email
+      };
+      console.log(userData)
+      this.service.insertUserDetails(userData);
+      console.log(userData)
       // Redirect or do something after successful signup
-      this.toggleSignup()
+      this.toggleSignup();
     })
     .catch(error => {
       this.errorMessage = error.message;
+      console.log("trigerred" + this.errorMessage)
     });
 }
 

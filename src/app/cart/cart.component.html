@@ -8,7 +8,7 @@
 
 
 
-<section class="cart_wrapper">
+<section class="cart_wrapper" *ngIf="!loading">
   <div class="cart_lists">
     <div class="cart_title">
       <span class="material-icons-outlined">local_mall</span>
@@ -30,7 +30,7 @@
             <label>Quantity &#8594;</label>
           </div>
           <div class="td_item item_qty">
-            <input style="width: 67px;" placeholder="" type="number" [(ngModel)]="item.quantity" min="1" name="productQuantity">
+            <input style="width: 67px;" value="item.quantity" placeholder="1" type="number" [(ngModel)]="item.quantity" min="10" name="productQuantity">
           </div>
           <div class="td_item item_price">
             <label>{{ item.productPrice }}</label>
@@ -57,34 +57,21 @@
         <div class="subtotal">
           <label>Subtotal: </label>
           <strong>$ {{totalPrice}}</strong>
+         
         </div>
+        <button style="background-color: #0dcaf0;
+        color: black;
+        font-size:large;"  type="submit" id="button" (click)="sendEmails()" class="btn">Checkout</button>
       </div>
     </div>
   </div>
-
-  <div class="cart_details">
-    <div class="cart_title">
-      Cart Details
-    </div>
-    <div class="form_row">
-
-      <div class="form_group">
-        <label class="input_label">Phone Number</label>
-        <input class="input" placeholder="" type="number" [(ngModel)]="phoneNumber"  name="phoneNumber">
-      </div>
-
-      <div class="form_group w_75">
-        <label class="input_label">Address</label>
-        <input class="input" placeholder="" type="text" [(ngModel)]="address"  name="address">
-      </div>
-
-      <!-- <div class="form_group w_25">
-        <label class="input_label">EIN </label>
-        <input class="input" placeholder="" type="text" [(ngModel)]="ein"  name="ein">
-      </div> -->
-
-      <button  type="submit" id="button" (click)="sendEmails()" class="btn">Checkout</button>
-    </div>
-
-  </div>
+  
 </section>
+
+<div *ngIf="loading" v-if="loading" class="spinner">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>

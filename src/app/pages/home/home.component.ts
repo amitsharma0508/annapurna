@@ -179,20 +179,35 @@ export class Home {
 
 
 
+
   navagatingID:any;
   email: string;
 password: string;
 errorMessage: string;
 isSignUp: boolean = false;
 
-
+navigatingParam:any;
+navigatingType:any;
 featuredProduct(id:any){
   this.navagatingID=id
   const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
     if (button) {
       button.dispatchEvent(new Event('click'));
     }
+    this.navigatingParam="featuredProduct"
+    this.navigatingType="featuredProduct"
 }
+
+trendingProduct(id:any){
+  this.navagatingID=id
+  const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+    if (button) {
+      button.dispatchEvent(new Event('click'));
+    }
+    this.navigatingParam="trendingProduct"
+    this.navigatingType="trendingProduct"
+}
+
 login() {
   this.afAuth.signInWithEmailAndPassword(this.email, this.password)
     .then((userCredential) => {
@@ -205,8 +220,8 @@ login() {
 
       let navigationExtras: NavigationExtras = {
         queryParams: {
-          param:"featuredProduct",
-          type: "featuredProduct",
+          param:this.navigatingParam,
+          type: this.navigatingType,
           email:user.uid
         }
       };
