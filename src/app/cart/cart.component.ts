@@ -108,6 +108,7 @@ export class CartComponent implements OnInit {
       from_name: 'your valuable customer',
       to_name: 'Annapurna Wholesale',
       email_id: this.actualEmail,
+      customerName: this.userDetail['name'],
       phone_number: this.userDetail['phoneNumber'],
       address: this.userDetail['address'],
       state:this.userDetail['state'],
