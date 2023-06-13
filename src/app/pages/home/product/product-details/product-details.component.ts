@@ -214,6 +214,7 @@ export class ProductDetailsComponent implements OnInit {
   email
   password
   errorMessage
+  errorMessageAlert:boolean=false;
   login() {
     this.afAuth.signInWithEmailAndPassword(this.email, this.password)
       .then((userCredential) => {
@@ -232,6 +233,7 @@ export class ProductDetailsComponent implements OnInit {
         this.navigate();
       }).catch(error => {
         this.errorMessage = error.message;
+        this.errorMessageAlert=true
       });
   }
   name
@@ -273,6 +275,7 @@ export class ProductDetailsComponent implements OnInit {
       })
       .catch(error => {
         this.errorMessage = error.message;
+        this.errorMessageAlert=true
         console.log("trigerred" + this.errorMessage)
       });
   }

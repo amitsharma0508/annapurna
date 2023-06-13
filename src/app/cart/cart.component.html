@@ -15,7 +15,20 @@
       Your Shopping Cart
     </div>
 
+    <div class="wrapper" style="margin-left: 21.5em; margin-right: 21.5em;" *ngIf="showModal">
 
+      <div class="windows">
+      <div class="windowsHeader">Welcome to Annapurna <a (click)="closeModal()">X</a></div>
+      <div class="windowsBody">
+      <div class="windowsBodyText">You are successfully loggedIn<br><br>
+      We are waiting for your email!!
+      </div>
+      <a class="windowsButton" (click)="closeModal()">ok</a>
+      </div>
+      </div>
+      
+      
+      </div>
     <div class="cart_list_wrap">
       <div class="cart_responsive" *ngFor="let item of cartItems">
         <div class="tr_item">
@@ -41,7 +54,7 @@
         </div>
 
        
-
+   
        
 
        

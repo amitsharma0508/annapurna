@@ -256,17 +256,23 @@ login() {
       console.log('Current user:', user);
       console.log('User email:', user.email);
       this.isLoggedIn=false;
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          actualEmail: user.email,
-          email: user.uid
+      
+
+      setTimeout(() => {
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            actualEmail: user.email,
+            email: user.uid
+          }
         }
-      }
-        this.router.navigate(['/cart'], navigationExtras); // Navigate to cart page only when dialogOpen is true
-      // this.dialogOpen=false;
+          this.router.navigate(['/cart'], navigationExtras); // Navigate to cart page only when dialogOpen is true
+        // this.dialogOpen=false;
+      }, 2000);
+     
     })
     .catch(error => {
       this.errorMessage = error.message;
+      this.errorMessageAlert=true
       console.log(this.errorMessage)
     });
 }
@@ -286,6 +292,7 @@ signUpEmail
 //   console.log("trigreed")
 //   this.userDetails.push(userList)
 // }
+errorMessageAlert:boolean=false;
 signup() {
   this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
     .then(() => {
@@ -308,6 +315,7 @@ signup() {
     })
     .catch(error => {
       this.errorMessage = error.message;
+      this.errorMessageAlert=true
       console.log("trigerred" + this.errorMessage)
     });
 }
@@ -318,4 +326,7 @@ toggleSignup() {
   this.email = '';
   this.password = '';
 }
+
+
+
 }

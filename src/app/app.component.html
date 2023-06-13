@@ -180,7 +180,9 @@
         </div> -->
         <h1>Sign Up</h1>
         <p>It's not long before you embark on this journey! </p>
-
+        <div *ngIf="errorMessageAlert" class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
         <form class="flex-c" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
           <div class="form-set">
             <label id="name-label" for="email">Email</label>
@@ -206,6 +208,9 @@
           <p>Don't have an account? <a (click)="toggleSignup()">Sign up</a></p>
         </form>
         <form class="flex-c" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
+          <div *ngIf="errorMessageAlert" class="alert alert-danger" role="alert">
+            {{errorMessage}}
+          </div>
           <div class="form-set">
             <label id="name-label" for="name">Customer Name:</label>
             <input placeholder="Enter Your name" type="text" id="name" name="name" [(ngModel)]="name" required />
@@ -259,3 +264,7 @@
     </div>
   </div>
 </body>
+
+
+
+  

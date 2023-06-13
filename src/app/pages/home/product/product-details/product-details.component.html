@@ -13,9 +13,11 @@
             <!-- <div *ngIf="errorMessage" class="error-message">
               {{ errorMessage }}
             </div> -->
-            
+       
             <form  id="survey-form" class="right" *ngIf="!isSignUp" (ngSubmit)="login();" #loginForm="ngForm">
-              
+              <div *ngIf="errorMessageAlert" class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
               <div class="form-set">
                 <label id="name-label" for="email">Email</label>
                   <input placeholder="enter Your Email"
@@ -41,7 +43,10 @@
             </form>
             
             <form style="background-color: cornflowerblue; color: #ffffff;" *ngIf="isSignUp" (ngSubmit)="signup()" #signupForm="ngForm">
-                <div class="form-set">
+              <div *ngIf="errorMessageAlert" class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
+              <div class="form-set">
                   <label id="name-label" for="password">Customer Name:</label>
                   <input placeholder="Enter Your name" type="text" id="passw" name="name" [(ngModel)]="name" required/>
                 </div>

@@ -41,6 +41,7 @@ export class CartComponent implements OnInit {
         console.log(this.actualEmail)
       }
     });
+    this.openModal();
   }
   fetchCartItems(currentUserEmail:any) {
     this.cartService.getCartItems(currentUserEmail).subscribe(items => {
@@ -144,6 +145,16 @@ export class CartComponent implements OnInit {
     return message;
   }
 
+
+  showModal:boolean;
+
+openModal() {
+  this.showModal = true;
+}
+
+closeModal() {
+  this.showModal = false;
+}
 
   
 }
