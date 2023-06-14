@@ -374,7 +374,7 @@
                             </ul>
                           </div>
                           <p class="item-price">{{image.productPrice}}</p>
-                          <a href="#" class="btn btn-primary">Add to Cart</a>
+                          <a (click)="featuredProduct(image.id)" class="btn btn-primary">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -403,7 +403,7 @@
                             </ul>
                           </div>
                           <p class="item-price">{{image.productPrice}}</p>
-                          <a href="#" class="btn btn-primary">Add to Cart</a>
+                          <a (click)="featuredProduct(image.id)" class="btn btn-primary">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -432,7 +432,7 @@
                             </ul>
                           </div>
                           <p class="item-price">{{image.productPrice}}</p>
-                          <a href="#" class="btn btn-primary">Add to Cart</a>
+                          <a (click)="featuredProduct(image.id)" class="btn btn-primary">Add to Cart</a>
                         </div>
                       </div>
                     </div>
@@ -505,7 +505,7 @@
         <!-- <category-card (click)="cigarette()" name="Cigarette"></category-card> -->
         <category-card (click)="despicableVape()"
           name="Disposable Vape"
-          category_img="/assets/vape.jpg"
+          category_img="/assets/accessories.jpg"
         ></category-card>
         <category-card (click)="electronic()"
           name="Electronic"
@@ -529,7 +529,7 @@
       ></category-card>
       <category-card (click)="accessories()"
       name="Accessories"
-      category_img="https://images.unsplash.com/photo-1506169894395-36397e4aaee4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFjY2Vzc29yaWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+      category_img="/assets/vape.jpg"
     ></category-card>
     <!-- <category-card (click)="household()"
     name="Household"
