@@ -603,96 +603,190 @@ body {
 
 
 
-.wrapper{
-  height: 100vh;
-  display: grid;
-  align-items: center;
+// .wrapper{
+//   height: 100vh;
+//   display: grid;
+//   align-items: center;
+//   position: absolute;
+//   justify-content: center;
+//   z-index: 99999;
+// }
+
+
+
+
+// /* ads */
+// .windows {   margin: 0; padding: 0; }
+// .windows {
+// display: block;
+// background: white;
+// border: 4px solid silver;
+// border-right: 2px solid black;
+// border-bottom: 2px solid black;
+// border-style: double solid solid double;
+// border-radius: 0;
+// max-width: 100%;
+// width: 500px;
+// margin: 0 auto;
+// }
+
+// .windowsHeader {
+// display: block;
+// position: relative;
+// background: #252599;
+// color: white;
+// border-radius: 0;
+// padding: 6px 10px;
+// border: 2px solid silver;
+// text-align: left;
+// font-weight: bold;
+// }
+
+// .windowsHeader a {
+// min-width: 20px;
+// position: absolute;
+// right: 10px;
+// text-align: center;
+// color: black;
+// font-weight: bold;
+// background: #CCCCCC;
+// border: 2px solid;
+// border-color: #F7F7F7 black black #F7F7F7;
+// }
+
+// .windowsHeader a:hover {
+// color: black;
+// }
+
+// .windowsBody {
+// color: black;
+// background: #CCCCCC;
+// text-align: center;
+// padding-bottom: 30px;
+// }
+
+// .windowsBodyText {
+// padding: 25px;
+// display: block;
+// }
+
+// .windowsButton {
+// min-width: 20px;
+// display: block;
+// margin: 0 auto;
+// max-width: 100%;
+// max-width: 120px;
+// padding: 5px;
+// text-align: center;
+// color: black;
+// font-weight: bold;
+// background: #CCCCCC;
+// border: 2px solid;
+// border-color: #F7F7F7 black black #F7F7F7;
+// text-transform: uppercase;
+
+// }
+
+// .windowsBody a, .windowsBody a:hover {
+// color: black;
+// }
+
+// .windowsBody a:hover { color: black;}
+
+// a { text-decoration: none; }
+
+
+.succes {
+  background-color: #4BB543;
+}
+.succes-animation {
+  animation: succes-pulse 2s infinite;
+}
+
+.danger {
+  background-color: #CA0B00;
+}
+.danger-animation {
+  animation: danger-pulse 2s infinite;
+}
+
+.custom-modal {
+  // position: relative;
+  width: 350px;
+  min-height: 250px;
+  background-color: #fff;
+  border-radius: 30px;
+  margin: 40px 10px;
+}
+.custom-modal .content { 
   position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+}
+.custom-modal .content .type {
+  font-size: 18px;
+  color: #999;
+}
+.custom-modal .content .message-type {
+  font-size: 24px;
+  color: #000;
+}
+.custom-modal .border-bottom {
+  position: absolute;
+  width: 300px;
+  height: 20px;
+  border-radius: 0 0 30px 30px;
+  bottom: -20px;
+  margin: 0 25px;
+}
+.custom-modal .icon-top {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: -30px;
+  margin: 0 125px;
+  font-size: 30px;
+  color: #fff;
+  line-height: 100px;
+  text-align: center;
+}
+@keyframes succes-pulse { 
+  0% {
+    box-shadow: 0px 0px 30px 20px rgba(75, 181, 67, .2);
+  }
+  50% {
+    box-shadow: 0px 0px 30px 20px rgba(75, 181, 67, .4);
+  }
+  100% {
+    box-shadow: 0px 0px 30px 20px rgba(75, 181, 67, .2);
+  }
+}
+@keyframes danger-pulse { 
+  0% {
+    box-shadow: 0px 0px 30px 20px rgba(202, 11, 0, .2);
+  }
+  50% {
+    box-shadow: 0px 0px 30px 20px rgba(202, 11, 0, .4);
+  }
+  100% {
+    box-shadow: 0px 0px 30px 20px rgba(202, 11, 0, .2);
+  }
+}
+
+
+.page-wrapper {
+  height: 100vh;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  z-index: 99999;
+  padding: 80px 0;
 }
-
-
-
-
-/* ads */
-.windows {   margin: 0; padding: 0; }
-.windows {
-display: block;
-background: white;
-border: 4px solid silver;
-border-right: 2px solid black;
-border-bottom: 2px solid black;
-border-style: double solid solid double;
-border-radius: 0;
-max-width: 100%;
-width: 500px;
-margin: 0 auto;
+body { margin:0; font-family: 'Roboto';}
+@media only screen and (max-width: 800px) {
+  .page-wrapper {
+    flex-direction: column;
+  }
 }
-
-.windowsHeader {
-display: block;
-position: relative;
-background: #252599;
-color: white;
-border-radius: 0;
-padding: 6px 10px;
-border: 2px solid silver;
-text-align: left;
-font-weight: bold;
-}
-
-.windowsHeader a {
-min-width: 20px;
-position: absolute;
-right: 10px;
-text-align: center;
-color: black;
-font-weight: bold;
-background: #CCCCCC;
-border: 2px solid;
-border-color: #F7F7F7 black black #F7F7F7;
-}
-
-.windowsHeader a:hover {
-color: black;
-}
-
-.windowsBody {
-color: black;
-background: #CCCCCC;
-text-align: center;
-padding-bottom: 30px;
-}
-
-.windowsBodyText {
-padding: 25px;
-display: block;
-}
-
-.windowsButton {
-min-width: 20px;
-display: block;
-margin: 0 auto;
-max-width: 100%;
-max-width: 120px;
-padding: 5px;
-text-align: center;
-color: black;
-font-weight: bold;
-background: #CCCCCC;
-border: 2px solid;
-border-color: #F7F7F7 black black #F7F7F7;
-text-transform: uppercase;
-
-}
-
-.windowsBody a, .windowsBody a:hover {
-color: black;
-}
-
-.windowsBody a:hover { color: black;}
-
-a { text-decoration: none; }
-
-

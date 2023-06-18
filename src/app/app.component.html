@@ -32,12 +32,12 @@
   </div>
 
   <div *ngIf="checkUrl" class="nav" style="justify-content: center; z-index: 999;">
-    <input type="checkbox" id="nav-check">
+    <input type="checkbox" id="nav-check" #checkbox>
     <div class="nav-header">
   
     </div>
-    <div class="nav-btn">
-      <label for="nav-check">
+    <div class="nav-btn" #checkbox>
+      <label for="nav-check" #checkbox>
         <span></span>
         <span></span>
         <span></span>
@@ -45,11 +45,11 @@
     </div>
     
     <div class="nav-links">
-      <a  (click)="accessories()" >Accessories</a>
-      <a  (click)="wareHouse()">Houseware</a>
-      <a  (click)="healthAndBeauty()">Health & Beauty</a>
-      <a  (click)="despicableVape()">Disposable Vape</a>
-      <a  (click)="electronic()">Electronic</a>
+      <a  (click)="accessories(); checkbox.click()" >Accessories</a>
+      <a  (click)="wareHouse(); checkbox.click()">Houseware</a>
+      <a  (click)="healthAndBeauty(); checkbox.click()">Health & Beauty</a>
+      <a  (click)="despicableVape(); checkbox.click()">Disposable Vape</a>
+      <a  (click)="electronic(); checkbox.click()">Electronic</a>
       <!-- <a (click)="redirect()">Cart &nbsp; <i style="font-size:24px" class="fa">&#xf290;</i> </a> -->
     </div>
   </div>
@@ -238,12 +238,12 @@
         
           <div class="form-set">
             <label id="ein-label" for="einNumber">EIN number:</label>
-            <input placeholder="Enter Your EIN" type="text" id="einNumber" name="einNumber" [(ngModel)]="einNumber" required />
+            <input placeholder="Enter Your EIN" type="number" id="einNumber" name="einNumber" [(ngModel)]="einNumber" required />
           </div>
         
           <div class="form-set">
             <label id="phone-label" for="phoneNumber">Phone number:</label>
-            <input placeholder="Enter Your phone number" type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required />
+            <input placeholder="Enter Your phone number" type="number" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required />
           </div>
         
           <div class="form-set">
