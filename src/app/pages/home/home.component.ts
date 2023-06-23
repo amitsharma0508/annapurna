@@ -261,7 +261,7 @@ trendingProduct2(id:any){
   //   if (button) {
   //     button.dispatchEvent(new Event('click'));
   //   }
-    this.navigatingParam="trendingProduct"
+    this.navigatingParam="trendingProduct2"
     this.navigatingType="trendingProduct"
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -277,7 +277,7 @@ trendingProduct3(id:any){
   //   if (button) {
   //     button.dispatchEvent(new Event('click'));
   //   }
-    this.navigatingParam="trendingProduct"
+    this.navigatingParam="trendingProduct3"
     this.navigatingType="trendingProduct"
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -293,7 +293,7 @@ trendingProduct4(id:any){
   //   if (button) {
   //     button.dispatchEvent(new Event('click'));
   //   }
-    this.navigatingParam="trendingProduct"
+    this.navigatingParam="trendingProduct4"
     this.navigatingType="trendingProduct"
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -309,7 +309,7 @@ trendingProduct5(id:any){
   //   if (button) {
   //     button.dispatchEvent(new Event('click'));
   //   }
-    this.navigatingParam="trendingProduct"
+    this.navigatingParam="trendingProduct5"
     this.navigatingType="trendingProduct"
     let navigationExtras: NavigationExtras = {
       queryParams: {

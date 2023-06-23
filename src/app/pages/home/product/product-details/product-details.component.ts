@@ -161,6 +161,46 @@ export class ProductDetailsComponent implements OnInit {
           }
         );
       }
+      if(this.param == "trendingProduct2"){
+        this.service.trendingProducts1Details.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
+      if(this.param == "trendingProduct3"){
+        this.service.trendingProducts2Details.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
+      if(this.param == "trendingProduct4"){
+        this.service.trendingProducts3Details.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
+      if(this.param == "trendingProduct5"){
+        this.service.trendingProducts4Details.snapshotChanges().subscribe(
+          list => {
+            this.imageList = list.map(item => item.payload.val());
+            this.product = this.imageList.filter(item => item.id === id);
+            console.log(this.product, "product");
+            // Rest of your code that relies on the filtered product details
+          }
+        );
+      }
     });
   }
 
