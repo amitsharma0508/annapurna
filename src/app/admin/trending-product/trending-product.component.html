@@ -1,6 +1,6 @@
 <div class="container mt-5 pt-5 ">
     <div style="height: 70px; background-color:rgba(255, 114, 114, 0.87); color: white; max-width: 100%;">
-        <h3 style="padding: 15px;" class="text-center">Trending Section</h3>
+        <h3 style="padding: 15px;" class="text-center">Trending Section 1</h3>
     </div>
 
     <div class="multi-button mt-2">
@@ -14,7 +14,7 @@
     <!-- adding new product form start -->
     <div *ngIf="toggleAddForm">
         <div class="wrapper">
-            <div class="title">Add Trending Product</div>
+            <div class="title">Add Trending Product 1</div>
             <form [formGroup]="electronicForm" action="#" (submit)="onSubmit(electronicForm.value)">
                 <div class="user-details">
                     <div class="input-box">
@@ -42,7 +42,7 @@
                         <input type="file" accept="image/*" #fileUploader formControlName="imageUrl"
                         (change)="showPreview($event)">
                     </div>
-                    <div class="input-box">
+                    <!-- <div class="input-box">
                       <span class="details">Image1</span>
                       <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1"
                           (change)="showPreview1($event)" />
@@ -51,7 +51,7 @@
                     <span class="details">Image2</span>
                     <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2"
                         (change)="showPreview2($event)" />
-                </div>
+                </div> -->
                     <div class="input-box">
                         <div class="text-center">
                             <img [src]="imgSrc" width="150px" height="150px"  />

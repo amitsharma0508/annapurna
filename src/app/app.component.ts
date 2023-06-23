@@ -55,6 +55,11 @@ export class AppComponent {
     this.service.getHouseholdDetails();
     this.service.getfeaturedDetails();
     this.service.gettrendingProductsDetails();
+    this.service.gettrendingProducts1Details();
+    this.service.gettrendingProducts2Details();
+    this.service.gettrendingProducts3Details();
+    this.service.gettrendingProducts4Details();
+
     this.service.getUserDetails();
     // detection of url and writing logic
     // start

@@ -30,6 +30,10 @@ import { HouseholdComponent } from "./admin/household/household.component";
 import { CartComponent } from "./cart/cart.component";
 import { FeaturedProductComponent } from "./admin/featured-product/featured-product.component";
 import { TrendingProductComponent } from "./admin/trending-product/trending-product.component";
+import { TrendingProuct1Component } from "./admin/trending-prouct1/trending-prouct1.component";
+import { TrendingProuct2Component } from "./admin/trending-prouct2/trending-prouct2.component";
+import { TrendingProuct3Component } from "./admin/trending-prouct3/trending-prouct3.component";
+import { TrendingProuct4Component } from "./admin/trending-prouct4/trending-prouct4.component";
 
 const routes: Routes = [
   {
@@ -97,7 +101,10 @@ const routes: Routes = [
     CartComponent,
     FeaturedProductComponent,
     TrendingProductComponent,
-    ProductDetailsComponent
+    TrendingProuct1Component,
+    TrendingProuct2Component,
+    TrendingProuct3Component,
+    TrendingProuct4Component
   ],
   imports: [
     BrowserModule,

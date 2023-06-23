@@ -24,6 +24,11 @@ export class ImageService {
   householdDetails:AngularFireList<any>;
   featuredDetails:AngularFireList<any>;
   trendingProductsDetails:AngularFireList<any>;
+  trendingProducts1Details:AngularFireList<any>;
+  trendingProducts2Details:AngularFireList<any>;
+  trendingProducts3Details:AngularFireList<any>;
+  trendingProducts4Details:AngularFireList<any>;
+
   private dataSubject = new Subject<any>();
   private random = new Subject<number>();
   sendData(data: any) {
@@ -150,6 +155,42 @@ export class ImageService {
     console.log("trigreed")
     this.trendingProductsDetails.push(trendingList)
   }
+
+  gettrendingProducts1Details(){
+    this.trendingProducts1Details= this.firebase.list('trendingList1')
+  }
+  inserttrendingProducts1Details(trendingList1){
+    console.log("trigreed")
+    this.trendingProducts1Details.push(trendingList1)
+  }
+
+  gettrendingProducts2Details(){
+    this.trendingProducts2Details= this.firebase.list('trendingList2')
+  }
+  inserttrendingProducts2Details(trendingList2){
+    console.log("trigreed")
+    this.trendingProducts2Details.push(trendingList2)
+  }
+
+  gettrendingProducts3Details(){
+    this.trendingProducts3Details= this.firebase.list('trendingList3')
+  }
+  inserttrendingProducts3Details(trendingList3){
+    console.log("trigreed")
+    this.trendingProducts3Details.push(trendingList3)
+  }
+
+  gettrendingProducts4Details(){
+    this.trendingProducts4Details= this.firebase.list('trendingList4')
+  }
+  inserttrendingProducts4Details(trendingList4){
+    console.log("trigreed")
+    this.trendingProducts4Details.push(trendingList4)
+  }
+
+
+
+
   userDetails:AngularFireList<any>;
 getUserDetails(){
   this.userDetails= this.firebase.list('userDetails')

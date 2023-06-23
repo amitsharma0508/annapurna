@@ -15,6 +15,11 @@ export class Home {
   emailService: any;
   imageList: any[];
   imageLists: any[];
+  imageLists2: any[];
+  imageLists3: any[];
+  imageLists4: any[];
+  imageLists5: any[];
+
   rowIndexArray: any[];
 
   @ViewChild('f') form!:NgForm;
@@ -62,6 +67,34 @@ export class Home {
     this.service.trendingProductsDetails.snapshotChanges().subscribe(
       list => {
         this.imageLists = list.map(item => { return item.payload.val(); });
+        // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+      }
+    )
+
+    this.service.trendingProducts1Details.snapshotChanges().subscribe(
+      list => {
+        this.imageLists2 = list.map(item => { return item.payload.val(); });
+        // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+      }
+    )
+
+    this.service.trendingProducts2Details.snapshotChanges().subscribe(
+      list => {
+        this.imageLists3 = list.map(item => { return item.payload.val(); });
+        // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+      }
+    )
+
+    this.service.trendingProducts3Details.snapshotChanges().subscribe(
+      list => {
+        this.imageLists4 = list.map(item => { return item.payload.val(); });
+        // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
+      }
+    )
+
+    this.service.trendingProducts4Details.snapshotChanges().subscribe(
+      list => {
+        this.imageLists5 = list.map(item => { return item.payload.val(); });
         // this.rowIndexArray =  Array.from(Array(Math.ceil((this.imageList.length+1) / 3)).keys());
       }
     )
@@ -206,7 +239,71 @@ featuredProduct(id:any){
     this.router.navigate(['/product', this.navagatingID], navigationExtras);
 }
 
-trendingProduct(id:any){
+trendingProduct1(id:any){
+  this.navagatingID=id
+  // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+  //   if (button) {
+  //     button.dispatchEvent(new Event('click'));
+  //   }
+    this.navigatingParam="trendingProduct"
+    this.navigatingType="trendingProduct"
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param:this.navigatingParam,
+        type: this.navigatingType,
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
+}
+trendingProduct2(id:any){
+  this.navagatingID=id
+  // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+  //   if (button) {
+  //     button.dispatchEvent(new Event('click'));
+  //   }
+    this.navigatingParam="trendingProduct"
+    this.navigatingType="trendingProduct"
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param:this.navigatingParam,
+        type: this.navigatingType,
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
+}
+trendingProduct3(id:any){
+  this.navagatingID=id
+  // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+  //   if (button) {
+  //     button.dispatchEvent(new Event('click'));
+  //   }
+    this.navigatingParam="trendingProduct"
+    this.navigatingType="trendingProduct"
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param:this.navigatingParam,
+        type: this.navigatingType,
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
+}
+trendingProduct4(id:any){
+  this.navagatingID=id
+  // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
+  //   if (button) {
+  //     button.dispatchEvent(new Event('click'));
+  //   }
+    this.navigatingParam="trendingProduct"
+    this.navigatingType="trendingProduct"
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        param:this.navigatingParam,
+        type: this.navigatingType,
+      }
+    };
+    this.router.navigate(['/product', this.navagatingID], navigationExtras);
+}
+trendingProduct5(id:any){
   this.navagatingID=id
   // const button = document.querySelector('button[onclick="window.dialog.showModal();"]');
   //   if (button) {
