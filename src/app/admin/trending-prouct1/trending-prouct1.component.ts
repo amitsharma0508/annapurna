@@ -83,11 +83,11 @@ export class TrendingProuct1Component implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => (this.imgSrc = e.target.result);
       reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
+      this.selectedImage1 = event.target.files[0];
     } else {
       this.imgSrc3 =
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
-      this.selectedImage = null;
+      this.selectedImage1 = null;
     }
   }
   showPreview2(event: any) {
@@ -95,11 +95,11 @@ export class TrendingProuct1Component implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => (this.imgSrc = e.target.result);
       reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
+      this.selectedImage2 = event.target.files[0];
     } else {
       this.imgSrc =
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr1wpLe7tCBNs9lRZIH-8qMa8HI69GZu76QQ&usqp=CAU";
-      this.selectedImage = null;
+      this.selectedImage2 = null;
     }
   }
   //onSubmit
@@ -131,11 +131,11 @@ export class TrendingProuct1Component implements OnInit {
         .split(".")
         .slice(0, -1)
         .join(".")}_${new Date().getTime()}`;
-      var filePath2 = `${formValue.productType}/${this.selectedImage.name
+      var filePath2 = `${formValue.productType}/${this.selectedImage1.name
         .split(".")
         .slice(0, -1)
         .join(".")}_${new Date().getTime()}`;
-      var filePath3 = `${formValue.productType}/${this.selectedImage.name
+      var filePath3 = `${formValue.productType}/${this.selectedImage2.name
         .split(".")
         .slice(0, -1)
         .join(".")}_${new Date().getTime()}`;
@@ -155,7 +155,7 @@ export class TrendingProuct1Component implements OnInit {
   
               // Upload the second image
               this.storage
-                .upload(filePath2, this.selectedImage)
+                .upload(filePath2, this.selectedImage1)
                 .snapshotChanges()
                 .pipe(
                   finalize(() => {
@@ -164,7 +164,7 @@ export class TrendingProuct1Component implements OnInit {
   
                       // Upload the third image
                       this.storage
-                        .upload(filePath3, this.selectedImage)
+                        .upload(filePath3, this.selectedImage2)
                         .snapshotChanges()
                         .pipe(
                           finalize(() => {
