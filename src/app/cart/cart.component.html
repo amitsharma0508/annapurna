@@ -76,7 +76,7 @@
       
       </div> -->
       
-    <div class="cart_list_wrap" *ngIf="!showModal">
+    <div class="cart_list_wrap" >
       <div class="cart_responsive" *ngFor="let item of cartItems">
         <div class="tr_item">
           <div class="td_item item_img">
@@ -90,22 +90,20 @@
             <label>Quantity &#8594;</label>
           </div>
           <div class="td_item item_qty">
-            <input style="width: 67px;" value="item.quantity" placeholder="1" type="number" [(ngModel)]="item.quantity" min="10" name="productQuantity">
+            <input style="width: 67px;" [value]="item.quantity" placeholder="1" type="number" [(ngModel)]="item.quantity" min="10" name="productQuantity" (input)="updateTotal(item)">
           </div>
           <div class="td_item item_price">
             <label>{{ item.productPrice }}</label>
+          </div>
+          <div class="td_item item_total">
+            {{ item.total }}
           </div>
           <div class="td_item item_remove">
             <span class="material-icons-outlined" (click)="removeFromCart(item.id)">close</span>
           </div>
         </div>
-
-       
-   
-       
-
-       
-
+      </div>
+      
       </div>
       <div class="footer">
         <div class="back_cart">
@@ -124,7 +122,7 @@
         font-size:large;"  type="submit" id="button" (click)="sendEmails()" class="btn">Checkout</button>
       </div>
     </div>
-  </div>
+
   
 </section>
 

@@ -155,6 +155,30 @@ openModal() {
 closeModal() {
   this.showModal = false;
 }
+itemTotal:any
+updateTotal(item: any): void {
+  item.total = this.calculateItemTotal(item);
+  // console.log(item)
+  // console.log(item.productPrice)
+  // console.log(item.quantity)
+  //  const price = +item.productPrice.replace("$", "");
+  //  this.itemTotal = price  * parseInt(item.quantity)
+  //  console.log(this.itemTotal + "total")
+}
 
-  
+calculateItemTotal(item: any): number {
+  const quantity = +item.quantity; // Convert the quantity to a number
+
+  if (isNaN(quantity)) {
+    return 0;
+  }
+
+  const price = +item.productPrice.replace("$", ""); // Remove the "$" sign from product price and convert it to a number
+
+  if (isNaN(price)) {
+    return 0;
+  }
+  console.log(price * quantity)
+  return price * quantity;
+}
 }
