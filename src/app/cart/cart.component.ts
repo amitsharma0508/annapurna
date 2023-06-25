@@ -165,18 +165,22 @@ updateTotal(item: any): void {
   console.log(item.total + 'all');
   console.log(JSON.stringify(item) + "sdf");
   
+  this.totalItem=item
+  // if (item.quantity > item.previousQuantity) {
+  //   this.totalPrice += item.total - previousTotal;
+  // } else if (item.quantity < item.previousQuantity) {
+  //   this.totalPrice -= previousTotal - item.total;
+  // } else {
+  //   console.log("quantity unchanged");
+  // }
   
-  if (item.quantity > item.previousQuantity) {
-    this.totalPrice += item.total - previousTotal;
-  } else if (item.quantity < item.previousQuantity) {
-    this.totalPrice -= previousTotal - item.total;
-  } else {
-    console.log("quantity unchanged");
-  }
-  
-  item.previousQuantity = item.quantity;
+  // item.previousQuantity = item.quantity;
 }
-
+totalItem
+Calculate(){
+  this.totalPrice =0
+  this.totalPrice += this.totalItem.total
+}
 calculateItemTotal(item: any): number {
   const quantity = +item.quantity; // Convert the quantity to a number
 

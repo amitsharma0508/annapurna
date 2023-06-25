@@ -102,8 +102,11 @@
             <span class="material-icons-outlined" (click)="removeFromCart(item.id)">close</span>
           </div>
         </div>
+        
       </div>
-      
+      <button (click)="Calculate()">Calculate</button>
+      <label>Over All Total: </label>
+          <strong>$ {{totalPrice}}</strong>
       </div>
       <div class="footer">
         <div class="back_cart">
@@ -113,8 +116,7 @@
           </a>
         </div>
         <div class="subtotal">
-          <label>Subtotal: </label>
-          <strong>$ {{totalPrice}}</strong>
+          
          
         </div>
         <button style="background-color: #0dcaf0;
