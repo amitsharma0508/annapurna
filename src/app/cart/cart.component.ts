@@ -159,6 +159,7 @@ closeModal() {
 }
 itemTotal:any
 updateTotal(item: any): void {
+  const previousTotal = item.total;
   item.total = this.calculateItemTotal(item);
   item.overallTotal += parseInt(item.total);
   console.log(item.total + 'all');
@@ -166,11 +167,9 @@ updateTotal(item: any): void {
   
   
   if (item.quantity > item.previousQuantity) {
-    this.totalPrice += item.total;
-  } else if (item.quantity < item.previousQuantity) {
-    this.totalPrice -= item.total;
-  } else {
-    console.log("quantity unchanged");
+    this.totalPrice += item.total - previousTotal;
+  } else{
+    this.totalPrice -= previousTotal - item.total;
   }
   
   item.previousQuantity = item.quantity;
