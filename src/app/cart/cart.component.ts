@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(item => {
       item.quantity = 1;
     });
+    this.cartItems.forEach(item => item.previousQuantity = item.quantity);
    }
    currentUserEmail:any;
    actualEmail:any
@@ -47,13 +48,13 @@ export class CartComponent implements OnInit {
   fetchCartItems(currentUserEmail:any) {
     this.cartService.getCartItems(currentUserEmail).subscribe(items => {
       this.cartItems = items;
-      for (let i = 0; i < this.cartItems.length; i++) {
-        const priceWithoutSymbol = this.cartItems[i].productPrice.replace('$', '');
-        const priceAsNumber = parseFloat(priceWithoutSymbol);
+      // for (let i = 0; i < this.cartItems.length; i++) {
+      //   const priceWithoutSymbol = this.cartItems[i].productPrice.replace('$', '');
+      //   const priceAsNumber = parseFloat(priceWithoutSymbol);
         
-        this.totalPrice += priceAsNumber;
-      }
-      console.log(items)
+      //   this.totalPrice += priceAsNumber;
+      // }
+      // console.log(items)
     });
   }
 
@@ -160,13 +161,19 @@ itemTotal:any
 updateTotal(item: any): void {
   item.total = this.calculateItemTotal(item);
   item.overallTotal += parseInt(item.total);
-  console.log(item.total + 'all')
-  console.log(JSON.stringify(item) + "sdf")
-  for (let i = 0; i < this.cartItems.length; i++) {
-    console.log(item.total + "adfsdaf")
+  console.log(item.total + 'all');
+  console.log(JSON.stringify(item) + "sdf");
+  
+  
+  if (item.quantity > item.previousQuantity) {
     this.totalPrice += item.total;
-    
+  } else if (item.quantity < item.previousQuantity) {
+    this.totalPrice -= item.total;
+  } else {
+    console.log("quantity unchanged");
   }
+  
+  item.previousQuantity = item.quantity;
 }
 
 calculateItemTotal(item: any): number {
