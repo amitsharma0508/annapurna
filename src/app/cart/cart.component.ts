@@ -163,9 +163,9 @@ updateTotal(item: any): void {
   console.log(item.total + 'all')
   console.log(JSON.stringify(item) + "sdf")
   for (let i = 0; i < this.cartItems.length; i++) {
-    console.log(item[i].total)
+    console.log(item.total + "adfsdaf")
     this.totalPrice += item.total;
-  
+    
   }
 }
 
