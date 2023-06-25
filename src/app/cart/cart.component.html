@@ -86,9 +86,9 @@
             <label class="main">{{ item.productName }}</label>
             <label class="sub">{{ item.productDescription }}</label>
           </div>
-          <div class="td_item item_color">
+          <!-- <div class="td_item item_color">
             <label>Quantity &#8594;</label>
-          </div>
+          </div> -->
           <div class="td_item item_qty">
             <input style="width: 67px;" [value]="item.quantity" placeholder="1" type="number" [(ngModel)]="item.quantity" min="10" name="productQuantity" (input)="updateTotal(item)">
           </div>
@@ -96,7 +96,7 @@
             <label>{{ item.productPrice }}</label>
           </div>
           <div class="td_item item_total">
-            {{ item.total }}
+            ${{ item.total }}
           </div>
           <div class="td_item item_remove">
             <span class="material-icons-outlined" (click)="removeFromCart(item.id)">close</span>

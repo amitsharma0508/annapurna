@@ -42,6 +42,7 @@ export class CartComponent implements OnInit {
       }
     });
     this.openModal();
+
   }
   fetchCartItems(currentUserEmail:any) {
     this.cartService.getCartItems(currentUserEmail).subscribe(items => {
@@ -158,12 +159,14 @@ closeModal() {
 itemTotal:any
 updateTotal(item: any): void {
   item.total = this.calculateItemTotal(item);
-  // console.log(item)
-  // console.log(item.productPrice)
-  // console.log(item.quantity)
-  //  const price = +item.productPrice.replace("$", "");
-  //  this.itemTotal = price  * parseInt(item.quantity)
-  //  console.log(this.itemTotal + "total")
+  item.overallTotal += parseInt(item.total);
+  console.log(item.total + 'all')
+  console.log(JSON.stringify(item) + "sdf")
+  for (let i = 0; i < this.cartItems.length; i++) {
+    console.log(item[i].total)
+    this.totalPrice += item.total;
+  
+  }
 }
 
 calculateItemTotal(item: any): number {
@@ -179,6 +182,10 @@ calculateItemTotal(item: any): number {
     return 0;
   }
   console.log(price * quantity)
+  console.log(JSON.stringify(item) + 'all')
+  
+
   return price * quantity;
 }
+
 }
