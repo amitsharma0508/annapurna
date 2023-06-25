@@ -168,8 +168,10 @@ updateTotal(item: any): void {
   
   if (item.quantity > item.previousQuantity) {
     this.totalPrice += item.total - previousTotal;
-  } else{
+  } else if (item.quantity < item.previousQuantity) {
     this.totalPrice -= previousTotal - item.total;
+  } else {
+    console.log("quantity unchanged");
   }
   
   item.previousQuantity = item.quantity;
