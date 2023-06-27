@@ -1,70 +1,81 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ImageService } from '../shared/image.service';
-import { HttpClient } from '@angular/common/http';
-import emailjs from 'emailjs-com';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { ImageService } from "../shared/image.service";
+import { HttpClient } from "@angular/common/http";
+import emailjs from "emailjs-com";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  selector: "app-cart",
+  templateUrl: "./cart.component.html",
+  styleUrls: ["./cart.component.scss"],
 })
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
 
-  constructor(private cartService: ImageService, private http:HttpClient, private route:ActivatedRoute) {
-    this.cartItems.forEach(item => {
+  constructor(
+    private cartService: ImageService,
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {
+    this.cartItems.forEach((item) => {
       item.quantity = 1;
     });
-    this.cartItems.forEach(item => item.previousQuantity = item.quantity);
-   }
-   currentUserEmail:any;
-   actualEmail:any
-   totalPrice:number=0;
-   quantity:any;
-   userDetail:any;
+    this.cartItems.forEach((item) => (item.previousQuantity = item.quantity));
+  }
+  currentUserEmail: any;
+  actualEmail: any;
+  totalPrice: number = 0;
+  quantity: any;
+  userDetail: any;
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.currentUserEmail = params['email']
-      this.actualEmail = params['actualEmail']
-      this.quantity = params['quantity']
-      console.log(this.currentUserEmail + "currentuseremail", this.quantity + ("Quantity"))
+    this.route.queryParams.subscribe((params) => {
+      this.currentUserEmail = params["email"];
+      this.actualEmail = params["actualEmail"];
+      this.quantity = params["quantity"];
+      console.log(
+        this.currentUserEmail + "currentuseremail",
+        this.quantity + "Quantity"
+      );
     });
     this.fetchCartItems(this.currentUserEmail);
-    console.log(this.actualEmail + "Actual Email")
-    this.cartService.userDetails.snapshotChanges().subscribe(data => {
-      const userDetails = data.find(item => item.payload.val().email === this.actualEmail);
+    console.log(this.actualEmail + "Actual Email");
+    this.cartService.userDetails.snapshotChanges().subscribe((data) => {
+      const userDetails = data.find(
+        (item) => item.payload.val().email === this.actualEmail
+      );
       if (userDetails) {
         this.userDetail = userDetails.payload.val();
         console.log(this.userDetail);
       } else {
-        console.log('User details not found!');
-        console.log(this.actualEmail)
+        console.log("User details not found!");
+        console.log(this.actualEmail);
       }
     });
     this.openModal();
-
   }
-  fetchCartItems(currentUserEmail:any) {
-    this.cartService.getCartItems(currentUserEmail).subscribe(items => {
+  fetchCartItems(currentUserEmail: any) {
+    this.cartService.getCartItems(currentUserEmail).subscribe((items) => {
       this.cartItems = items;
-      // for (let i = 0; i < this.cartItems.length; i++) {
-      //   const priceWithoutSymbol = this.cartItems[i].productPrice.replace('$', '');
-      //   const priceAsNumber = parseFloat(priceWithoutSymbol);
-        
-      //   this.totalPrice += priceAsNumber;
-      // }
-      // console.log(items)
+      for (let i = 0; i < this.cartItems.length; i++) {
+        const priceWithoutSymbol = this.cartItems[i].productPrice.replace('$', '');
+        const priceAsNumber = parseFloat(priceWithoutSymbol);
+
+        this.totalPrices += priceAsNumber;
+      }
+      console.log(items)
     });
   }
 
   removeFromCart(item: any) {
-    this.cartService.deleteFromCart(item, this.currentUserEmail).then(() => {
-      // Item removed from cart successfully
-      console.log("working")
-    }).catch(error => {
-      console.log('Error removing item from cart:', error);
-    });
+    this.cartService
+      .deleteFromCart(item, this.currentUserEmail)
+      .then(() => {
+        // Item removed from cart successfully
+        console.log("working");
+      })
+      .catch((error) => {
+        console.log("Error removing item from cart:", error);
+      });
   }
 
   calculateLineTotal(item: any): number {
@@ -84,120 +95,120 @@ export class CartComponent implements OnInit {
   }
 
   calculateShipping(): number {
-    return 15.00; // Replace with your actual shipping cost calculation
+    return 15.0; // Replace with your actual shipping cost calculation
   }
 
   calculateGrandTotal(): number {
-    return this.calculateSubtotal() + this.calculateTax() + this.calculateShipping();
+    return (
+      this.calculateSubtotal() + this.calculateTax() + this.calculateShipping()
+    );
   }
 
-
-
-
-  btnValue = 'Send Email';
-  phoneNumber:any;
-  address:any
-  ein:any
-  loading:boolean;
+  btnValue = "Send Email";
+  phoneNumber: any;
+  address: any;
+  ein: any;
+  loading: boolean;
   sendEmails() {
-    console.log(this.userDetail['phoneNumber'],)
-    this.btnValue = 'Sending...';
+    console.log(this.userDetail["phoneNumber"]);
+    this.btnValue = "Sending...";
 
-    const serviceID = 'default_service';
-    const templateID = 'template_ymlrotd';
-    const userID = 'LbNjrA62NgKQo88NX'; // Replace with your actual User ID
+    const serviceID = "default_service";
+    const templateID = "template_ymlrotd";
+    const userID = "LbNjrA62NgKQo88NX"; // Replace with your actual User ID
 
-    emailjs.send(serviceID, templateID, {
-      from_name: 'your valuable customer',
-      to_name: 'Annapurna Wholesale',
-      email_id: this.actualEmail,
-      customerName: this.userDetail['name'],
-      phone_number: this.userDetail['phoneNumber'],
-      address: this.userDetail['address'],
-      state:this.userDetail['state'],
-      city:this.userDetail['city'],
-      einNumber:this.userDetail['einNumber'],
-      company:this.userDetail['companyName'],
-      message: this.generateEmailMessage(),
-      reply_to: this.actualEmail
-    }, userID)
-      .then(() => {
-        this.btnValue = 'Send Email';
-        this.loading=true;
-        setTimeout(() => {
-          this.loading=false;
-        }, 2000);
-        alert('Sent!');
-      }, (err) => {
-        this.btnValue = 'Send Email';
-        alert(JSON.stringify(err));
-      });
+    emailjs
+      .send(
+        serviceID,
+        templateID,
+        {
+          from_name: "your valuable customer",
+          to_name: "Annapurna Wholesale",
+          email_id: this.actualEmail,
+          customerName: this.userDetail["name"],
+          phone_number: this.userDetail["phoneNumber"],
+          address: this.userDetail["address"],
+          state: this.userDetail["state"],
+          city: this.userDetail["city"],
+          einNumber: this.userDetail["einNumber"],
+          company: this.userDetail["companyName"],
+          message: this.generateEmailMessage(),
+          reply_to: this.actualEmail,
+        },
+        userID
+      )
+      .then(
+        () => {
+          this.btnValue = "Send Email";
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+          }, 2000);
+          alert("Sent!");
+        },
+        (err) => {
+          this.btnValue = "Send Email";
+          alert(JSON.stringify(err));
+        }
+      );
   }
-  
-  generateEmailMessage(): string {
-    let message = '';
 
-    this.cartItems.forEach(item => {
+  generateEmailMessage(): string {
+    let message = "";
+
+    this.cartItems.forEach((item) => {
       message += `Product Name: ${item.productName}\n`;
       message += `Product Description: ${item.productDescription}\n`;
       message += `Product Price: ${item.productPrice}\n`;
       message += `Product Quantity: ${item.quantity}\n\n`;
     });
-    console.log(message)
+    console.log(message);
     return message;
   }
 
+  showModal: boolean;
 
-  showModal:boolean;
+  openModal() {
+    this.showModal = true;
+  }
 
-openModal() {
-  this.showModal = true;
-}
+  closeModal() {
+    this.showModal = false;
+  }
 
-closeModal() {
-  this.showModal = false;
-}
-itemTotal:any
-updateTotal(item: any): void {
-  const previousTotal = item.total;
-  item.total = this.calculateItemTotal(item);
-  item.overallTotal += parseInt(item.total);
-  console.log(item.total + 'all');
-  console.log(JSON.stringify(item) + "sdf");
-  
-  this.totalItem=item
-  // if (item.quantity > item.previousQuantity) {
-  //   this.totalPrice += item.total - previousTotal;
-  // } else if (item.quantity < item.previousQuantity) {
-  //   this.totalPrice -= previousTotal - item.total;
-  // } else {
-  //   console.log("quantity unchanged");
+  itemTotal: any;
+  totalPrices: number = 0;
+
+  updateTotal(item: any): void {
+    if (!item.total) {
+      item.total = 0;
+    }
+    const previousTotal = item.total;
+    item.total = this.calculateItemTotal(item);
+    this.totalPrices += item.total - previousTotal;
+  }
+
+  // totalItem
+  // Calculate(){
+  //   this.totalPrice = 0
+  //   this.totalPrice += this.totalItem.total
   // }
-  
-  // item.previousQuantity = item.quantity;
-}
-totalItem
-Calculate(){
-  this.totalPrice =0
-  this.totalPrice += this.totalItem.total
-}
-calculateItemTotal(item: any): number {
-  const quantity = +item.quantity; // Convert the quantity to a number
+  calculateItemTotal(item: any): number {
+    const quantity = +item.quantity; // Convert the quantity to a number
 
-  if (isNaN(quantity)) {
-    return 0;
+    if (isNaN(quantity)) {
+      return 0;
+    }
+
+    const price = +item.productPrice.replace("$", ""); // Remove the "$" sign from product price and convert it to a number
+
+    if (isNaN(price)) {
+      return 0;
+    }
+
+    console.log(price * quantity, "ttt");
+    console.log(JSON.stringify(item) + "all");
+
+    return price * quantity;
   }
-
-  const price = +item.productPrice.replace("$", ""); // Remove the "$" sign from product price and convert it to a number
-
-  if (isNaN(price)) {
-    return 0;
-  }
-  console.log(price * quantity)
-  console.log(JSON.stringify(item) + 'all')
-  
-
-  return price * quantity;
-}
-
 }
