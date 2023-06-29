@@ -145,6 +145,21 @@ export class CartComponent implements OnInit {
             this.loading = false;
           }, 2000);
           alert("Sent!");
+          
+          this.itemIds = this.cartItems.map((item) => item.id);
+  
+          this.itemIds.forEach((itemId) => {
+            this.cartService
+              .deleteFromCart(itemId, this.currentUserEmail)
+              .then(() => {
+                // Item removed from cart successfully
+                console.log("working");
+              })
+              .catch((error) => {
+                console.log("Error removing item from cart:", error);
+              });
+          });
+          this.totalPrices = 0
         },
         (err) => {
           this.btnValue = "Send Email";
@@ -152,7 +167,7 @@ export class CartComponent implements OnInit {
         }
       );
   }
-
+  itemIds:any
   generateEmailMessage(): string {
     let message = "";
 
